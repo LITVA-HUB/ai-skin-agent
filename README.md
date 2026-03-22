@@ -2,38 +2,42 @@
 
 Локальный Python/FastAPI прототип beauty-ассистента для сценариев уровня Золотого Яблока.
 
-Проект начинался как простой skincare demo, а сейчас это уже **session-aware beauty advisor** с поддержкой:
-- photo-driven skincare рекомендаций
-- complexion makeup рекомендаций
-- диалогового follow-up агента
-- hybrid retrieval с локальным vector search
-- памяти контекста внутри текущей сессии
+Это не просто demo с кнопкой «подобрать крем». Проект уже умеет работать как **photo-driven beauty advisor**:
+- анализирует фото
+- собирает skin + complexion profile
+- подбирает уход и complexion makeup
+- ведёт follow-up диалог внутри одной сессии
+- помнит, что уже советовал и что ты уже спрашивал
+- пересобирает подборку под новый запрос
+
+Идея проекта — показать, как может выглядеть живой AI-консультант для beauty-ритейла: понятный пользователю, достаточно умный в диалоге и технически структурированный под дальнейший рост.
 
 ---
 
-## Что это умеет сейчас
+## Что умеет сейчас
 
-### 1. Анализ фото
-Сервис принимает фото лица/кожи и строит практический профиль для рекомендаций.
+### Photo-driven старт
+Пользователь загружает фото лица или кожи и получает стартовую подборку.
 
-Сейчас используются сигналы вроде:
+На основе изображения система извлекает practical signals:
 - oiliness
 - dryness
 - redness
 - breakouts
-- sensitivity
-- skin tone
-- undertone
+- sensitivity signs
+- tone evenness
+- skin tone bucket
+- undertone guess
 - under-eye darkness
 - visible shine
 - texture visibility
 
-Важно: это **demo-level analysis**, а не медицинская или профессиональная диагностика.
+Это не медицинская диагностика и не попытка изображать врача. Это product-oriented visual analysis для beauty-рекомендаций.
 
 ---
 
-### 2. Подбор ухода
-Поддерживаются skincare-категории:
+### Подбор skincare
+Поддерживаются категории:
 - cleanser
 - serum
 - moisturizer
@@ -41,96 +45,176 @@
 - toner
 - spot treatment
 
-Агент умеет учитывать:
+Система учитывает:
 - тип кожи
 - ключевые concerns
 - чувствительность
 - бюджет
-- нежелательные ингредиенты
+- исключённые ингредиенты
 - preferred brands
 - длину рутины
+- прошлые реакции внутри текущей сессии
 
-Примеры запросов:
+Можно писать, например:
 - `подбери уход от покраснений`
 - `сделай рутину проще`
 - `покажи вариант подешевле`
 - `без niacinamide`
+- `оставь уход, но замени сыворотку`
 
 ---
 
-### 3. Подбор complexion makeup
-Поддерживаются makeup-категории:
+### Подбор complexion makeup
+Поддерживаются категории:
 - foundation
 - skin tint
 - concealer
 - powder
 
-Агент умеет учитывать:
+Система умеет учитывать:
 - примерный tone bucket
 - undertone
 - desired finish
 - desired coverage
 - under-eye use case
-- shine control / texture preferences
+- shine-control constraints
+- сочетание с текущим типом кожи и общим запросом
 
-Примеры запросов:
+Можно писать, например:
 - `подбери тональник под мой тон кожи`
 - `хочу легкое покрытие`
 - `нужен сияющий финиш`
 - `нужен консилер под глаза`
 - `сравни foundation и skin tint`
+- `оставь уход, но добавь тон`
 
 ---
 
-### 4. Session-aware агент
-Это не просто поиск товаров, а агент с памятью внутри сессии.
+### Смешанные beauty-сценарии
+Одна из главных сильных сторон прототипа — он не разваливается на «уход отдельно / макияж отдельно».
 
-Он запоминает:
+Сейчас он уже умеет вести mixed flows:
+- `сначала подбери уход, потом тональник`
+- `сделай уход проще, но оставь skin tint`
+- `мне нужен уход + консилер под глаза`
+- `оставь уход, но замени тон на более легкий`
+
+То есть это уже не просто SKU search, а зачаток реального beauty advisor.
+
+---
+
+### Session-aware чат
+Агент помнит контекст **внутри текущей сессии**.
+
+Он удерживает:
 - что ты уже спрашивал
-- что он уже советовал
+- что уже советовал
 - preferred finish / coverage
-- excluded ingredients
 - preferred brands
-- rejected / accepted products
-- direction по бюджету
+- excluded ingredients
+- accepted / rejected products
+- budget direction
 - текущую подборку по категориям
+- последние сообщения в чате
 
-Поддерживаются сценарии:
-- compare mode
-- explain mode
-- cheaper alternative
-- replace product
-- simplify routine
-- mixed skincare + makeup flow
-- recall прошлых сообщений в текущем чате
-
-Примеры:
+Благодаря этому можно спрашивать:
 - `что я у тебя спрашивал?`
 - `что ты советовал в первый раз?`
 - `на чём мы остановились?`
 - `напомни прошлую подборку`
 
----
-
-## Как это устроено
-
-### High-level pipeline
-
-1. **Photo analysis**
-2. **Skin / complexion profile building**
-3. **Planning**
-4. **Hybrid retrieval**
-5. **Reranking**
-6. **Session-aware response generation**
+И он отвечает уже не из фантазии, а из истории текущей сессии.
 
 ---
 
-## Retrieval architecture
+## Как выглядит пользовательский сценарий
 
-Проект работает локально, без внешней БД и без настоящего vector DB, но retrieval уже построен по взрослой схеме.
+### Базовый flow
+1. Пользователь загружает фото
+2. Сервис строит skin / complexion profile
+3. Planner решает, какие категории нужны
+4. Retrieval поднимает кандидатов из локального каталога
+5. Reranking собирает итоговую подборку
+6. Пользователь продолжает диалог обычным языком
+7. Агент пересобирает рекомендации без потери контекста
+
+### Что можно сделать после первого ответа
+- попросить более дешёвый вариант
+- заменить один продукт, не ломая всю подборку
+- исключить ингредиент
+- сократить рутину
+- добавить makeup к skincare
+- попросить compare
+- попросить explain
+- вернуть прошлую подборку
+
+---
+
+## Как это работает внутри
+
+## 1. Photo analysis
+На входе:
+- `photo_b64` или `image_url`
+
+На выходе:
+- `PhotoAnalysisResult`
+
+Внутри сейчас есть:
+- мультимодальный путь через Gemini
+- deterministic fallback, если Gemini недоступна или не отвечает
+
+Это позволяет проекту оставаться runnable локально и не зависеть полностью от внешнего API в demo-сценарии.
+
+---
+
+## 2. Profile building
+После анализа фото система строит profile layer:
+
+### Skin profile
+- skin type
+- primary concerns
+- secondary concerns
+- cautions
+
+### Complexion profile
+- skin tone
+- undertone
+- preferred finish
+- preferred coverage
+- under-eye concealer need
+- complexion constraints
+
+Это уже не “сырые сигналы”, а более пригодное представление для planner и retrieval.
+
+---
+
+## 3. Planning
+Planner определяет:
+- какие product domains нужны:
+  - skincare
+  - makeup
+  - hybrid
+- какие категории включать
+- какие теги/ограничения важны
+- какие preferences должны повлиять на retrieval
+
+Пример:
+- если у пользователя есть покраснение + нужен легкий тон,
+  planner может одновременно собрать:
+  - cleanser
+  - serum
+  - moisturizer
+  - SPF
+  - foundation или skin tint
+  - concealer
+
+---
+
+## 4. Hybrid retrieval
+Текущий retrieval устроен в несколько слоёв.
 
 ### Hard filters
-Сначала отсекаются товары по правилам:
+Сначала товары режутся по правилам:
 - category
 - domain
 - availability
@@ -138,37 +222,48 @@
 - excluded ingredients
 - skin-type fit
 - product exclusions
-- brand preferences
+- preferred brands
 - session rejections
 - tone / undertone / suitable area для makeup
 
 ### Local vector search
-Сейчас используется **локальный deterministic vector search**:
+После фильтрации включается локальный vector search.
+
+Сейчас он уже сделан не игрушечно:
 - нормализация текста через `unicodedata`
-- расширение токенов beauty-синонимами RU/EN
+- `ё -> е`
+- чистка пунктуации
+- расширение RU/EN beauty-синонимами
 - hashed vectors
 - 128 dimensions
 - lexical overlap + vector similarity
 - cached local vector index
+- weighted query / product documents
+
+Это всё ещё локальная deterministic реализация, но уже достаточно взрослая по структуре.
 
 ### Reranking
-После retrieval идёт reranking, который учитывает:
+После semantic retrieval кандидаты ранжируются дальше по:
 - concern overlap
 - preferred tags
 - skin type fit
 - budget fit
-- tone / undertone fit
-- finish / coverage fit
+- tone fit
+- undertone fit
+- finish fit
+- coverage fit
 - novelty penalties
 - follow-up bonuses/penalties
 
-Это всё ещё локальная реализация, но уже не игрушечная.
+Именно этот слой делает поведение агента более правдоподобным в повторных запросах типа:
+- `подешевле`
+- `замени только тон`
+- `оставь уход, но покажи другой консилер`
 
 ---
 
-## Agent / orchestration layer
-
-Agent layer умеет структурировать follow-up примерно так:
+## 5. Agent / orchestration layer
+Follow-up агент раскладывает сообщение примерно так:
 
 - `domain`: `skincare | makeup | hybrid`
 - `action`: `recommend | replace | compare | explain | simplify | cheaper | refine`
@@ -176,20 +271,59 @@ Agent layer умеет структурировать follow-up примерно
 - `preference_updates`
 - `constraints_update`
 
-За счёт этого агент лучше держит смешанные сценарии и не воспринимает каждое новое сообщение как чат с нуля.
+За счёт этого агент умеет:
+- не начинать каждый раз новый чат с нуля
+- держать структуру разговора
+- различать compare / explain / refine / replace
+- работать как product-oriented консультант, а не просто текстогенератор
 
 ---
 
 ## Demo UI
+Локальный UI специально сделан простым, но достаточно полным для продуктового теста.
 
-Есть локальный интерфейс с:
-- загрузкой фото
+Что там есть:
+- загрузка фото
 - preview
 - goal input
-- карточками рекомендаций
-- чатом с агентом
+- дополнительные настройки
+- карточки рекомендаций
+- чат с агентом
 
-UI специально сделан простым, чтобы можно было тестировать продуктовый сценарий, а не только API.
+Этого уже достаточно, чтобы полноценно руками прогонять сценарии пользователя.
+
+---
+
+## Что можно протестировать прямо сейчас
+
+### Skincare
+- `подбери уход от покраснений`
+- `сделай рутину проще`
+- `без niacinamide`
+- `оставь уход, но замени сыворотку`
+
+### Makeup
+- `подбери тональник под мой тон кожи`
+- `хочу легкое покрытие`
+- `нужен сияющий финиш`
+- `нужен консилер под глаза`
+- `покажи вариант подешевле`
+
+### Mixed flow
+- `сначала подбери уход, потом тон`
+- `оставь уход, но добавь консилер`
+- `мне нужен уход плюс skin tint`
+
+### Agent memory
+- `что я у тебя спрашивал?`
+- `что ты советовал в первый раз?`
+- `на чём мы остановились?`
+- `напомни прошлую подборку`
+
+### Compare / explain
+- `сравни foundation и skin tint`
+- `почему ты выбрал именно это`
+- `объясни, почему этот вариант мне подходит`
 
 ---
 
@@ -218,14 +352,14 @@ uvicorn app.main:app --reload
 Открыть:
 - `http://localhost:8000/`
 
-Если проект запускается через fixed port locally:
+Если локально запускается fixed-port версия:
 - `http://localhost:8010/`
 
 ---
 
 ## Environment variables
 
-Пример в `.env.example`:
+Пример:
 
 ```env
 GEMINI_API_KEY=replace-me
@@ -262,88 +396,99 @@ tests/
 
 ## Что уже сделано
 
-### Product scope
-- skincare recommendations
-- complexion makeup recommendations
+### Product
+- photo-driven beauty advisor
+- skincare + complexion makeup
 - unified beauty chat
-- compare / explain flows
-- conversation memory inside a session
+- compare mode
+- explain mode
+- mixed-domain flows
+- session memory inside one conversation
 
 ### Engineering
 - FastAPI app
 - local mock catalog
 - hybrid retrieval
 - improved local vector search layer
+- session-aware orchestration
 - deterministic local testing
 - GitHub repo ready
 
-### Testing
-Текущее покрытие включает:
-- health endpoint
-- analyze + follow-up
-- compare mode
-- explain mode
-- hybrid flows
-- session memory recall
-- retrieval behavior
-- vector normalization behavior
-- UI root rendering
+### Retrieval
+- hard filters
+- local vector search
+- reranking
+- tone / undertone / finish / coverage-aware ranking
+- follow-up-aware replacement behavior
+
+### Agent layer
+- structured intents
+- in-session preference memory
+- conversation history recall
+- improved product-facing replies
 
 ---
 
 ## Что ещё не сделано
 
-Вот честный список того, что пока остаётся следующим этапом.
+Вот честный список следующего этапа.
 
-### Data / catalog
+### Catalog / data
 - реальный каталог ритейлера вместо mock data
 - real availability / inventory sync
-- richer pricing / promo logic
-- SKU variants и оттеночные матрицы на уровне реального каталога
+- richer price / promo logic
+- полноценные shade matrices и product variants
 
 ### Retrieval / ML
 - настоящие embeddings
 - persistent vector index
 - pgvector / vector DB / ANN search
-- более сильный candidate set для compare/explain
+- более сильный compare/explain candidate set
 - более точный shade match по фото
 
 ### Agent layer
-- сильнее NLU вместо в основном heuristic parsing
+- сильнее NLU вместо mostly heuristic parsing
 - лучшее извлечение brands / ingredients / constraints
 - долговременная память между рестартами
 - более умный compare engine по нескольким товарам
+- лучшее поведение на более длинных диалогах
 
 ### Product / UX
-- сохранение истории сессий
+- сохранение сессий
 - debug panel: why this product was chosen
 - richer product cards
 - better explainability UI
-- deploy-ready config для облака
+- deploy-ready cloud config
+- screenshots / public demo docs
 
 ---
 
 ## Ограничения текущей версии
 
-Важно понимать, что это **demo/prototype**, а не production-ready beauty platform.
+Важно: это **prototype/demo**, а не production-ready beauty platform.
 
 Сейчас ограничения такие:
 - shade match приблизительный
-- undertone detection эвристический / fallback-friendly
+- undertone detection partly heuristic
 - photo analysis не является диагностикой
 - vector search локальный, а не на настоящих embeddings
-- session memory живёт в процессе и не переживает рестарт сервера
+- session memory живёт в памяти процесса и не переживает рестарт
 - catalog synthetic / mocked
+- compare/explain пока не опираются на отдельный глубокий reasoning engine по каталогу
 
 ---
 
-## Почему проект уже полезный
+## Почему проект уже выглядит сильно
 
-Несмотря на ограничения, это уже хороший product/engineering prototype, потому что он показывает:
-- как может выглядеть beauty advisor для ритейла
-- как совместить skincare + complexion flows
-- как строить session-aware recommendation agent
-- как эволюционно прийти от local demo к более серьёзной архитектуре
+Потому что он уже показывает не один isolated feature, а связную систему:
+- фото -> профиль
+- профиль -> план
+- план -> retrieval
+- retrieval -> рекомендации
+- рекомендации -> follow-up диалог
+- follow-up -> session-aware перестройка
+
+То есть это уже не просто “чатик про косметику”, а хороший фундамент под реального retail beauty advisor.
 
 ---
 
@@ -364,7 +509,7 @@ tests/
 ### Later
 - production catalog integration
 - ranking analytics
-- event logging / experiments
+- experiments / evaluation
 - cloud deployment setup
 
 ---
@@ -382,4 +527,5 @@ Current status:
 - actively evolving prototype
 - local demo ready
 - retrieval + agent memory + beauty flows already implemented
+- repo cleaned up and documented
 - not yet production-ready
