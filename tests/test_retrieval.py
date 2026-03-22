@@ -1,7 +1,7 @@
 from app.catalog import load_catalog
 from app.logic import build_plan, build_skin_profile
 from app.models import DialogIntent, PhotoAnalysisResult, PhotoSignals, PriceSegment, RoutineSize, SessionState, SkinProfile, SkinTone, Undertone, UserContext
-from app.retrieval import retrieve_products, vectorize_text
+from app.retrieval import build_product_document, retrieve_products, semantic_retrieve, vectorize_text
 
 
 def _profile() -> SkinProfile:
@@ -43,6 +43,43 @@ def test_vectorization_is_deterministic() -> None:
     other = vectorize_text('oily skin clarifying blemish serum')
     assert left == right
     assert left != other
+
+
+
+def test_vectorization_normalizes_cross_language_beauty_synonyms() -> None:
+    english = vectorize_text('radiant light coverage foundation for neutral undertone')
+    russian = vectorize_text('сияющий легкий тональник для нейтрального подтона')
+    different = vectorize_text('clarifying serum for oily breakout prone skin')
+
+    overlap = sum(a * b for a, b in zip(english, russian))
+    contrast = sum(a * b for a, b in zip(english, different))
+    assert overlap > contrast
+
+
+
+def test_product_document_contains_weighted_retrieval_context() -> None:
+    foundation = next(item for item in load_catalog() if item.category == 'foundation')
+    document = build_product_document(foundation)
+
+    assert 'title ' in document
+    assert 'category foundation' in document
+    assert 'embed ' in document
+
+
+
+def test_semantic_retrieve_prefers_makeup_match_for_makeup_query() -> None:
+    foundation_candidates = [item for item in load_catalog() if item.category in {'foundation', 'skin_tint'}]
+    hits = semantic_retrieve(
+        'foundation',
+        foundation_candidates,
+        'light neutral undertone radiant lightweight foundation skin tint base makeup',
+        top_k=3,
+    )
+
+    assert hits
+    top_product, top_score = hits[0]
+    assert top_product.category in {'foundation', 'skin_tint'}
+    assert top_score > 0.15
 
 
 
