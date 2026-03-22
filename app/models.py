@@ -20,6 +20,12 @@ class PriceSegment(str, Enum):
     premium = "premium"
 
 
+class BudgetDirection(str, Enum):
+    cheaper = "cheaper"
+    same = "same"
+    premium = "premium"
+
+
 class RoutineSize(str, Enum):
     minimal = "minimal"
     standard = "standard"
@@ -29,6 +35,22 @@ class RoutineSize(str, Enum):
 class ProductDomain(str, Enum):
     skincare = "skincare"
     makeup = "makeup"
+
+
+class IntentDomain(str, Enum):
+    skincare = "skincare"
+    makeup = "makeup"
+    hybrid = "hybrid"
+
+
+class IntentAction(str, Enum):
+    recommend = "recommend"
+    replace = "replace"
+    compare = "compare"
+    explain = "explain"
+    simplify = "simplify"
+    cheaper = "cheaper"
+    refine = "refine"
 
 
 class SkinTone(str, Enum):
@@ -120,6 +142,11 @@ class UserContext(BaseModel):
     excluded_ingredients: list[str] = Field(default_factory=list)
     routine_size: RoutineSize = RoutineSize.standard
     goal: str | None = None
+    budget_direction: BudgetDirection = BudgetDirection.same
+    preferred_finish: list[FinishType] = Field(default_factory=list)
+    preferred_coverage: list[CoverageLevel] = Field(default_factory=list)
+    rejected_products: list[str] = Field(default_factory=list)
+    accepted_products: list[str] = Field(default_factory=list)
 
 
 class RecommendationPlan(BaseModel):
@@ -201,9 +228,14 @@ class AnalyzePhotoResponse(BaseModel):
 
 class DialogIntent(BaseModel):
     intent: str
+    action: IntentAction = IntentAction.recommend
+    domain: IntentDomain = IntentDomain.skincare
     target_category: str | None = None
+    target_categories: list[str] = Field(default_factory=list)
     target_product: str | None = None
+    target_products: list[str] = Field(default_factory=list)
     target_domain: ProductDomain | None = None
+    preference_updates: dict[str, Any] = Field(default_factory=dict)
     constraints_update: dict[str, Any] = Field(default_factory=dict)
     confidence: float = 0.0
 

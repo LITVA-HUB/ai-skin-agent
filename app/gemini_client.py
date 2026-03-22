@@ -91,10 +91,23 @@ class GeminiClient:
 You are an intent parser for a Golden Apple beauty advisor.
 Return only valid JSON with schema:
 {{
-  "intent": "explain_product|replace_product|cheaper_alternative|exclude_ingredient|change_brand|simplify_routine|expand_routine|general_advice",
+  "intent": "general_advice|replace_product|cheaper_alternative|exclude_ingredient|change_brand|simplify_routine|expand_routine|explain_product|compare_products",
+  "action": "recommend|replace|compare|explain|simplify|cheaper|refine",
+  "domain": "skincare|makeup|hybrid",
   "target_category": "serum|moisturizer|cleanser|spf|toner|foundation|skin_tint|concealer|powder|null",
+  "target_categories": ["string"],
   "target_product": null,
+  "target_products": ["string"],
   "target_domain": "skincare|makeup|null",
+  "preference_updates": {{
+    "preferred_finish": ["natural|radiant|matte|satin"],
+    "preferred_coverage": ["sheer|light|medium|full"],
+    "preferred_brands": ["string"],
+    "budget_direction": "cheaper|same|premium",
+    "accepted_products": ["string"],
+    "rejected_products": ["string"],
+    "routine_size": "minimal|standard|extended"
+  }},
   "constraints_update": {{
     "budget_segment": "budget|mid|premium",
     "routine_size": "minimal|standard|extended",
@@ -111,7 +124,7 @@ Return only valid JSON with schema:
 }}
 Context: {session_summary}
 User message: {user_message}
-If the message is broad or conversational, use general_advice.
+Use compare_products for side-by-side requests, explain_product for "why/explain" asks, and hybrid when the user mixes skincare + complexion makeup.
 Only output JSON.
 """.strip()
         text = await self._generate([{"text": prompt}])
