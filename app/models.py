@@ -199,6 +199,11 @@ class RecommendationItem(BaseModel):
     final_score: float
 
 
+class ConversationTurn(BaseModel):
+    role: str
+    message: str
+
+
 class SessionState(BaseModel):
     session_id: str
     photo_analysis: PhotoAnalysisResult
@@ -209,6 +214,7 @@ class SessionState(BaseModel):
     rejected_products: list[str] = Field(default_factory=list)
     accepted_products: list[str] = Field(default_factory=list)
     dialog_context: dict[str, Any] = Field(default_factory=dict)
+    conversation_history: list[ConversationTurn] = Field(default_factory=list)
 
 
 class AnalyzePhotoRequest(BaseModel):

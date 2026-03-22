@@ -139,12 +139,29 @@
     function addMessage(text, role='agent') {
       const div = document.createElement('div'); div.className = `msg ${role}`; div.textContent = text; $('chat').appendChild(div); $('chat').scrollTop = $('chat').scrollHeight;
     }
+    function humanizeShadeToken(value) {
+      const mapping = {
+        fair: 'очень светлый',
+        light: 'светлый',
+        medium: 'средний',
+        tan: 'загорелый',
+        deep: 'глубокий',
+        neutral: 'нейтральный',
+        warm: 'тёплый',
+        cool: 'холодный',
+        olive: 'оливковый'
+      };
+      return value.split('_').map(part => mapping[part.toLowerCase()] || part.toLowerCase()).join(' ');
+    }
+    function prettyTitle(title) {
+      return title.replace(/\b([A-Z]+(?:_[A-Z]+)+)\b/g, (_, shade) => humanizeShadeToken(shade));
+    }
     function renderRecommendations(items) {
       const root = $('cards'); root.innerHTML = '';
       if (!items?.length) { root.innerHTML = '<div class="sub">Пока нет рекомендаций.</div>'; return; }
       items.forEach(item => {
         const card = document.createElement('div'); card.className = 'card';
-        card.innerHTML = `<h3>${item.title}</h3><div class="sub">${item.brand} · ${categoryLabels[item.category] || item.category}</div><div style="margin:10px 0 6px;font-weight:700">${item.price_value} ₽</div><p>${item.why}</p>`;
+        card.innerHTML = `<h3>${prettyTitle(item.title)}</h3><div class="sub">${item.brand} · ${categoryLabels[item.category] || item.category}</div><div style="margin:10px 0 6px;font-weight:700">${item.price_value} ₽</div><p>${item.why}</p>`;
         root.appendChild(card);
       });
     }

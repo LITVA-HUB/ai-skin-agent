@@ -11,6 +11,7 @@ from .models import (
     AnalyzePhotoResponse,
     BudgetDirection,
     ComplexionProfile,
+    ConversationTurn,
     CoverageLevel,
     DialogIntent,
     FinishType,
@@ -108,6 +109,22 @@ EXCLUDE_PATTERNS = [
 ]
 MAKEUP_CATEGORIES = {"foundation", "skin_tint", "concealer", "powder"}
 SKINCARE_CATEGORIES = {"cleanser", "serum", "moisturizer", "spf", "toner", "spot_treatment", "mask"}
+MAX_CONVERSATION_TURNS = 24
+MEMORY_QUESTION_HINTS = [
+    "что я у тебя спрашивал",
+    "что я спрашивал",
+    "что ты советовал в первый раз",
+    "на чем мы остановились",
+    "на чём мы остановились",
+    "напомни прошлую подборку",
+    "напомни подборку",
+    "что было до этого",
+    "что ты советовал",
+    "что ты рекомендовал",
+    "о чем мы говорили",
+    "о чём мы говорили",
+    "напомни, что было",
+]
 
 
 @lru_cache(maxsize=1)
@@ -133,6 +150,81 @@ def _catalog_index() -> dict[str, object]:
 
 def _normalize_text(text: str) -> str:
     return re.sub(r"\s+", " ", text.lower()).strip()
+
+
+def _append_conversation_turn(session: SessionState, role: str, message: str) -> None:
+    text = (message or '').strip()
+    if not text:
+        return
+    session.conversation_history.append(ConversationTurn(role=role, message=text))
+    if len(session.conversation_history) > MAX_CONVERSATION_TURNS:
+        session.conversation_history = session.conversation_history[-MAX_CONVERSATION_TURNS:]
+
+
+def _is_memory_question(message: str) -> bool:
+    normalized = _normalize_text(message)
+    return any(hint in normalized for hint in MEMORY_QUESTION_HINTS)
+
+
+def _recent_user_messages(session: SessionState, limit: int = 3, exclude_last: str | None = None) -> list[str]:
+    items = [turn.message for turn in session.conversation_history if turn.role == 'user']
+    if exclude_last and items and items[-1] == exclude_last:
+        items = items[:-1]
+    return items[-limit:]
+
+
+def _first_agent_recommendation(session: SessionState) -> str | None:
+    for turn in session.conversation_history:
+        if turn.role == 'assistant' and ('- ' in turn.message or 'вот что выглядит удачно на старте' in turn.message.lower()):
+            return turn.message
+    return None
+
+
+def _last_assistant_message(session: SessionState) -> str | None:
+    for turn in reversed(session.conversation_history):
+        if turn.role == 'assistant':
+            return turn.message
+    return None
+
+
+def _summarize_message(text: str, max_len: int = 140) -> str:
+    clean = re.sub(r'\s+', ' ', text).strip()
+    if len(clean) <= max_len:
+        return clean
+    return clean[: max_len - 1].rstrip() + '…'
+
+
+def _answer_from_conversation_history(session: SessionState, message: str) -> str:
+    normalized = _normalize_text(message)
+    user_messages = _recent_user_messages(session, exclude_last=message)
+    if 'что я' in normalized and ('спрашивал' in normalized or 'говорил' in normalized):
+        if not user_messages:
+            return 'Пока ты ещё ничего не спрашивал в этой сессии.'
+        lines = ['Вот последние вопросы в этой сессии:']
+        for item in user_messages:
+            lines.append(f'- {_summarize_message(item)}')
+        return '\n'.join(lines)
+    if 'в первый раз' in normalized or 'первый' in normalized:
+        first_reply = _first_agent_recommendation(session)
+        if first_reply:
+            return f'В первый раз я советовал вот это:\n{first_reply}'
+        return 'Не вижу в истории первой подборки, на которую можно точно сослаться.'
+    if 'остановились' in normalized:
+        last_reply = _last_assistant_message(session)
+        if last_reply:
+            return f'Мы остановились на этом:\n{last_reply}'
+        return 'Пока не на чем останавливаться — в истории ещё нет прошлого ответа.'
+    if 'прошлую подборку' in normalized or 'напомни подборку' in normalized:
+        last_reply = _last_assistant_message(session)
+        if last_reply:
+            return f'Напоминаю прошлую подборку:\n{last_reply}'
+        return 'Не вижу сохранённой прошлой подборки в этой сессии.'
+    if user_messages:
+        lines = ['Коротко по истории текущего чата:']
+        for item in user_messages:
+            lines.append(f'- {_summarize_message(item)}')
+        return '\n'.join(lines)
+    return 'Пока в этой сессии нет истории, на которую можно опереться.'
 
 
 def _extract_brands(text: str) -> list[str]:
@@ -231,6 +323,7 @@ async def analyze_photo(request: AnalyzePhotoRequest, store: SessionStore, gemin
     recommendations = retrieve_products(profile, plan, context)
     context.accepted_products = [item.sku for item in recommendations]
     context.rejected_products = list(dict.fromkeys(context.rejected_products))
+    answer_text = compose_initial_response(profile, recommendations, plan)
     session = SessionState(
         session_id=str(uuid.uuid4()),
         photo_analysis=analysis,
@@ -243,6 +336,7 @@ async def analyze_photo(request: AnalyzePhotoRequest, store: SessionStore, gemin
             "current_recommendations": {item.category: item.sku for item in recommendations},
             "active_domains": [domain.value for domain in plan.product_domains],
         },
+        conversation_history=[ConversationTurn(role='assistant', message=answer_text)],
     )
     store.save(session)
     return AnalyzePhotoResponse(
@@ -251,7 +345,7 @@ async def analyze_photo(request: AnalyzePhotoRequest, store: SessionStore, gemin
         skin_profile=profile,
         recommendation_plan=plan,
         recommendations=recommendations,
-        answer_text=compose_initial_response(profile, recommendations, plan),
+        answer_text=answer_text,
     )
 
 
@@ -644,6 +738,8 @@ def _merge_intents(primary: DialogIntent | None, fallback: DialogIntent | None) 
         merged.target_category = other.target_category
     if not merged.target_categories and other.target_categories:
         merged.target_categories = other.target_categories
+    if not merged.target_category and merged.target_categories:
+        merged.target_category = merged.target_categories[0]
     if not merged.target_product and other.target_product:
         merged.target_product = other.target_product
     if not merged.target_products and other.target_products:
@@ -787,10 +883,25 @@ async def handle_message(message: str, store: SessionStore, session_id: str, gem
     session = store.get(session_id)
     if not session:
         raise KeyError(session_id)
+
+    if _is_memory_question(message):
+        updated = session.model_copy(deep=True)
+        _append_conversation_turn(updated, 'user', message)
+        answer_text = _answer_from_conversation_history(updated, message)
+        _append_conversation_turn(updated, 'assistant', answer_text)
+        store.save(updated)
+        return SessionMessageResponse(
+            intent=DialogIntent(intent='conversation_memory', action=IntentAction.explain, confidence=1.0),
+            updated_session_state=updated,
+            recommendations=_recommendations_from_current(updated),
+            answer_text=answer_text,
+        )
+
     model_intent = await gemini.parse_intent(message, _session_summary(session))
     heuristic_intent = _heuristic_intent(message, session=session)
     intent = _merge_intents(model_intent, heuristic_intent)
     updated = apply_intent(session, intent)
+    _append_conversation_turn(updated, 'user', message)
 
     if _needs_recommendation_refresh(updated, intent):
         recommendations = retrieve_products(updated.skin_profile, updated.current_plan, updated.user_preferences, session=updated, intent=intent)
@@ -807,32 +918,69 @@ async def handle_message(message: str, store: SessionStore, session_id: str, gem
         updated.user_preferences.accepted_products = list(updated.accepted_products)
         updated.user_preferences.rejected_products = list(updated.rejected_products)
 
-    store.save(updated)
     reply = await gemini.generate_agent_reply(build_reply_prompt(updated, intent, recommendations, message))
-    answer_text = reply or compose_followup_response(updated, intent, recommendations, message)
+    answer_text = _sanitize_agent_text(reply) if reply else compose_followup_response(updated, intent, recommendations, message)
+    _append_conversation_turn(updated, 'assistant', answer_text)
+    store.save(updated)
     return SessionMessageResponse(intent=intent, updated_session_state=updated, recommendations=recommendations, answer_text=answer_text)
+
+
+def _humanize_shade_token(value: str) -> str:
+    parts = value.replace('-', '_').split('_')
+    mapping = {
+        'fair': 'очень светлый',
+        'light': 'светлый',
+        'medium': 'средний',
+        'tan': 'загорелый',
+        'deep': 'глубокий',
+        'neutral': 'нейтральный',
+        'warm': 'тёплый',
+        'cool': 'холодный',
+        'olive': 'оливковый',
+    }
+    human = [mapping.get(part.lower(), part.lower()) for part in parts if part]
+    return ' '.join(human).strip()
+
+
+def _pretty_product_title(title: str) -> str:
+    match = re.search(r'\b([A-Z]+(?:_[A-Z]+)+)\b', title)
+    if not match:
+        return title
+    shade = match.group(1)
+    human_shade = _humanize_shade_token(shade)
+    return title.replace(shade, human_shade)
+
+
+def _sanitize_agent_text(text: str) -> str:
+    cleaned = text.replace('**', '').replace('__', '')
+    cleaned = re.sub(r'(?m)^\s*#{1,6}\s*', '', cleaned)
+    cleaned = re.sub(r'`+', '', cleaned)
+    return cleaned.strip()
 
 
 def compose_initial_response(profile: SkinProfile, recommendations: list[RecommendationItem], plan: RecommendationPlan) -> str:
     concerns = ", ".join(CONCERN_LABELS.get(c, c) for c in profile.primary_concerns)
     skin = SKIN_TYPE_LABELS.get(profile.skin_type.value, profile.skin_type.value)
-    lines = [f"?? ???? ???? ?????? ?? {concerns}. ???? ????? ? {skin}."]
+    lines = [f"По фото в первую очередь вижу {concerns}. Тип кожи сейчас ближе к {skin}."]
     if ProductDomain.makeup in plan.product_domains:
-        lines.append("???? ????? ????????? ????????: ???? + ??????? ?????? ? ????? ???????.")
+        lines.append("Параллельно могу помочь не только с уходом, но и с подбором тона, консилера и других complexion-средств.")
     if recommendations:
-        lines.append("????????? ????????:")
+        lines.append("Вот что выглядит удачно на старте:")
         for item in recommendations[:4]:
-            lines.append(f"- {CATEGORY_LABELS.get(item.category, item.category)}: {item.title} ({item.brand}) ? {item.why}.")
-    lines.append("???? ?????? ???????? ????????, ???????? ????? ??? ?????? ? ?????.")
-    return "
-".join(lines)
+            pretty_title = _pretty_product_title(item.title)
+            lines.append(f"- {CATEGORY_LABELS.get(item.category, item.category)}: {pretty_title} ({item.brand}) — {item.why}.")
+    lines.append("Дальше можно просто писать по-человечески: сравнить варианты, сделать дешевле, упростить рутину или подобрать что-то под другой запрос.")
+    return "\n".join(lines)
 
 
 def build_reply_prompt(session: SessionState, intent: DialogIntent, recommendations: list[RecommendationItem], message: str) -> str:
-    rec_lines = "\n".join(f"- {item.title} ({item.brand}, {item.category}, {item.price_value} ₽): {item.why}" for item in recommendations)
+    rec_lines = "\n".join(f"- {_pretty_product_title(item.title)} ({item.brand}, {item.category}, {item.price_value} ₽): {item.why}" for item in recommendations)
     return f"""
 Ты — дружелюбный Golden Apple beauty advisor.
-Отвечай по-русски, естественно, предметно и без техничности.
+Отвечай по-русски, естественно, предметно и приятно для пользователя.
+Тон ответа должен быть тёплый, уверенный и product-facing: так, чтобы пользователю хотелось попробовать вариант, но без навязчивости и без агрессивного давления.
+Нельзя использовать markdown-оформление: не ставь звёздочки, не выделяй жирным, не используй заголовки с #.
+Не показывай сырые shade-коды вроде LIGHT_NEUTRAL или MEDIUM_WARM. Если упоминаешь оттенок, пиши его по-человечески: например «светлый нейтральный» или «средний тёплый».
 Если запрос на compare — сравни продукты простым человеческим языком.
 Если запрос на explain — объясни, почему продукт или категория подходят именно этому пользователю.
 Если запрос смешанный, помоги и по уходу, и по complexion makeup в одном ответе.
@@ -865,17 +1013,17 @@ def _describe_item(item: RecommendationItem, session: SessionState) -> str:
         if finish:
             bits.append(finish)
         if product.tones and session.current_plan.preferred_tones and set(product.tones) & set(session.current_plan.preferred_tones):
-            bits.append('???????? ? ???')
+            bits.append('попадает в нужный тон кожи')
         if product.undertones and session.current_plan.preferred_undertones and set(product.undertones) & set(session.current_plan.preferred_undertones):
-            bits.append('????????? ??????')
+            bits.append('совпадает по подтону')
     else:
         concerns = [CONCERN_LABELS.get(c, c) for c in product.concerns[:2]]
         if concerns:
-            bits.append(f"???????????? {', '.join(concerns)}")
+            bits.append(f"подходит под {', '.join(concerns)}")
         if 'soothing' in product.tags:
-            bits.append('???????????')
+            bits.append('работает мягко и комфортно')
         if 'non-comedogenic' in product.tags:
-            bits.append('?? ??????????? ????')
+            bits.append('не должен перегружать кожу')
     details = ', '.join(bits[:2]) if bits else ''
     if details:
         return f"{item.why}, {details}"
@@ -905,7 +1053,7 @@ def _find_item_for_category(
         domain=product.domain,
         price_segment=product.price_segment,
         price_value=product.price_value,
-        why='??????? ?????',
+        why='текущий вариант',
         vector_score=0.0,
         rule_score=0.0,
         final_score=0.0,
@@ -949,11 +1097,12 @@ def compose_compare_response(session: SessionState, intent: DialogIntent, recomm
         if alt:
             items.append(alt)
     if len(items) < 2:
-        return '???? ???????? ??? ????????. ????????, ??? ? ??? ????????.'
-    lines = ['???????? ?????????:']
+        return 'Пока не вижу двух сильных вариантов для честного сравнения. Скажи, что именно сравнить — например тональный и skin tint.'
+    lines = ['Сравню коротко и по делу:']
     for item in items[:2]:
-        lines.append(f"- {item.title} ({item.brand}) ? {_describe_item(item, session)}. ???? {item.price_value} ?.")
-    lines.append('???? ?????, ??????? ??? ???????? ??? ??????? ?????/??????.')
+        pretty_title = _pretty_product_title(item.title)
+        lines.append(f"- {pretty_title} ({item.brand}) — {_describe_item(item, session)}. Цена {item.price_value} ₽.")
+    lines.append('Если хочешь, дальше могу сказать, какой из них выглядит более удачным именно под твой запрос.')
     return "\n".join(lines)
 
 
@@ -961,12 +1110,13 @@ def compose_explain_response(session: SessionState, intent: DialogIntent, recomm
     target = intent.target_category or (intent.target_categories[0] if intent.target_categories else None)
     focus = _find_item_for_category(session, recommendations, target) if target else (recommendations[0] if recommendations else None)
     if not focus:
-        return '???? ????????? ?????, ?? ????? ???????? ??????? ??? ?????????.'
-    lines = [f"?????? {focus.title}:"]
+        return 'Сейчас не вижу явного варианта, который можно объяснить отдельно. Скажи, какой именно продукт разобрать.'
+    pretty_title = _pretty_product_title(focus.title)
+    lines = [f"Почему я бы оставил {pretty_title}:"]
     lines.append(f"- {_describe_item(focus, session)}.")
-    lines.append(f"- ????? {focus.brand}, ???? {focus.price_value} ?.")
+    lines.append(f"- Бренд {focus.brand}, цена {focus.price_value} ₽.")
     if focus.domain == ProductDomain.makeup:
-        lines.append('??????? ????? ??????? ??????? ? ?? ???? ??? ????????.')
+        lines.append('Это тот вариант, который должен смотреться аккуратно, современно и без ощущения тяжёлой маски.')
     return "\n".join(lines)
 
 
@@ -976,18 +1126,19 @@ def compose_followup_response(session: SessionState, intent: DialogIntent, recom
     if intent.action == IntentAction.explain:
         return compose_explain_response(session, intent, recommendations)
     preface = {
-        "cheaper_alternative": "??????? ??????? ?????????.",
-        "replace_product": "???????? ??????? ? ??????????? ????????.",
-        "exclude_ingredient": "???? ??????????? ?? ???????????? ? ??????????? ????????.",
-        "simplify_routine": "??????? ?????? ?????? ? ??????????.",
-        "general_advice": "??? ??? ?????? ????? ????? ????????.",
-    }.get(intent.intent, "???????? ????????.")
+        "cheaper_alternative": "Нашёл вариант поразумнее по цене — без сильной просадки по качеству впечатления.",
+        "replace_product": "Обновил подборку и нашёл более удачную замену.",
+        "exclude_ingredient": "Учёл ограничение по составу и пересобрал варианты.",
+        "simplify_routine": "Сделал подборку проще и чище по шагам.",
+        "general_advice": "Вот что сейчас выглядит наиболее удачно под твой запрос.",
+    }.get(intent.intent, "Подборку обновил.")
     lines = [preface]
     if intent.domain == IntentDomain.hybrid:
-        lines.append("??????? ???? + ???? ??????, ????? ???????? ???????? ? ????.")
+        lines.append("Собрал связку так, чтобы уход и тон работали вместе и не спорили между собой.")
     for item in recommendations[:4]:
         if intent.target_category and intent.action in {IntentAction.replace, IntentAction.cheaper} and item.category != intent.target_category:
             continue
-        lines.append(f"- {CATEGORY_LABELS.get(item.category, item.category)}: {item.title} ({item.brand}, {item.price_value} ?) ? {item.why}.")
-    lines.append("???? ??????, ???? ???????? ???????? ??? ???????? ?????/??????.")
+        pretty_title = _pretty_product_title(item.title)
+        lines.append(f"- {CATEGORY_LABELS.get(item.category, item.category)}: {pretty_title} ({item.brand}, {item.price_value} ₽) — {item.why}.")
+    lines.append("Если хочешь, дальше могу сделать ещё более сияющий, более лёгкий или более бюджетный вариант.")
     return "\n".join(lines)
