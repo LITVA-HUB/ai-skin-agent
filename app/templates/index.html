@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Golden Apple beauty advisor</title>
+  <style>
+    :root { --bg:#0f1220; --panel:#171b2e; --panel2:#1f2540; --text:#eef2ff; --muted:#a7b0d6; --accent:#7c9cff; --border:#2a3156; --error:#4b2430; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:Inter,Segoe UI,Arial,sans-serif; background:linear-gradient(180deg,#0d1020,#11162c); color:var(--text); }
+    .wrap { max-width:1200px; margin:0 auto; padding:24px; display:grid; grid-template-columns:380px 1fr; gap:20px; }
+    .panel { background:rgba(23,27,46,.95); border:1px solid var(--border); border-radius:18px; padding:18px; box-shadow:0 10px 30px rgba(0,0,0,.18); }
+    .stack { display:grid; gap:12px; }
+    .sub { color:var(--muted); font-size:14px; line-height:1.5; }
+    label { display:grid; gap:6px; color:var(--muted); font-size:14px; }
+    input, select, textarea, button { font:inherit; border-radius:12px; }
+    input, select, textarea { width:100%; padding:12px; background:var(--panel2); color:var(--text); border:1px solid var(--border); }
+    textarea { min-height:90px; resize:vertical; }
+    button { background:var(--accent); color:white; padding:12px 14px; border:0; cursor:pointer; font-weight:600; }
+    button.secondary { background:#2b355f; }
+    .preview { width:100%; aspect-ratio:4/4; object-fit:cover; background:#0b0f1e; border-radius:16px; border:1px dashed var(--border); }
+    .row { display:flex; gap:10px; }
+    .row > * { flex:1; }
+    .grid { display:grid; gap:16px; }
+    .cards { display:grid; gap:12px; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); }
+    .card { background:var(--panel2); border:1px solid var(--border); border-radius:16px; padding:14px; }
+    .chat { display:grid; gap:10px; max-height:360px; overflow:auto; }
+    .msg { padding:12px 14px; border-radius:14px; white-space:pre-wrap; line-height:1.45; border:1px solid var(--border); }
+    .msg.user { background:#22315b; }
+    .msg.agent { background:#17213e; }
+    .status { padding:10px 12px; border-radius:12px; background:#1f2748; color:#d7e1ff; }
+    .status.error { background:var(--error); color:#ffd8de; }
+    details { border:1px solid var(--border); border-radius:14px; padding:10px 12px; background:#141a30; }
+    summary { cursor:pointer; color:#dce5ff; }
+    .tiny { font-size:12px; color:var(--muted); }
+    @media (max-width:980px) { .wrap { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="panel stack">
+      <div>
+        <h1>Golden Apple beauty advisor</h1>
+        <div class="sub">Загрузи фото, нажми одну кнопку — и дальше просто общайся с агентом про уход и complexion makeup обычным языком.</div>
+      </div>
+
+      <img id="preview" class="preview" alt="preview" />
+
+      <label>
+        Фото лица / кожи
+        <input id="photoFile" type="file" accept="image/*" />
+      </label>
+
+      <label>
+        Что хочется подобрать
+        <textarea id="goal" placeholder="Например: убрать покраснение, подобрать тональник под мой тон кожи, хочу лёгкое покрытие и сияющий финиш"></textarea>
+      </label>
+
+      <details>
+        <summary>Дополнительные настройки</summary>
+        <div class="stack" style="margin-top:12px">
+          <label>
+            Или URL картинки
+            <input id="imageUrl" type="url" placeholder="https://example.com/photo.jpg" />
+          </label>
+          <div class="row">
+            <label>
+              Бюджет
+              <select id="budgetSegment">
+                <option value="budget">бюджетный</option>
+                <option value="mid" selected>средний</option>
+                <option value="premium">премиум</option>
+              </select>
+            </label>
+            <label>
+              Размер рутины
+              <select id="routineSize">
+                <option value="minimal">минимальная</option>
+                <option value="standard" selected>стандартная</option>
+                <option value="extended">расширенная</option>
+              </select>
+            </label>
+          </div>
+          <label>
+            Предпочтительные бренды
+            <input id="preferredBrands" placeholder="Например: Derma Pure, Skin Logic" />
+          </label>
+          <label>
+            Исключить ингредиенты
+            <input id="excludedIngredients" placeholder="Например: fragrance, niacinamide" />
+          </label>
+        </div>
+      </details>
+
+      <div class="row">
+        <button id="analyzeBtn">Проанализировать фото</button>
+        <button id="resetBtn" class="secondary" type="button">Сбросить</button>
+      </div>
+
+      <div id="status" class="status">Загрузи фото и нажми «Проанализировать фото».</div>
+      <div class="tiny">Если модель временно не ответит, сервис всё равно не должен падать — просто сработает запасной сценарий.</div>
+    </section>
+
+    <section class="grid">
+      <div class="panel stack">
+        <h2>Что увидел агент</h2>
+        <div id="summaryText" class="msg agent">Здесь появится результат анализа и стартовая подборка.</div>
+      </div>
+
+      <div class="panel stack">
+        <h2>Рекомендации</h2>
+        <div id="cards" class="cards"></div>
+      </div>
+
+      <div class="panel stack">
+        <h2>Чат с агентом</h2>
+        <div id="chat" class="chat"></div>
+        <textarea id="chatInput" placeholder="Например: подбери тональник под мой тон кожи, хочу лёгкое покрытие, нужен сияющий финиш, покажи подешевле"></textarea>
+        <div class="row">
+          <button id="sendBtn">Отправить</button>
+          <button id="suggestCheap" class="secondary" type="button">Подешевле</button>
+          <button id="suggestSimple" class="secondary" type="button">Сделать проще</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const state = { photoB64: null, sessionId: null };
+    const $ = (id) => document.getElementById(id);
+    const categoryLabels = { cleanser:'Очищение', serum:'Сыворотка', moisturizer:'Крем', spf:'SPF', toner:'Тонер', spot_treatment:'Точечный уход', foundation:'Тональный крем', skin_tint:'Скин тинт', concealer:'Консилер', powder:'Пудра' };
+
+    function setStatus(text, isError = false) {
+      const el = $('status');
+      el.textContent = text;
+      el.className = isError ? 'status error' : 'status';
+    }
+    function splitCsv(value) { return value.split(',').map(s => s.trim()).filter(Boolean); }
+    function addMessage(text, role='agent') {
+      const div = document.createElement('div'); div.className = `msg ${role}`; div.textContent = text; $('chat').appendChild(div); $('chat').scrollTop = $('chat').scrollHeight;
+    }
+    function renderRecommendations(items) {
+      const root = $('cards'); root.innerHTML = '';
+      if (!items?.length) { root.innerHTML = '<div class="sub">Пока нет рекомендаций.</div>'; return; }
+      items.forEach(item => {
+        const card = document.createElement('div'); card.className = 'card';
+        card.innerHTML = `<h3>${item.title}</h3><div class="sub">${item.brand} · ${categoryLabels[item.category] || item.category}</div><div style="margin:10px 0 6px;font-weight:700">${item.price_value} ₽</div><p>${item.why}</p>`;
+        root.appendChild(card);
+      });
+    }
+    async function toBase64(file) {
+      return await new Promise((resolve, reject) => { const r = new FileReader(); r.onload = () => resolve(String(r.result)); r.onerror = reject; r.readAsDataURL(file); });
+    }
+    async function analyze() {
+      const file = $('photoFile').files[0]; const imageUrl = $('imageUrl').value.trim();
+      if (!file && !imageUrl) { setStatus('Нужно выбрать фото или вставить URL.', true); return; }
+      $('analyzeBtn').disabled = true; setStatus('Анализирую фото...');
+      try {
+        state.photoB64 = file ? await toBase64(file) : null;
+        const payload = {
+          photo_b64: state.photoB64,
+          image_url: imageUrl || null,
+          user_context: {
+            budget_segment: ['budget','mid','premium'][$('budgetSegment').selectedIndex],
+            preferred_brands: splitCsv($('preferredBrands').value),
+            excluded_ingredients: splitCsv($('excludedIngredients').value),
+            routine_size: ['minimal','standard','extended'][$('routineSize').selectedIndex],
+            goal: $('goal').value.trim() || null,
+          }
+        };
+        const response = await fetch('/v1/photo/analyze', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.detail || 'analyze failed');
+        state.sessionId = data.session_id;
+        $('summaryText').textContent = data.answer_text;
+        $('chat').innerHTML = '';
+        addMessage(data.answer_text, 'agent');
+        renderRecommendations(data.recommendations);
+        setStatus('Готово. Теперь можешь просто писать агенту обычными словами.');
+      } catch (error) {
+        console.error(error); setStatus(`Ошибка анализа: ${error.message}`, true);
+      } finally { $('analyzeBtn').disabled = false; }
+    }
+    async function sendMessage(prefill=null) {
+      const text = (prefill ?? $('chatInput').value).trim();
+      if (!state.sessionId) { setStatus('Сначала загрузи фото и запусти анализ.', true); return; }
+      if (!text) return;
+      $('sendBtn').disabled = true; addMessage(text, 'user'); if (!prefill) $('chatInput').value = ''; setStatus('Агент думает...');
+      try {
+        const response = await fetch(`/v1/session/${state.sessionId}/message`, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({message:text}) });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.detail || 'message failed');
+        addMessage(data.answer_text, 'agent'); renderRecommendations(data.recommendations); setStatus('Ответ готов.');
+      } catch (error) {
+        console.error(error); setStatus(`Ошибка чата: ${error.message}`, true);
+      } finally { $('sendBtn').disabled = false; }
+    }
+    $('photoFile').addEventListener('change', (e) => { const file = e.target.files[0]; if (!file) return; $('preview').src = URL.createObjectURL(file); $('imageUrl').value = ''; });
+    $('imageUrl').addEventListener('change', (e) => { const value = e.target.value.trim(); if (value) $('preview').src = value; });
+    $('analyzeBtn').addEventListener('click', analyze);
+    $('sendBtn').addEventListener('click', () => sendMessage());
+    $('chatInput').addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); } });
+    $('suggestCheap').addEventListener('click', () => sendMessage('покажи вариант подешевле'));
+    $('suggestSimple').addEventListener('click', () => sendMessage('сделай рутину проще'));
+    $('resetBtn').addEventListener('click', () => { state.photoB64 = null; state.sessionId = null; $('photoFile').value=''; $('imageUrl').value=''; $('preferredBrands').value=''; $('excludedIngredients').value=''; $('goal').value=''; $('chatInput').value=''; $('preview').removeAttribute('src'); $('cards').innerHTML=''; $('chat').innerHTML=''; $('summaryText').textContent='Здесь появится результат анализа и стартовая подборка.'; setStatus('Сбросил интерфейс.'); });
+  </script>
+</body>
+</html>

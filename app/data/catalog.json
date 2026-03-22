@@ -1,0 +1,3672 @@
+[
+  {
+    "sku": "CL-BUD-001",
+    "title": "Soft Balance Gel Cleanser",
+    "brand": "Derma Pure",
+    "category": "cleanser",
+    "domain": "skincare",
+    "price_segment": "budget",
+    "price_value": 690,
+    "availability": true,
+    "skin_types": [
+      "combination",
+      "oily",
+      "sensitive"
+    ],
+    "concerns": [
+      "breakouts",
+      "redness"
+    ],
+    "tags": [
+      "gentle",
+      "non-comedogenic"
+    ],
+    "ingredients": [
+      "betaine",
+      "panthenol"
+    ],
+    "exclude_for": [],
+    "tones": [],
+    "undertones": [],
+    "finishes": [],
+    "coverage_levels": [],
+    "suitable_areas": [],
+    "texture": "gel",
+    "embedding_text": "gentle gel cleanser for combination skin with redness and blemish-prone concerns"
+  },
+  {
+    "sku": "CL-MID-001",
+    "title": "Barrier Cloud Cream Cleanser",
+    "brand": "Skin Logic",
+    "category": "cleanser",
+    "domain": "skincare",
+    "price_segment": "mid",
+    "price_value": 1290,
+    "availability": true,
+    "skin_types": [
+      "dry",
+      "sensitive",
+      "normal"
+    ],
+    "concerns": [
+      "dryness",
+      "redness"
+    ],
+    "tags": [
+      "gentle",
+      "barrier-support",
+      "soothing"
+    ],
+    "ingredients": [
+      "ceramide",
+      "glycerin"
+    ],
+    "exclude_for": [],
+    "tones": [],
+    "undertones": [],
+    "finishes": [],
+    "coverage_levels": [],
+    "suitable_areas": [],
+    "texture": "cream",
+    "embedding_text": "cream cleanser for dry sensitive skin with barrier support and soothing effect"
+  },
+  {
+    "sku": "CL-PRE-001",
+    "title": "Micro Foam Reset Cleanser",
+    "brand": "Atelier Six",
+    "category": "cleanser",
+    "domain": "skincare",
+    "price_segment": "premium",
+    "price_value": 2290,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "combination",
+      "oily"
+    ],
+    "concerns": [
+      "maintenance",
+      "oiliness"
+    ],
+    "tags": [
+      "gentle",
+      "daily-use"
+    ],
+    "ingredients": [
+      "amino-acids",
+      "allantoin"
+    ],
+    "exclude_for": [],
+    "tones": [],
+    "undertones": [],
+    "finishes": [],
+    "coverage_levels": [],
+    "suitable_areas": [],
+    "texture": "foam",
+    "embedding_text": "premium amino acid foam cleanser for everyday skin maintenance and soft cleansing"
+  },
+  {
+    "sku": "SE-BUD-001",
+    "title": "Calm Code Niacinamide Serum",
+    "brand": "Derma Pure",
+    "category": "serum",
+    "domain": "skincare",
+    "price_segment": "budget",
+    "price_value": 790,
+    "availability": true,
+    "skin_types": [
+      "combination",
+      "oily",
+      "sensitive"
+    ],
+    "concerns": [
+      "breakouts",
+      "redness"
+    ],
+    "tags": [
+      "non-comedogenic",
+      "soothing"
+    ],
+    "ingredients": [
+      "niacinamide",
+      "zinc"
+    ],
+    "exclude_for": [],
+    "tones": [],
+    "undertones": [],
+    "finishes": [],
+    "coverage_levels": [],
+    "suitable_areas": [],
+    "texture": "fluid",
+    "embedding_text": "budget niacinamide serum for breakouts, redness and combination skin"
+  },
+  {
+    "sku": "SE-BUD-002",
+    "title": "Hydra Barrier B5 Serum",
+    "brand": "Pure Reason",
+    "category": "serum",
+    "domain": "skincare",
+    "price_segment": "budget",
+    "price_value": 850,
+    "availability": true,
+    "skin_types": [
+      "dry",
+      "sensitive",
+      "normal"
+    ],
+    "concerns": [
+      "dryness",
+      "redness"
+    ],
+    "tags": [
+      "barrier-support",
+      "soothing"
+    ],
+    "ingredients": [
+      "panthenol",
+      "beta-glucan"
+    ],
+    "exclude_for": [],
+    "tones": [],
+    "undertones": [],
+    "finishes": [],
+    "coverage_levels": [],
+    "suitable_areas": [],
+    "texture": "gel",
+    "embedding_text": "hydrating serum for dryness and redness with barrier support"
+  },
+  {
+    "sku": "SE-MID-001",
+    "title": "Clear Balance Azelaic Serum",
+    "brand": "Skin Logic",
+    "category": "serum",
+    "domain": "skincare",
+    "price_segment": "mid",
+    "price_value": 1590,
+    "availability": true,
+    "skin_types": [
+      "combination",
+      "oily",
+      "sensitive"
+    ],
+    "concerns": [
+      "redness",
+      "breakouts"
+    ],
+    "tags": [
+      "non-comedogenic",
+      "soothing"
+    ],
+    "ingredients": [
+      "azelaic-acid",
+      "green-tea"
+    ],
+    "exclude_for": [],
+    "tones": [],
+    "undertones": [],
+    "finishes": [],
+    "coverage_levels": [],
+    "suitable_areas": [],
+    "texture": "serum",
+    "embedding_text": "mid-price serum for redness and breakouts with azelaic acid and soothing support"
+  },
+  {
+    "sku": "SE-MID-002",
+    "title": "Barrier Dew Peptide Serum",
+    "brand": "Skin Logic",
+    "category": "serum",
+    "domain": "skincare",
+    "price_segment": "mid",
+    "price_value": 1690,
+    "availability": true,
+    "skin_types": [
+      "dry",
+      "normal",
+      "sensitive"
+    ],
+    "concerns": [
+      "dryness",
+      "maintenance"
+    ],
+    "tags": [
+      "barrier-support",
+      "gentle"
+    ],
+    "ingredients": [
+      "peptides",
+      "ceramide"
+    ],
+    "exclude_for": [],
+    "tones": [],
+    "undertones": [],
+    "finishes": [],
+    "coverage_levels": [],
+    "suitable_areas": [],
+    "texture": "serum",
+    "embedding_text": "peptide serum for dryness and skin maintenance with barrier support"
+  },
+  {
+    "sku": "SE-PRE-001",
+    "title": "Centella Lab Recovery Ampoule",
+    "brand": "Atelier Six",
+    "category": "serum",
+    "domain": "skincare",
+    "price_segment": "premium",
+    "price_value": 2890,
+    "availability": true,
+    "skin_types": [
+      "sensitive",
+      "dry",
+      "combination"
+    ],
+    "concerns": [
+      "redness",
+      "dryness"
+    ],
+    "tags": [
+      "soothing",
+      "barrier-support"
+    ],
+    "ingredients": [
+      "centella",
+      "madecassoside"
+    ],
+    "exclude_for": [],
+    "tones": [],
+    "undertones": [],
+    "finishes": [],
+    "coverage_levels": [],
+    "suitable_areas": [],
+    "texture": "ampoule",
+    "embedding_text": "premium centella ampoule for reactive redness and dehydrated skin"
+  },
+  {
+    "sku": "MO-BUD-001",
+    "title": "Daily Quiet Gel Cream",
+    "brand": "Pure Reason",
+    "category": "moisturizer",
+    "domain": "skincare",
+    "price_segment": "budget",
+    "price_value": 840,
+    "availability": true,
+    "skin_types": [
+      "combination",
+      "oily",
+      "sensitive"
+    ],
+    "concerns": [
+      "redness",
+      "maintenance"
+    ],
+    "tags": [
+      "lightweight",
+      "soothing",
+      "gentle"
+    ],
+    "ingredients": [
+      "panthenol",
+      "squalane"
+    ],
+    "exclude_for": [],
+    "tones": [],
+    "undertones": [],
+    "finishes": [],
+    "coverage_levels": [],
+    "suitable_areas": [],
+    "texture": "gel cream",
+    "embedding_text": "lightweight moisturizer for combination sensitive skin with calming effect"
+  },
+  {
+    "sku": "MO-BUD-002",
+    "title": "Ceramide Rescue Cream",
+    "brand": "Derma Pure",
+    "category": "moisturizer",
+    "domain": "skincare",
+    "price_segment": "budget",
+    "price_value": 910,
+    "availability": true,
+    "skin_types": [
+      "dry",
+      "sensitive",
+      "normal"
+    ],
+    "concerns": [
+      "dryness",
+      "redness"
+    ],
+    "tags": [
+      "barrier-support",
+      "soothing"
+    ],
+    "ingredients": [
+      "ceramide",
+      "shea-butter"
+    ],
+    "exclude_for": [
+      "oily"
+    ],
+    "tones": [],
+    "undertones": [],
+    "finishes": [],
+    "coverage_levels": [],
+    "suitable_areas": [],
+    "texture": "cream",
+    "embedding_text": "ceramide moisturizer for dry sensitive skin and barrier repair"
+  },
+  {
+    "sku": "MO-MID-001",
+    "title": "Skin Veil Balancing Emulsion",
+    "brand": "Skin Logic",
+    "category": "moisturizer",
+    "domain": "skincare",
+    "price_segment": "mid",
+    "price_value": 1790,
+    "availability": true,
+    "skin_types": [
+      "combination",
+      "normal",
+      "sensitive"
+    ],
+    "concerns": [
+      "maintenance",
+      "redness"
+    ],
+    "tags": [
+      "lightweight",
+      "barrier-support"
+    ],
+    "ingredients": [
+      "ectoin",
+      "ceramide"
+    ],
+    "exclude_for": [],
+    "tones": [],
+    "undertones": [],
+    "finishes": [],
+    "coverage_levels": [],
+    "suitable_areas": [],
+    "texture": "emulsion",
+    "embedding_text": "balancing emulsion for normal and combination skin with barrier support"
+  },
+  {
+    "sku": "MO-PRE-001",
+    "title": "Comfort Repair Cream",
+    "brand": "Atelier Six",
+    "category": "moisturizer",
+    "domain": "skincare",
+    "price_segment": "premium",
+    "price_value": 2990,
+    "availability": true,
+    "skin_types": [
+      "dry",
+      "sensitive"
+    ],
+    "concerns": [
+      "dryness",
+      "redness"
+    ],
+    "tags": [
+      "barrier-support",
+      "soothing"
+    ],
+    "ingredients": [
+      "ceramide",
+      "cholesterol",
+      "fatty-acids"
+    ],
+    "exclude_for": [],
+    "tones": [],
+    "undertones": [],
+    "finishes": [],
+    "coverage_levels": [],
+    "suitable_areas": [],
+    "texture": "cream",
+    "embedding_text": "rich repair cream for very dry or reactive skin with strong barrier support"
+  },
+  {
+    "sku": "SP-BUD-001",
+    "title": "City Calm SPF 50 Fluid",
+    "brand": "Pure Reason",
+    "category": "spf",
+    "domain": "skincare",
+    "price_segment": "budget",
+    "price_value": 980,
+    "availability": true,
+    "skin_types": [
+      "combination",
+      "oily",
+      "sensitive"
+    ],
+    "concerns": [
+      "redness",
+      "maintenance"
+    ],
+    "tags": [
+      "lightweight",
+      "daily-use",
+      "non-comedogenic"
+    ],
+    "ingredients": [
+      "uv-filters",
+      "niacinamide"
+    ],
+    "exclude_for": [],
+    "tones": [],
+    "undertones": [],
+    "finishes": [],
+    "coverage_levels": [],
+    "suitable_areas": [],
+    "texture": "fluid",
+    "embedding_text": "light SPF 50 fluid for daily wear and sensitive combination skin"
+  },
+  {
+    "sku": "SP-MID-001",
+    "title": "Barrier Shield SPF 50 Cream",
+    "brand": "Skin Logic",
+    "category": "spf",
+    "domain": "skincare",
+    "price_segment": "mid",
+    "price_value": 1690,
+    "availability": true,
+    "skin_types": [
+      "dry",
+      "sensitive",
+      "normal"
+    ],
+    "concerns": [
+      "dryness",
+      "redness"
+    ],
+    "tags": [
+      "barrier-support",
+      "daily-use"
+    ],
+    "ingredients": [
+      "uv-filters",
+      "panthenol"
+    ],
+    "exclude_for": [],
+    "tones": [],
+    "undertones": [],
+    "finishes": [],
+    "coverage_levels": [],
+    "suitable_areas": [],
+    "texture": "cream",
+    "embedding_text": "comforting SPF cream for dry sensitive skin with barrier support"
+  },
+  {
+    "sku": "SP-PRE-001",
+    "title": "Invisible Guard SPF 50 Essence",
+    "brand": "Atelier Six",
+    "category": "spf",
+    "domain": "skincare",
+    "price_segment": "premium",
+    "price_value": 2590,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "combination",
+      "oily"
+    ],
+    "concerns": [
+      "maintenance",
+      "oiliness"
+    ],
+    "tags": [
+      "lightweight",
+      "daily-use"
+    ],
+    "ingredients": [
+      "uv-filters",
+      "vitamin-e"
+    ],
+    "exclude_for": [],
+    "tones": [],
+    "undertones": [],
+    "finishes": [],
+    "coverage_levels": [],
+    "suitable_areas": [],
+    "texture": "essence",
+    "embedding_text": "premium invisible SPF essence with lightweight finish for everyday city use"
+  },
+  {
+    "sku": "TO-MID-001",
+    "title": "Cica Water Toner",
+    "brand": "Skin Logic",
+    "category": "toner",
+    "domain": "skincare",
+    "price_segment": "mid",
+    "price_value": 1490,
+    "availability": true,
+    "skin_types": [
+      "dry",
+      "sensitive",
+      "combination"
+    ],
+    "concerns": [
+      "redness",
+      "dryness"
+    ],
+    "tags": [
+      "soothing",
+      "barrier-support"
+    ],
+    "ingredients": [
+      "centella",
+      "panthenol"
+    ],
+    "exclude_for": [],
+    "tones": [],
+    "undertones": [],
+    "finishes": [],
+    "coverage_levels": [],
+    "suitable_areas": [],
+    "texture": "watery",
+    "embedding_text": "soothing toner for redness and dehydrated skin"
+  },
+  {
+    "sku": "TO-PRE-001",
+    "title": "Milk Barrier Essence Toner",
+    "brand": "Atelier Six",
+    "category": "toner",
+    "domain": "skincare",
+    "price_segment": "premium",
+    "price_value": 2390,
+    "availability": true,
+    "skin_types": [
+      "dry",
+      "sensitive",
+      "normal"
+    ],
+    "concerns": [
+      "dryness",
+      "maintenance"
+    ],
+    "tags": [
+      "barrier-support",
+      "gentle"
+    ],
+    "ingredients": [
+      "ceramide",
+      "rice-milk"
+    ],
+    "exclude_for": [],
+    "tones": [],
+    "undertones": [],
+    "finishes": [],
+    "coverage_levels": [],
+    "suitable_areas": [],
+    "texture": "milky",
+    "embedding_text": "milky essence toner for dry skin comfort and barrier support"
+  },
+  {
+    "sku": "ST-BUD-001",
+    "title": "Zero Drama Spot Gel",
+    "brand": "Derma Pure",
+    "category": "spot_treatment",
+    "domain": "skincare",
+    "price_segment": "budget",
+    "price_value": 590,
+    "availability": true,
+    "skin_types": [
+      "oily",
+      "combination",
+      "sensitive"
+    ],
+    "concerns": [
+      "breakouts"
+    ],
+    "tags": [
+      "non-comedogenic",
+      "daily-use"
+    ],
+    "ingredients": [
+      "succinic-acid",
+      "tea-tree"
+    ],
+    "exclude_for": [
+      "dryness"
+    ],
+    "tones": [],
+    "undertones": [],
+    "finishes": [],
+    "coverage_levels": [],
+    "suitable_areas": [],
+    "texture": "gel",
+    "embedding_text": "spot gel for active blemishes and oily combination skin"
+  },
+  {
+    "sku": "ST-MID-001",
+    "title": "Blemish Reset Patch Set",
+    "brand": "Skin Logic",
+    "category": "spot_treatment",
+    "domain": "skincare",
+    "price_segment": "mid",
+    "price_value": 890,
+    "availability": true,
+    "skin_types": [
+      "oily",
+      "combination",
+      "normal"
+    ],
+    "concerns": [
+      "breakouts"
+    ],
+    "tags": [
+      "non-comedogenic",
+      "daily-use"
+    ],
+    "ingredients": [
+      "hydrocolloid"
+    ],
+    "exclude_for": [],
+    "tones": [],
+    "undertones": [],
+    "finishes": [],
+    "coverage_levels": [],
+    "suitable_areas": [],
+    "texture": "patch",
+    "embedding_text": "hydrocolloid patches for targeted blemish treatment"
+  },
+  {
+    "sku": "FD-BUD-01",
+    "title": "GA Everyday Skin Foundation FAIR_NEUTRAL",
+    "brand": "Lumiere Daily",
+    "category": "foundation",
+    "domain": "makeup",
+    "price_segment": "budget",
+    "price_value": 1510,
+    "availability": true,
+    "skin_types": [
+      "combination",
+      "normal",
+      "oily"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "non-comedogenic"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "fair"
+    ],
+    "undertones": [
+      "neutral"
+    ],
+    "finishes": [
+      "natural"
+    ],
+    "coverage_levels": [
+      "medium"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "liquid",
+    "embedding_text": "complexion foundation for fair skin tone and neutral undertone with natural finish and medium coverage"
+  },
+  {
+    "sku": "FD-BUD-02",
+    "title": "GA Everyday Skin Foundation LIGHT_NEUTRAL",
+    "brand": "Lumiere Daily",
+    "category": "foundation",
+    "domain": "makeup",
+    "price_segment": "budget",
+    "price_value": 1530,
+    "availability": true,
+    "skin_types": [
+      "combination",
+      "normal",
+      "oily"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "non-comedogenic"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "light"
+    ],
+    "undertones": [
+      "neutral"
+    ],
+    "finishes": [
+      "natural"
+    ],
+    "coverage_levels": [
+      "medium"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "liquid",
+    "embedding_text": "complexion foundation for light skin tone and neutral undertone with natural finish and medium coverage"
+  },
+  {
+    "sku": "FD-BUD-03",
+    "title": "GA Everyday Skin Foundation LIGHT_WARM",
+    "brand": "Lumiere Daily",
+    "category": "foundation",
+    "domain": "makeup",
+    "price_segment": "budget",
+    "price_value": 1550,
+    "availability": true,
+    "skin_types": [
+      "combination",
+      "normal",
+      "oily"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "non-comedogenic"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "light"
+    ],
+    "undertones": [
+      "warm"
+    ],
+    "finishes": [
+      "natural"
+    ],
+    "coverage_levels": [
+      "medium"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "liquid",
+    "embedding_text": "complexion foundation for light skin tone and warm undertone with natural finish and medium coverage"
+  },
+  {
+    "sku": "FD-BUD-04",
+    "title": "GA Everyday Skin Foundation MEDIUM_NEUTRAL",
+    "brand": "Lumiere Daily",
+    "category": "foundation",
+    "domain": "makeup",
+    "price_segment": "budget",
+    "price_value": 1570,
+    "availability": true,
+    "skin_types": [
+      "combination",
+      "normal",
+      "oily"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "non-comedogenic"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "medium"
+    ],
+    "undertones": [
+      "neutral"
+    ],
+    "finishes": [
+      "natural"
+    ],
+    "coverage_levels": [
+      "medium"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "liquid",
+    "embedding_text": "complexion foundation for medium skin tone and neutral undertone with natural finish and medium coverage"
+  },
+  {
+    "sku": "FD-BUD-05",
+    "title": "GA Everyday Skin Foundation MEDIUM_WARM",
+    "brand": "Lumiere Daily",
+    "category": "foundation",
+    "domain": "makeup",
+    "price_segment": "budget",
+    "price_value": 1590,
+    "availability": true,
+    "skin_types": [
+      "combination",
+      "normal",
+      "oily"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "non-comedogenic"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "medium"
+    ],
+    "undertones": [
+      "warm"
+    ],
+    "finishes": [
+      "natural"
+    ],
+    "coverage_levels": [
+      "medium"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "liquid",
+    "embedding_text": "complexion foundation for medium skin tone and warm undertone with natural finish and medium coverage"
+  },
+  {
+    "sku": "FD-BUD-06",
+    "title": "GA Everyday Skin Foundation TAN_OLIVE",
+    "brand": "Lumiere Daily",
+    "category": "foundation",
+    "domain": "makeup",
+    "price_segment": "budget",
+    "price_value": 1610,
+    "availability": true,
+    "skin_types": [
+      "combination",
+      "normal",
+      "oily"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "non-comedogenic"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "tan"
+    ],
+    "undertones": [
+      "olive"
+    ],
+    "finishes": [
+      "natural"
+    ],
+    "coverage_levels": [
+      "medium"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "liquid",
+    "embedding_text": "complexion foundation for tan skin tone and olive undertone with natural finish and medium coverage"
+  },
+  {
+    "sku": "FD-BUD-07",
+    "title": "GA Everyday Skin Foundation DEEP_WARM",
+    "brand": "Lumiere Daily",
+    "category": "foundation",
+    "domain": "makeup",
+    "price_segment": "budget",
+    "price_value": 1630,
+    "availability": true,
+    "skin_types": [
+      "combination",
+      "normal",
+      "oily"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "non-comedogenic"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "deep"
+    ],
+    "undertones": [
+      "warm"
+    ],
+    "finishes": [
+      "natural"
+    ],
+    "coverage_levels": [
+      "medium"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "liquid",
+    "embedding_text": "complexion foundation for deep skin tone and warm undertone with natural finish and medium coverage"
+  },
+  {
+    "sku": "FD-MID-01",
+    "title": "Perfect Match Serum Foundation FAIR_NEUTRAL",
+    "brand": "Shade Atelier",
+    "category": "foundation",
+    "domain": "makeup",
+    "price_segment": "mid",
+    "price_value": 2510,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "dry",
+      "combination"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "radiant",
+      "lightweight"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "fair"
+    ],
+    "undertones": [
+      "neutral"
+    ],
+    "finishes": [
+      "radiant",
+      "natural"
+    ],
+    "coverage_levels": [
+      "light",
+      "medium"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "liquid",
+    "embedding_text": "complexion foundation for fair skin tone and neutral undertone with radiant and natural finish and light/medium coverage"
+  },
+  {
+    "sku": "FD-MID-02",
+    "title": "Perfect Match Serum Foundation LIGHT_NEUTRAL",
+    "brand": "Shade Atelier",
+    "category": "foundation",
+    "domain": "makeup",
+    "price_segment": "mid",
+    "price_value": 2530,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "dry",
+      "combination"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "radiant",
+      "lightweight"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "light"
+    ],
+    "undertones": [
+      "neutral"
+    ],
+    "finishes": [
+      "radiant",
+      "natural"
+    ],
+    "coverage_levels": [
+      "light",
+      "medium"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "liquid",
+    "embedding_text": "complexion foundation for light skin tone and neutral undertone with radiant and natural finish and light/medium coverage"
+  },
+  {
+    "sku": "FD-MID-03",
+    "title": "Perfect Match Serum Foundation LIGHT_WARM",
+    "brand": "Shade Atelier",
+    "category": "foundation",
+    "domain": "makeup",
+    "price_segment": "mid",
+    "price_value": 2550,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "dry",
+      "combination"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "radiant",
+      "lightweight"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "light"
+    ],
+    "undertones": [
+      "warm"
+    ],
+    "finishes": [
+      "radiant",
+      "natural"
+    ],
+    "coverage_levels": [
+      "light",
+      "medium"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "liquid",
+    "embedding_text": "complexion foundation for light skin tone and warm undertone with radiant and natural finish and light/medium coverage"
+  },
+  {
+    "sku": "FD-MID-04",
+    "title": "Perfect Match Serum Foundation MEDIUM_NEUTRAL",
+    "brand": "Shade Atelier",
+    "category": "foundation",
+    "domain": "makeup",
+    "price_segment": "mid",
+    "price_value": 2570,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "dry",
+      "combination"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "radiant",
+      "lightweight"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "medium"
+    ],
+    "undertones": [
+      "neutral"
+    ],
+    "finishes": [
+      "radiant",
+      "natural"
+    ],
+    "coverage_levels": [
+      "light",
+      "medium"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "liquid",
+    "embedding_text": "complexion foundation for medium skin tone and neutral undertone with radiant and natural finish and light/medium coverage"
+  },
+  {
+    "sku": "FD-MID-05",
+    "title": "Perfect Match Serum Foundation MEDIUM_WARM",
+    "brand": "Shade Atelier",
+    "category": "foundation",
+    "domain": "makeup",
+    "price_segment": "mid",
+    "price_value": 2590,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "dry",
+      "combination"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "radiant",
+      "lightweight"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "medium"
+    ],
+    "undertones": [
+      "warm"
+    ],
+    "finishes": [
+      "radiant",
+      "natural"
+    ],
+    "coverage_levels": [
+      "light",
+      "medium"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "liquid",
+    "embedding_text": "complexion foundation for medium skin tone and warm undertone with radiant and natural finish and light/medium coverage"
+  },
+  {
+    "sku": "FD-MID-06",
+    "title": "Perfect Match Serum Foundation TAN_OLIVE",
+    "brand": "Shade Atelier",
+    "category": "foundation",
+    "domain": "makeup",
+    "price_segment": "mid",
+    "price_value": 2610,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "dry",
+      "combination"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "radiant",
+      "lightweight"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "tan"
+    ],
+    "undertones": [
+      "olive"
+    ],
+    "finishes": [
+      "radiant",
+      "natural"
+    ],
+    "coverage_levels": [
+      "light",
+      "medium"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "liquid",
+    "embedding_text": "complexion foundation for tan skin tone and olive undertone with radiant and natural finish and light/medium coverage"
+  },
+  {
+    "sku": "FD-MID-07",
+    "title": "Perfect Match Serum Foundation DEEP_WARM",
+    "brand": "Shade Atelier",
+    "category": "foundation",
+    "domain": "makeup",
+    "price_segment": "mid",
+    "price_value": 2630,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "dry",
+      "combination"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "radiant",
+      "lightweight"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "deep"
+    ],
+    "undertones": [
+      "warm"
+    ],
+    "finishes": [
+      "radiant",
+      "natural"
+    ],
+    "coverage_levels": [
+      "light",
+      "medium"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "liquid",
+    "embedding_text": "complexion foundation for deep skin tone and warm undertone with radiant and natural finish and light/medium coverage"
+  },
+  {
+    "sku": "FD-PRE-01",
+    "title": "Soft Blur Foundation FAIR_NEUTRAL",
+    "brand": "Velvet Hour",
+    "category": "foundation",
+    "domain": "makeup",
+    "price_segment": "premium",
+    "price_value": 3910,
+    "availability": true,
+    "skin_types": [
+      "combination",
+      "oily",
+      "normal"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "matte",
+      "shine-control"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "fair"
+    ],
+    "undertones": [
+      "neutral"
+    ],
+    "finishes": [
+      "satin",
+      "matte"
+    ],
+    "coverage_levels": [
+      "medium",
+      "full"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "liquid",
+    "embedding_text": "complexion foundation for fair skin tone and neutral undertone with satin and matte finish and medium/full coverage"
+  },
+  {
+    "sku": "FD-PRE-02",
+    "title": "Soft Blur Foundation LIGHT_NEUTRAL",
+    "brand": "Velvet Hour",
+    "category": "foundation",
+    "domain": "makeup",
+    "price_segment": "premium",
+    "price_value": 3930,
+    "availability": true,
+    "skin_types": [
+      "combination",
+      "oily",
+      "normal"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "matte",
+      "shine-control"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "light"
+    ],
+    "undertones": [
+      "neutral"
+    ],
+    "finishes": [
+      "satin",
+      "matte"
+    ],
+    "coverage_levels": [
+      "medium",
+      "full"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "liquid",
+    "embedding_text": "complexion foundation for light skin tone and neutral undertone with satin and matte finish and medium/full coverage"
+  },
+  {
+    "sku": "FD-PRE-03",
+    "title": "Soft Blur Foundation LIGHT_WARM",
+    "brand": "Velvet Hour",
+    "category": "foundation",
+    "domain": "makeup",
+    "price_segment": "premium",
+    "price_value": 3950,
+    "availability": true,
+    "skin_types": [
+      "combination",
+      "oily",
+      "normal"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "matte",
+      "shine-control"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "light"
+    ],
+    "undertones": [
+      "warm"
+    ],
+    "finishes": [
+      "satin",
+      "matte"
+    ],
+    "coverage_levels": [
+      "medium",
+      "full"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "liquid",
+    "embedding_text": "complexion foundation for light skin tone and warm undertone with satin and matte finish and medium/full coverage"
+  },
+  {
+    "sku": "FD-PRE-04",
+    "title": "Soft Blur Foundation MEDIUM_NEUTRAL",
+    "brand": "Velvet Hour",
+    "category": "foundation",
+    "domain": "makeup",
+    "price_segment": "premium",
+    "price_value": 3970,
+    "availability": true,
+    "skin_types": [
+      "combination",
+      "oily",
+      "normal"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "matte",
+      "shine-control"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "medium"
+    ],
+    "undertones": [
+      "neutral"
+    ],
+    "finishes": [
+      "satin",
+      "matte"
+    ],
+    "coverage_levels": [
+      "medium",
+      "full"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "liquid",
+    "embedding_text": "complexion foundation for medium skin tone and neutral undertone with satin and matte finish and medium/full coverage"
+  },
+  {
+    "sku": "FD-PRE-05",
+    "title": "Soft Blur Foundation MEDIUM_WARM",
+    "brand": "Velvet Hour",
+    "category": "foundation",
+    "domain": "makeup",
+    "price_segment": "premium",
+    "price_value": 3990,
+    "availability": true,
+    "skin_types": [
+      "combination",
+      "oily",
+      "normal"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "matte",
+      "shine-control"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "medium"
+    ],
+    "undertones": [
+      "warm"
+    ],
+    "finishes": [
+      "satin",
+      "matte"
+    ],
+    "coverage_levels": [
+      "medium",
+      "full"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "liquid",
+    "embedding_text": "complexion foundation for medium skin tone and warm undertone with satin and matte finish and medium/full coverage"
+  },
+  {
+    "sku": "FD-PRE-06",
+    "title": "Soft Blur Foundation TAN_OLIVE",
+    "brand": "Velvet Hour",
+    "category": "foundation",
+    "domain": "makeup",
+    "price_segment": "premium",
+    "price_value": 4010,
+    "availability": true,
+    "skin_types": [
+      "combination",
+      "oily",
+      "normal"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "matte",
+      "shine-control"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "tan"
+    ],
+    "undertones": [
+      "olive"
+    ],
+    "finishes": [
+      "satin",
+      "matte"
+    ],
+    "coverage_levels": [
+      "medium",
+      "full"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "liquid",
+    "embedding_text": "complexion foundation for tan skin tone and olive undertone with satin and matte finish and medium/full coverage"
+  },
+  {
+    "sku": "FD-PRE-07",
+    "title": "Soft Blur Foundation DEEP_WARM",
+    "brand": "Velvet Hour",
+    "category": "foundation",
+    "domain": "makeup",
+    "price_segment": "premium",
+    "price_value": 4030,
+    "availability": true,
+    "skin_types": [
+      "combination",
+      "oily",
+      "normal"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "matte",
+      "shine-control"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "deep"
+    ],
+    "undertones": [
+      "warm"
+    ],
+    "finishes": [
+      "satin",
+      "matte"
+    ],
+    "coverage_levels": [
+      "medium",
+      "full"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "liquid",
+    "embedding_text": "complexion foundation for deep skin tone and warm undertone with satin and matte finish and medium/full coverage"
+  },
+  {
+    "sku": "STI-BUD-01",
+    "title": "Bare Skin Tint FAIR_NEUTRAL",
+    "brand": "Lumiere Daily",
+    "category": "skin_tint",
+    "domain": "makeup",
+    "price_segment": "budget",
+    "price_value": 1210,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "dry",
+      "combination"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "lightweight",
+      "radiant"
+    ],
+    "ingredients": [
+      "pigments",
+      "glycerin"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "fair"
+    ],
+    "undertones": [
+      "neutral"
+    ],
+    "finishes": [
+      "natural",
+      "radiant"
+    ],
+    "coverage_levels": [
+      "sheer",
+      "light"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "fluid",
+    "embedding_text": "skin tint for fair tone and neutral undertone with sheer to light coverage and skin-like finish"
+  },
+  {
+    "sku": "STI-BUD-02",
+    "title": "Bare Skin Tint LIGHT_NEUTRAL",
+    "brand": "Lumiere Daily",
+    "category": "skin_tint",
+    "domain": "makeup",
+    "price_segment": "budget",
+    "price_value": 1230,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "dry",
+      "combination"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "lightweight",
+      "radiant"
+    ],
+    "ingredients": [
+      "pigments",
+      "glycerin"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "light"
+    ],
+    "undertones": [
+      "neutral"
+    ],
+    "finishes": [
+      "natural",
+      "radiant"
+    ],
+    "coverage_levels": [
+      "sheer",
+      "light"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "fluid",
+    "embedding_text": "skin tint for light tone and neutral undertone with sheer to light coverage and skin-like finish"
+  },
+  {
+    "sku": "STI-BUD-03",
+    "title": "Bare Skin Tint LIGHT_WARM",
+    "brand": "Lumiere Daily",
+    "category": "skin_tint",
+    "domain": "makeup",
+    "price_segment": "budget",
+    "price_value": 1250,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "dry",
+      "combination"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "lightweight",
+      "radiant"
+    ],
+    "ingredients": [
+      "pigments",
+      "glycerin"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "light"
+    ],
+    "undertones": [
+      "warm"
+    ],
+    "finishes": [
+      "natural",
+      "radiant"
+    ],
+    "coverage_levels": [
+      "sheer",
+      "light"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "fluid",
+    "embedding_text": "skin tint for light tone and warm undertone with sheer to light coverage and skin-like finish"
+  },
+  {
+    "sku": "STI-BUD-04",
+    "title": "Bare Skin Tint MEDIUM_NEUTRAL",
+    "brand": "Lumiere Daily",
+    "category": "skin_tint",
+    "domain": "makeup",
+    "price_segment": "budget",
+    "price_value": 1270,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "dry",
+      "combination"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "lightweight",
+      "radiant"
+    ],
+    "ingredients": [
+      "pigments",
+      "glycerin"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "medium"
+    ],
+    "undertones": [
+      "neutral"
+    ],
+    "finishes": [
+      "natural",
+      "radiant"
+    ],
+    "coverage_levels": [
+      "sheer",
+      "light"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "fluid",
+    "embedding_text": "skin tint for medium tone and neutral undertone with sheer to light coverage and skin-like finish"
+  },
+  {
+    "sku": "STI-BUD-05",
+    "title": "Bare Skin Tint MEDIUM_WARM",
+    "brand": "Lumiere Daily",
+    "category": "skin_tint",
+    "domain": "makeup",
+    "price_segment": "budget",
+    "price_value": 1290,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "dry",
+      "combination"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "lightweight",
+      "radiant"
+    ],
+    "ingredients": [
+      "pigments",
+      "glycerin"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "medium"
+    ],
+    "undertones": [
+      "warm"
+    ],
+    "finishes": [
+      "natural",
+      "radiant"
+    ],
+    "coverage_levels": [
+      "sheer",
+      "light"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "fluid",
+    "embedding_text": "skin tint for medium tone and warm undertone with sheer to light coverage and skin-like finish"
+  },
+  {
+    "sku": "STI-BUD-06",
+    "title": "Bare Skin Tint TAN_OLIVE",
+    "brand": "Lumiere Daily",
+    "category": "skin_tint",
+    "domain": "makeup",
+    "price_segment": "budget",
+    "price_value": 1310,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "dry",
+      "combination"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "lightweight",
+      "radiant"
+    ],
+    "ingredients": [
+      "pigments",
+      "glycerin"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "tan"
+    ],
+    "undertones": [
+      "olive"
+    ],
+    "finishes": [
+      "natural",
+      "radiant"
+    ],
+    "coverage_levels": [
+      "sheer",
+      "light"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "fluid",
+    "embedding_text": "skin tint for tan tone and olive undertone with sheer to light coverage and skin-like finish"
+  },
+  {
+    "sku": "STI-MID-01",
+    "title": "Glow Veil Skin Tint FAIR_NEUTRAL",
+    "brand": "Shade Atelier",
+    "category": "skin_tint",
+    "domain": "makeup",
+    "price_segment": "mid",
+    "price_value": 2210,
+    "availability": true,
+    "skin_types": [
+      "dry",
+      "normal",
+      "combination"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "lightweight",
+      "radiant"
+    ],
+    "ingredients": [
+      "pigments",
+      "glycerin"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "fair"
+    ],
+    "undertones": [
+      "neutral"
+    ],
+    "finishes": [
+      "radiant",
+      "natural"
+    ],
+    "coverage_levels": [
+      "sheer",
+      "light"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "fluid",
+    "embedding_text": "skin tint for fair tone and neutral undertone with sheer to light coverage and skin-like finish"
+  },
+  {
+    "sku": "STI-MID-02",
+    "title": "Glow Veil Skin Tint LIGHT_NEUTRAL",
+    "brand": "Shade Atelier",
+    "category": "skin_tint",
+    "domain": "makeup",
+    "price_segment": "mid",
+    "price_value": 2230,
+    "availability": true,
+    "skin_types": [
+      "dry",
+      "normal",
+      "combination"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "lightweight",
+      "radiant"
+    ],
+    "ingredients": [
+      "pigments",
+      "glycerin"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "light"
+    ],
+    "undertones": [
+      "neutral"
+    ],
+    "finishes": [
+      "radiant",
+      "natural"
+    ],
+    "coverage_levels": [
+      "sheer",
+      "light"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "fluid",
+    "embedding_text": "skin tint for light tone and neutral undertone with sheer to light coverage and skin-like finish"
+  },
+  {
+    "sku": "STI-MID-03",
+    "title": "Glow Veil Skin Tint LIGHT_WARM",
+    "brand": "Shade Atelier",
+    "category": "skin_tint",
+    "domain": "makeup",
+    "price_segment": "mid",
+    "price_value": 2250,
+    "availability": true,
+    "skin_types": [
+      "dry",
+      "normal",
+      "combination"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "lightweight",
+      "radiant"
+    ],
+    "ingredients": [
+      "pigments",
+      "glycerin"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "light"
+    ],
+    "undertones": [
+      "warm"
+    ],
+    "finishes": [
+      "radiant",
+      "natural"
+    ],
+    "coverage_levels": [
+      "sheer",
+      "light"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "fluid",
+    "embedding_text": "skin tint for light tone and warm undertone with sheer to light coverage and skin-like finish"
+  },
+  {
+    "sku": "STI-MID-04",
+    "title": "Glow Veil Skin Tint MEDIUM_NEUTRAL",
+    "brand": "Shade Atelier",
+    "category": "skin_tint",
+    "domain": "makeup",
+    "price_segment": "mid",
+    "price_value": 2270,
+    "availability": true,
+    "skin_types": [
+      "dry",
+      "normal",
+      "combination"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "lightweight",
+      "radiant"
+    ],
+    "ingredients": [
+      "pigments",
+      "glycerin"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "medium"
+    ],
+    "undertones": [
+      "neutral"
+    ],
+    "finishes": [
+      "radiant",
+      "natural"
+    ],
+    "coverage_levels": [
+      "sheer",
+      "light"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "fluid",
+    "embedding_text": "skin tint for medium tone and neutral undertone with sheer to light coverage and skin-like finish"
+  },
+  {
+    "sku": "STI-MID-05",
+    "title": "Glow Veil Skin Tint MEDIUM_WARM",
+    "brand": "Shade Atelier",
+    "category": "skin_tint",
+    "domain": "makeup",
+    "price_segment": "mid",
+    "price_value": 2290,
+    "availability": true,
+    "skin_types": [
+      "dry",
+      "normal",
+      "combination"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "lightweight",
+      "radiant"
+    ],
+    "ingredients": [
+      "pigments",
+      "glycerin"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "medium"
+    ],
+    "undertones": [
+      "warm"
+    ],
+    "finishes": [
+      "radiant",
+      "natural"
+    ],
+    "coverage_levels": [
+      "sheer",
+      "light"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "fluid",
+    "embedding_text": "skin tint for medium tone and warm undertone with sheer to light coverage and skin-like finish"
+  },
+  {
+    "sku": "STI-MID-06",
+    "title": "Glow Veil Skin Tint TAN_OLIVE",
+    "brand": "Shade Atelier",
+    "category": "skin_tint",
+    "domain": "makeup",
+    "price_segment": "mid",
+    "price_value": 2310,
+    "availability": true,
+    "skin_types": [
+      "dry",
+      "normal",
+      "combination"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "lightweight",
+      "radiant"
+    ],
+    "ingredients": [
+      "pigments",
+      "glycerin"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "tan"
+    ],
+    "undertones": [
+      "olive"
+    ],
+    "finishes": [
+      "radiant",
+      "natural"
+    ],
+    "coverage_levels": [
+      "sheer",
+      "light"
+    ],
+    "suitable_areas": [
+      "face"
+    ],
+    "texture": "fluid",
+    "embedding_text": "skin tint for tan tone and olive undertone with sheer to light coverage and skin-like finish"
+  },
+  {
+    "sku": "CO-BUD-01",
+    "title": "Bright Flex Concealer FAIR_NEUTRAL",
+    "brand": "Lumiere Daily",
+    "category": "concealer",
+    "domain": "makeup",
+    "price_segment": "budget",
+    "price_value": 1005,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "dry",
+      "combination"
+    ],
+    "concerns": [
+      "under_eye",
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "brightening"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "fair"
+    ],
+    "undertones": [
+      "neutral"
+    ],
+    "finishes": [
+      "natural"
+    ],
+    "coverage_levels": [
+      "medium"
+    ],
+    "suitable_areas": [
+      "under_eye",
+      "face"
+    ],
+    "texture": "cream",
+    "embedding_text": "concealer for under eye area and fair tone with neutral undertone"
+  },
+  {
+    "sku": "CO-BUD-02",
+    "title": "Bright Flex Concealer LIGHT_NEUTRAL",
+    "brand": "Lumiere Daily",
+    "category": "concealer",
+    "domain": "makeup",
+    "price_segment": "budget",
+    "price_value": 1020,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "dry",
+      "combination"
+    ],
+    "concerns": [
+      "under_eye",
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "brightening"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "light"
+    ],
+    "undertones": [
+      "neutral"
+    ],
+    "finishes": [
+      "natural"
+    ],
+    "coverage_levels": [
+      "medium"
+    ],
+    "suitable_areas": [
+      "under_eye",
+      "face"
+    ],
+    "texture": "cream",
+    "embedding_text": "concealer for under eye area and light tone with neutral undertone"
+  },
+  {
+    "sku": "CO-BUD-03",
+    "title": "Bright Flex Concealer LIGHT_WARM",
+    "brand": "Lumiere Daily",
+    "category": "concealer",
+    "domain": "makeup",
+    "price_segment": "budget",
+    "price_value": 1035,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "dry",
+      "combination"
+    ],
+    "concerns": [
+      "under_eye",
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "brightening"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "light"
+    ],
+    "undertones": [
+      "warm"
+    ],
+    "finishes": [
+      "natural"
+    ],
+    "coverage_levels": [
+      "medium"
+    ],
+    "suitable_areas": [
+      "under_eye",
+      "face"
+    ],
+    "texture": "cream",
+    "embedding_text": "concealer for under eye area and light tone with warm undertone"
+  },
+  {
+    "sku": "CO-BUD-04",
+    "title": "Bright Flex Concealer MEDIUM_NEUTRAL",
+    "brand": "Lumiere Daily",
+    "category": "concealer",
+    "domain": "makeup",
+    "price_segment": "budget",
+    "price_value": 1050,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "dry",
+      "combination"
+    ],
+    "concerns": [
+      "under_eye",
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "brightening"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "medium"
+    ],
+    "undertones": [
+      "neutral"
+    ],
+    "finishes": [
+      "natural"
+    ],
+    "coverage_levels": [
+      "medium"
+    ],
+    "suitable_areas": [
+      "under_eye",
+      "face"
+    ],
+    "texture": "cream",
+    "embedding_text": "concealer for under eye area and medium tone with neutral undertone"
+  },
+  {
+    "sku": "CO-BUD-05",
+    "title": "Bright Flex Concealer MEDIUM_WARM",
+    "brand": "Lumiere Daily",
+    "category": "concealer",
+    "domain": "makeup",
+    "price_segment": "budget",
+    "price_value": 1065,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "dry",
+      "combination"
+    ],
+    "concerns": [
+      "under_eye",
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "brightening"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "medium"
+    ],
+    "undertones": [
+      "warm"
+    ],
+    "finishes": [
+      "natural"
+    ],
+    "coverage_levels": [
+      "medium"
+    ],
+    "suitable_areas": [
+      "under_eye",
+      "face"
+    ],
+    "texture": "cream",
+    "embedding_text": "concealer for under eye area and medium tone with warm undertone"
+  },
+  {
+    "sku": "CO-BUD-06",
+    "title": "Bright Flex Concealer TAN_OLIVE",
+    "brand": "Lumiere Daily",
+    "category": "concealer",
+    "domain": "makeup",
+    "price_segment": "budget",
+    "price_value": 1080,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "dry",
+      "combination"
+    ],
+    "concerns": [
+      "under_eye",
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "brightening"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "tan"
+    ],
+    "undertones": [
+      "olive"
+    ],
+    "finishes": [
+      "natural"
+    ],
+    "coverage_levels": [
+      "medium"
+    ],
+    "suitable_areas": [
+      "under_eye",
+      "face"
+    ],
+    "texture": "cream",
+    "embedding_text": "concealer for under eye area and tan tone with olive undertone"
+  },
+  {
+    "sku": "CO-MID-01",
+    "title": "Air Touch Concealer FAIR_NEUTRAL",
+    "brand": "Shade Atelier",
+    "category": "concealer",
+    "domain": "makeup",
+    "price_segment": "mid",
+    "price_value": 1705,
+    "availability": true,
+    "skin_types": [
+      "dry",
+      "normal",
+      "combination"
+    ],
+    "concerns": [
+      "under_eye",
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "brightening",
+      "lightweight"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "fair"
+    ],
+    "undertones": [
+      "neutral"
+    ],
+    "finishes": [
+      "radiant",
+      "natural"
+    ],
+    "coverage_levels": [
+      "light",
+      "medium"
+    ],
+    "suitable_areas": [
+      "under_eye",
+      "face"
+    ],
+    "texture": "cream",
+    "embedding_text": "concealer for under eye area and fair tone with neutral undertone"
+  },
+  {
+    "sku": "CO-MID-02",
+    "title": "Air Touch Concealer LIGHT_NEUTRAL",
+    "brand": "Shade Atelier",
+    "category": "concealer",
+    "domain": "makeup",
+    "price_segment": "mid",
+    "price_value": 1720,
+    "availability": true,
+    "skin_types": [
+      "dry",
+      "normal",
+      "combination"
+    ],
+    "concerns": [
+      "under_eye",
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "brightening",
+      "lightweight"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "light"
+    ],
+    "undertones": [
+      "neutral"
+    ],
+    "finishes": [
+      "radiant",
+      "natural"
+    ],
+    "coverage_levels": [
+      "light",
+      "medium"
+    ],
+    "suitable_areas": [
+      "under_eye",
+      "face"
+    ],
+    "texture": "cream",
+    "embedding_text": "concealer for under eye area and light tone with neutral undertone"
+  },
+  {
+    "sku": "CO-MID-03",
+    "title": "Air Touch Concealer LIGHT_WARM",
+    "brand": "Shade Atelier",
+    "category": "concealer",
+    "domain": "makeup",
+    "price_segment": "mid",
+    "price_value": 1735,
+    "availability": true,
+    "skin_types": [
+      "dry",
+      "normal",
+      "combination"
+    ],
+    "concerns": [
+      "under_eye",
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "brightening",
+      "lightweight"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "light"
+    ],
+    "undertones": [
+      "warm"
+    ],
+    "finishes": [
+      "radiant",
+      "natural"
+    ],
+    "coverage_levels": [
+      "light",
+      "medium"
+    ],
+    "suitable_areas": [
+      "under_eye",
+      "face"
+    ],
+    "texture": "cream",
+    "embedding_text": "concealer for under eye area and light tone with warm undertone"
+  },
+  {
+    "sku": "CO-MID-04",
+    "title": "Air Touch Concealer MEDIUM_NEUTRAL",
+    "brand": "Shade Atelier",
+    "category": "concealer",
+    "domain": "makeup",
+    "price_segment": "mid",
+    "price_value": 1750,
+    "availability": true,
+    "skin_types": [
+      "dry",
+      "normal",
+      "combination"
+    ],
+    "concerns": [
+      "under_eye",
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "brightening",
+      "lightweight"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "medium"
+    ],
+    "undertones": [
+      "neutral"
+    ],
+    "finishes": [
+      "radiant",
+      "natural"
+    ],
+    "coverage_levels": [
+      "light",
+      "medium"
+    ],
+    "suitable_areas": [
+      "under_eye",
+      "face"
+    ],
+    "texture": "cream",
+    "embedding_text": "concealer for under eye area and medium tone with neutral undertone"
+  },
+  {
+    "sku": "CO-MID-05",
+    "title": "Air Touch Concealer MEDIUM_WARM",
+    "brand": "Shade Atelier",
+    "category": "concealer",
+    "domain": "makeup",
+    "price_segment": "mid",
+    "price_value": 1765,
+    "availability": true,
+    "skin_types": [
+      "dry",
+      "normal",
+      "combination"
+    ],
+    "concerns": [
+      "under_eye",
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "brightening",
+      "lightweight"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "medium"
+    ],
+    "undertones": [
+      "warm"
+    ],
+    "finishes": [
+      "radiant",
+      "natural"
+    ],
+    "coverage_levels": [
+      "light",
+      "medium"
+    ],
+    "suitable_areas": [
+      "under_eye",
+      "face"
+    ],
+    "texture": "cream",
+    "embedding_text": "concealer for under eye area and medium tone with warm undertone"
+  },
+  {
+    "sku": "CO-MID-06",
+    "title": "Air Touch Concealer TAN_OLIVE",
+    "brand": "Shade Atelier",
+    "category": "concealer",
+    "domain": "makeup",
+    "price_segment": "mid",
+    "price_value": 1780,
+    "availability": true,
+    "skin_types": [
+      "dry",
+      "normal",
+      "combination"
+    ],
+    "concerns": [
+      "under_eye",
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "brightening",
+      "lightweight"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "tan"
+    ],
+    "undertones": [
+      "olive"
+    ],
+    "finishes": [
+      "radiant",
+      "natural"
+    ],
+    "coverage_levels": [
+      "light",
+      "medium"
+    ],
+    "suitable_areas": [
+      "under_eye",
+      "face"
+    ],
+    "texture": "cream",
+    "embedding_text": "concealer for under eye area and tan tone with olive undertone"
+  },
+  {
+    "sku": "CO-PRE-01",
+    "title": "Soft Focus Concealer FAIR_NEUTRAL",
+    "brand": "Velvet Hour",
+    "category": "concealer",
+    "domain": "makeup",
+    "price_segment": "premium",
+    "price_value": 2605,
+    "availability": true,
+    "skin_types": [
+      "combination",
+      "normal",
+      "oily"
+    ],
+    "concerns": [
+      "under_eye",
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "brightening"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "fair"
+    ],
+    "undertones": [
+      "neutral"
+    ],
+    "finishes": [
+      "satin"
+    ],
+    "coverage_levels": [
+      "medium",
+      "full"
+    ],
+    "suitable_areas": [
+      "under_eye",
+      "face"
+    ],
+    "texture": "cream",
+    "embedding_text": "concealer for under eye area and fair tone with neutral undertone"
+  },
+  {
+    "sku": "CO-PRE-02",
+    "title": "Soft Focus Concealer LIGHT_NEUTRAL",
+    "brand": "Velvet Hour",
+    "category": "concealer",
+    "domain": "makeup",
+    "price_segment": "premium",
+    "price_value": 2620,
+    "availability": true,
+    "skin_types": [
+      "combination",
+      "normal",
+      "oily"
+    ],
+    "concerns": [
+      "under_eye",
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "brightening"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "light"
+    ],
+    "undertones": [
+      "neutral"
+    ],
+    "finishes": [
+      "satin"
+    ],
+    "coverage_levels": [
+      "medium",
+      "full"
+    ],
+    "suitable_areas": [
+      "under_eye",
+      "face"
+    ],
+    "texture": "cream",
+    "embedding_text": "concealer for under eye area and light tone with neutral undertone"
+  },
+  {
+    "sku": "CO-PRE-03",
+    "title": "Soft Focus Concealer LIGHT_WARM",
+    "brand": "Velvet Hour",
+    "category": "concealer",
+    "domain": "makeup",
+    "price_segment": "premium",
+    "price_value": 2635,
+    "availability": true,
+    "skin_types": [
+      "combination",
+      "normal",
+      "oily"
+    ],
+    "concerns": [
+      "under_eye",
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "brightening"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "light"
+    ],
+    "undertones": [
+      "warm"
+    ],
+    "finishes": [
+      "satin"
+    ],
+    "coverage_levels": [
+      "medium",
+      "full"
+    ],
+    "suitable_areas": [
+      "under_eye",
+      "face"
+    ],
+    "texture": "cream",
+    "embedding_text": "concealer for under eye area and light tone with warm undertone"
+  },
+  {
+    "sku": "CO-PRE-04",
+    "title": "Soft Focus Concealer MEDIUM_NEUTRAL",
+    "brand": "Velvet Hour",
+    "category": "concealer",
+    "domain": "makeup",
+    "price_segment": "premium",
+    "price_value": 2650,
+    "availability": true,
+    "skin_types": [
+      "combination",
+      "normal",
+      "oily"
+    ],
+    "concerns": [
+      "under_eye",
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "brightening"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "medium"
+    ],
+    "undertones": [
+      "neutral"
+    ],
+    "finishes": [
+      "satin"
+    ],
+    "coverage_levels": [
+      "medium",
+      "full"
+    ],
+    "suitable_areas": [
+      "under_eye",
+      "face"
+    ],
+    "texture": "cream",
+    "embedding_text": "concealer for under eye area and medium tone with neutral undertone"
+  },
+  {
+    "sku": "CO-PRE-05",
+    "title": "Soft Focus Concealer MEDIUM_WARM",
+    "brand": "Velvet Hour",
+    "category": "concealer",
+    "domain": "makeup",
+    "price_segment": "premium",
+    "price_value": 2665,
+    "availability": true,
+    "skin_types": [
+      "combination",
+      "normal",
+      "oily"
+    ],
+    "concerns": [
+      "under_eye",
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "brightening"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "medium"
+    ],
+    "undertones": [
+      "warm"
+    ],
+    "finishes": [
+      "satin"
+    ],
+    "coverage_levels": [
+      "medium",
+      "full"
+    ],
+    "suitable_areas": [
+      "under_eye",
+      "face"
+    ],
+    "texture": "cream",
+    "embedding_text": "concealer for under eye area and medium tone with warm undertone"
+  },
+  {
+    "sku": "CO-PRE-06",
+    "title": "Soft Focus Concealer TAN_OLIVE",
+    "brand": "Velvet Hour",
+    "category": "concealer",
+    "domain": "makeup",
+    "price_segment": "premium",
+    "price_value": 2680,
+    "availability": true,
+    "skin_types": [
+      "combination",
+      "normal",
+      "oily"
+    ],
+    "concerns": [
+      "under_eye",
+      "tone_match"
+    ],
+    "tags": [
+      "shade-match",
+      "complexion-friendly",
+      "brightening"
+    ],
+    "ingredients": [
+      "pigments",
+      "silicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "tan"
+    ],
+    "undertones": [
+      "olive"
+    ],
+    "finishes": [
+      "satin"
+    ],
+    "coverage_levels": [
+      "medium",
+      "full"
+    ],
+    "suitable_areas": [
+      "under_eye",
+      "face"
+    ],
+    "texture": "cream",
+    "embedding_text": "concealer for under eye area and tan tone with olive undertone"
+  },
+  {
+    "sku": "PW-BUD-01",
+    "title": "Soft Set Loose Powder TRANSLUCENT_LIGHT",
+    "brand": "Lumiere Daily",
+    "category": "powder",
+    "domain": "makeup",
+    "price_segment": "budget",
+    "price_value": 900,
+    "availability": true,
+    "skin_types": [
+      "oily",
+      "combination",
+      "normal"
+    ],
+    "concerns": [
+      "tone_match",
+      "oiliness"
+    ],
+    "tags": [
+      "complexion-friendly",
+      "shine-control",
+      "matte"
+    ],
+    "ingredients": [
+      "mica",
+      "silica"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "light"
+    ],
+    "undertones": [
+      "neutral"
+    ],
+    "finishes": [
+      "matte"
+    ],
+    "coverage_levels": [
+      "sheer"
+    ],
+    "suitable_areas": [
+      "face",
+      "under_eye"
+    ],
+    "texture": "powder",
+    "embedding_text": "setting powder for light skin tone with neutral undertone and shine control"
+  },
+  {
+    "sku": "PW-BUD-02",
+    "title": "Soft Set Loose Powder TRANSLUCENT_MEDIUM",
+    "brand": "Lumiere Daily",
+    "category": "powder",
+    "domain": "makeup",
+    "price_segment": "budget",
+    "price_value": 910,
+    "availability": true,
+    "skin_types": [
+      "oily",
+      "combination",
+      "normal"
+    ],
+    "concerns": [
+      "tone_match",
+      "oiliness"
+    ],
+    "tags": [
+      "complexion-friendly",
+      "shine-control",
+      "matte"
+    ],
+    "ingredients": [
+      "mica",
+      "silica"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "medium"
+    ],
+    "undertones": [
+      "neutral"
+    ],
+    "finishes": [
+      "matte"
+    ],
+    "coverage_levels": [
+      "sheer"
+    ],
+    "suitable_areas": [
+      "face",
+      "under_eye"
+    ],
+    "texture": "powder",
+    "embedding_text": "setting powder for medium skin tone with neutral undertone and shine control"
+  },
+  {
+    "sku": "PW-BUD-03",
+    "title": "Soft Set Loose Powder TRANSLUCENT_TAN",
+    "brand": "Lumiere Daily",
+    "category": "powder",
+    "domain": "makeup",
+    "price_segment": "budget",
+    "price_value": 920,
+    "availability": true,
+    "skin_types": [
+      "oily",
+      "combination",
+      "normal"
+    ],
+    "concerns": [
+      "tone_match",
+      "oiliness"
+    ],
+    "tags": [
+      "complexion-friendly",
+      "shine-control",
+      "matte"
+    ],
+    "ingredients": [
+      "mica",
+      "silica"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "tan"
+    ],
+    "undertones": [
+      "warm"
+    ],
+    "finishes": [
+      "matte"
+    ],
+    "coverage_levels": [
+      "sheer"
+    ],
+    "suitable_areas": [
+      "face",
+      "under_eye"
+    ],
+    "texture": "powder",
+    "embedding_text": "setting powder for tan skin tone with warm undertone and shine control"
+  },
+  {
+    "sku": "PW-BUD-04",
+    "title": "Soft Set Loose Powder TRANSLUCENT_DEEP",
+    "brand": "Lumiere Daily",
+    "category": "powder",
+    "domain": "makeup",
+    "price_segment": "budget",
+    "price_value": 930,
+    "availability": true,
+    "skin_types": [
+      "oily",
+      "combination",
+      "normal"
+    ],
+    "concerns": [
+      "tone_match",
+      "oiliness"
+    ],
+    "tags": [
+      "complexion-friendly",
+      "shine-control",
+      "matte"
+    ],
+    "ingredients": [
+      "mica",
+      "silica"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "deep"
+    ],
+    "undertones": [
+      "warm"
+    ],
+    "finishes": [
+      "matte"
+    ],
+    "coverage_levels": [
+      "sheer"
+    ],
+    "suitable_areas": [
+      "face",
+      "under_eye"
+    ],
+    "texture": "powder",
+    "embedding_text": "setting powder for deep skin tone with warm undertone and shine control"
+  },
+  {
+    "sku": "PW-MID-01",
+    "title": "Blur Balance Powder TRANSLUCENT_LIGHT",
+    "brand": "Shade Atelier",
+    "category": "powder",
+    "domain": "makeup",
+    "price_segment": "mid",
+    "price_value": 1600,
+    "availability": true,
+    "skin_types": [
+      "combination",
+      "oily",
+      "normal"
+    ],
+    "concerns": [
+      "tone_match",
+      "oiliness"
+    ],
+    "tags": [
+      "complexion-friendly",
+      "shine-control",
+      "matte"
+    ],
+    "ingredients": [
+      "mica",
+      "silica"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "light"
+    ],
+    "undertones": [
+      "neutral"
+    ],
+    "finishes": [
+      "matte",
+      "satin"
+    ],
+    "coverage_levels": [
+      "sheer",
+      "light"
+    ],
+    "suitable_areas": [
+      "face",
+      "under_eye"
+    ],
+    "texture": "powder",
+    "embedding_text": "setting powder for light skin tone with neutral undertone and shine control"
+  },
+  {
+    "sku": "PW-MID-02",
+    "title": "Blur Balance Powder TRANSLUCENT_MEDIUM",
+    "brand": "Shade Atelier",
+    "category": "powder",
+    "domain": "makeup",
+    "price_segment": "mid",
+    "price_value": 1610,
+    "availability": true,
+    "skin_types": [
+      "combination",
+      "oily",
+      "normal"
+    ],
+    "concerns": [
+      "tone_match",
+      "oiliness"
+    ],
+    "tags": [
+      "complexion-friendly",
+      "shine-control",
+      "matte"
+    ],
+    "ingredients": [
+      "mica",
+      "silica"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "medium"
+    ],
+    "undertones": [
+      "neutral"
+    ],
+    "finishes": [
+      "matte",
+      "satin"
+    ],
+    "coverage_levels": [
+      "sheer",
+      "light"
+    ],
+    "suitable_areas": [
+      "face",
+      "under_eye"
+    ],
+    "texture": "powder",
+    "embedding_text": "setting powder for medium skin tone with neutral undertone and shine control"
+  },
+  {
+    "sku": "PW-MID-03",
+    "title": "Blur Balance Powder TRANSLUCENT_TAN",
+    "brand": "Shade Atelier",
+    "category": "powder",
+    "domain": "makeup",
+    "price_segment": "mid",
+    "price_value": 1620,
+    "availability": true,
+    "skin_types": [
+      "combination",
+      "oily",
+      "normal"
+    ],
+    "concerns": [
+      "tone_match",
+      "oiliness"
+    ],
+    "tags": [
+      "complexion-friendly",
+      "shine-control",
+      "matte"
+    ],
+    "ingredients": [
+      "mica",
+      "silica"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "tan"
+    ],
+    "undertones": [
+      "warm"
+    ],
+    "finishes": [
+      "matte",
+      "satin"
+    ],
+    "coverage_levels": [
+      "sheer",
+      "light"
+    ],
+    "suitable_areas": [
+      "face",
+      "under_eye"
+    ],
+    "texture": "powder",
+    "embedding_text": "setting powder for tan skin tone with warm undertone and shine control"
+  },
+  {
+    "sku": "PW-MID-04",
+    "title": "Blur Balance Powder TRANSLUCENT_DEEP",
+    "brand": "Shade Atelier",
+    "category": "powder",
+    "domain": "makeup",
+    "price_segment": "mid",
+    "price_value": 1630,
+    "availability": true,
+    "skin_types": [
+      "combination",
+      "oily",
+      "normal"
+    ],
+    "concerns": [
+      "tone_match",
+      "oiliness"
+    ],
+    "tags": [
+      "complexion-friendly",
+      "shine-control",
+      "matte"
+    ],
+    "ingredients": [
+      "mica",
+      "silica"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "deep"
+    ],
+    "undertones": [
+      "warm"
+    ],
+    "finishes": [
+      "matte",
+      "satin"
+    ],
+    "coverage_levels": [
+      "sheer",
+      "light"
+    ],
+    "suitable_areas": [
+      "face",
+      "under_eye"
+    ],
+    "texture": "powder",
+    "embedding_text": "setting powder for deep skin tone with warm undertone and shine control"
+  },
+  {
+    "sku": "PW-PRE-01",
+    "title": "Air Finish Micro Powder TRANSLUCENT_LIGHT",
+    "brand": "Velvet Hour",
+    "category": "powder",
+    "domain": "makeup",
+    "price_segment": "premium",
+    "price_value": 2400,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "dry",
+      "combination"
+    ],
+    "concerns": [
+      "tone_match",
+      "oiliness"
+    ],
+    "tags": [
+      "complexion-friendly",
+      "lightweight"
+    ],
+    "ingredients": [
+      "mica",
+      "silica"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "light"
+    ],
+    "undertones": [
+      "neutral"
+    ],
+    "finishes": [
+      "satin"
+    ],
+    "coverage_levels": [
+      "sheer"
+    ],
+    "suitable_areas": [
+      "face",
+      "under_eye"
+    ],
+    "texture": "powder",
+    "embedding_text": "setting powder for light skin tone with neutral undertone and shine control"
+  },
+  {
+    "sku": "PW-PRE-02",
+    "title": "Air Finish Micro Powder TRANSLUCENT_MEDIUM",
+    "brand": "Velvet Hour",
+    "category": "powder",
+    "domain": "makeup",
+    "price_segment": "premium",
+    "price_value": 2410,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "dry",
+      "combination"
+    ],
+    "concerns": [
+      "tone_match",
+      "oiliness"
+    ],
+    "tags": [
+      "complexion-friendly",
+      "lightweight"
+    ],
+    "ingredients": [
+      "mica",
+      "silica"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "medium"
+    ],
+    "undertones": [
+      "neutral"
+    ],
+    "finishes": [
+      "satin"
+    ],
+    "coverage_levels": [
+      "sheer"
+    ],
+    "suitable_areas": [
+      "face",
+      "under_eye"
+    ],
+    "texture": "powder",
+    "embedding_text": "setting powder for medium skin tone with neutral undertone and shine control"
+  },
+  {
+    "sku": "PW-PRE-03",
+    "title": "Air Finish Micro Powder TRANSLUCENT_TAN",
+    "brand": "Velvet Hour",
+    "category": "powder",
+    "domain": "makeup",
+    "price_segment": "premium",
+    "price_value": 2420,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "dry",
+      "combination"
+    ],
+    "concerns": [
+      "tone_match",
+      "oiliness"
+    ],
+    "tags": [
+      "complexion-friendly",
+      "lightweight"
+    ],
+    "ingredients": [
+      "mica",
+      "silica"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "tan"
+    ],
+    "undertones": [
+      "warm"
+    ],
+    "finishes": [
+      "satin"
+    ],
+    "coverage_levels": [
+      "sheer"
+    ],
+    "suitable_areas": [
+      "face",
+      "under_eye"
+    ],
+    "texture": "powder",
+    "embedding_text": "setting powder for tan skin tone with warm undertone and shine control"
+  },
+  {
+    "sku": "PW-PRE-04",
+    "title": "Air Finish Micro Powder TRANSLUCENT_DEEP",
+    "brand": "Velvet Hour",
+    "category": "powder",
+    "domain": "makeup",
+    "price_segment": "premium",
+    "price_value": 2430,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "dry",
+      "combination"
+    ],
+    "concerns": [
+      "tone_match",
+      "oiliness"
+    ],
+    "tags": [
+      "complexion-friendly",
+      "lightweight"
+    ],
+    "ingredients": [
+      "mica",
+      "silica"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "deep"
+    ],
+    "undertones": [
+      "warm"
+    ],
+    "finishes": [
+      "satin"
+    ],
+    "coverage_levels": [
+      "sheer"
+    ],
+    "suitable_areas": [
+      "face",
+      "under_eye"
+    ],
+    "texture": "powder",
+    "embedding_text": "setting powder for deep skin tone with warm undertone and shine control"
+  }
+]
