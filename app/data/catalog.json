@@ -3668,5 +3668,772 @@
     ],
     "texture": "powder",
     "embedding_text": "setting powder for deep skin tone with warm undertone and shine control"
+  },
+  {
+    "sku": "LP-MID-01",
+    "title": "Velvet Muse Lipstick ROSE_NUDE",
+    "brand": "Atelier Rouge",
+    "category": "lipstick",
+    "domain": "makeup",
+    "price_segment": "mid",
+    "price_value": 1490,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "dry",
+      "combination"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "lip-friendly",
+      "longwear"
+    ],
+    "ingredients": [
+      "dimethicone",
+      "vitamin_e"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "light",
+      "light_medium",
+      "medium"
+    ],
+    "undertones": [
+      "neutral",
+      "cool"
+    ],
+    "finishes": [
+      "satin"
+    ],
+    "coverage_levels": [
+      "medium"
+    ],
+    "suitable_areas": [
+      "lips"
+    ],
+    "color_families": [
+      "rose",
+      "nude"
+    ],
+    "occasions": [
+      "everyday",
+      "date"
+    ],
+    "styles": [
+      "natural",
+      "everyday"
+    ],
+    "effects": [
+      "comfort"
+    ],
+    "opacity_levels": [
+      "medium"
+    ],
+    "longwear": true,
+    "waterproof": false,
+    "transfer_resistant": false,
+    "texture": "cream",
+    "embedding_text": "rose nude satin lipstick for everyday elegant makeup with comfortable wear"
+  },
+  {
+    "sku": "LP-BUD-02",
+    "title": "Juicy Glow Lip Tint CORAL",
+    "brand": "Glow Pop",
+    "category": "lip_tint",
+    "domain": "makeup",
+    "price_segment": "budget",
+    "price_value": 790,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "oily",
+      "combination"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "lip-friendly",
+      "daily-use"
+    ],
+    "ingredients": [
+      "glycerin"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "light",
+      "light_medium",
+      "medium",
+      "tan"
+    ],
+    "undertones": [
+      "warm",
+      "neutral"
+    ],
+    "finishes": [
+      "radiant"
+    ],
+    "coverage_levels": [
+      "sheer"
+    ],
+    "suitable_areas": [
+      "lips"
+    ],
+    "color_families": [
+      "coral",
+      "peach"
+    ],
+    "occasions": [
+      "everyday",
+      "quick"
+    ],
+    "styles": [
+      "natural",
+      "clean_girl"
+    ],
+    "effects": [
+      "fresh"
+    ],
+    "opacity_levels": [
+      "sheer"
+    ],
+    "longwear": false,
+    "waterproof": false,
+    "transfer_resistant": false,
+    "texture": "watery tint",
+    "embedding_text": "coral lip tint for fresh quick everyday makeup with glowy natural finish"
+  },
+  {
+    "sku": "LP-MID-03",
+    "title": "Glass Veil Lip Gloss PINK_NUDE",
+    "brand": "Atelier Rouge",
+    "category": "lip_gloss",
+    "domain": "makeup",
+    "price_segment": "mid",
+    "price_value": 1190,
+    "availability": true,
+    "skin_types": [
+      "dry",
+      "normal",
+      "combination"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "lip-friendly",
+      "radiant"
+    ],
+    "ingredients": [
+      "jojoba_oil"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "fair",
+      "light",
+      "light_medium",
+      "medium"
+    ],
+    "undertones": [
+      "neutral",
+      "cool",
+      "warm"
+    ],
+    "finishes": [
+      "radiant"
+    ],
+    "coverage_levels": [
+      "sheer"
+    ],
+    "suitable_areas": [
+      "lips"
+    ],
+    "color_families": [
+      "pink",
+      "nude"
+    ],
+    "occasions": [
+      "everyday",
+      "date"
+    ],
+    "styles": [
+      "clean_girl",
+      "natural"
+    ],
+    "effects": [
+      "glossy"
+    ],
+    "opacity_levels": [
+      "sheer"
+    ],
+    "longwear": false,
+    "waterproof": false,
+    "transfer_resistant": false,
+    "texture": "gloss",
+    "embedding_text": "pink nude lip gloss for juicy lips and clean girl natural makeup look"
+  },
+  {
+    "sku": "EY-MID-01",
+    "title": "Lift & Length Mascara",
+    "brand": "Lash Craft",
+    "category": "mascara",
+    "domain": "makeup",
+    "price_segment": "mid",
+    "price_value": 1650,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "oily",
+      "dry",
+      "combination"
+    ],
+    "concerns": [
+      "maintenance"
+    ],
+    "tags": [
+      "eye-enhancing",
+      "daily-use"
+    ],
+    "ingredients": [
+      "panthenol"
+    ],
+    "exclude_for": [],
+    "tones": [],
+    "undertones": [],
+    "finishes": [
+      "natural"
+    ],
+    "coverage_levels": [],
+    "suitable_areas": [
+      "eyes"
+    ],
+    "color_families": [
+      "neutral"
+    ],
+    "occasions": [
+      "everyday",
+      "office"
+    ],
+    "styles": [
+      "everyday",
+      "natural"
+    ],
+    "effects": [
+      "length",
+      "separation"
+    ],
+    "opacity_levels": [
+      "full"
+    ],
+    "longwear": true,
+    "waterproof": false,
+    "transfer_resistant": true,
+    "texture": "mascara",
+    "embedding_text": "lengthening mascara for everyday defined lashes with clean separated effect"
+  },
+  {
+    "sku": "EY-PRE-02",
+    "title": "Midnight Line Waterproof Eyeliner",
+    "brand": "Lash Craft",
+    "category": "eyeliner",
+    "domain": "makeup",
+    "price_segment": "premium",
+    "price_value": 2190,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "oily",
+      "dry",
+      "combination"
+    ],
+    "concerns": [
+      "maintenance"
+    ],
+    "tags": [
+      "eye-enhancing",
+      "longwear"
+    ],
+    "ingredients": [
+      "carbon_black"
+    ],
+    "exclude_for": [],
+    "tones": [],
+    "undertones": [],
+    "finishes": [
+      "matte"
+    ],
+    "coverage_levels": [],
+    "suitable_areas": [
+      "eyes"
+    ],
+    "color_families": [
+      "brown",
+      "neutral"
+    ],
+    "occasions": [
+      "party",
+      "evening"
+    ],
+    "styles": [
+      "glam",
+      "evening"
+    ],
+    "effects": [
+      "definition"
+    ],
+    "opacity_levels": [
+      "full"
+    ],
+    "longwear": true,
+    "waterproof": true,
+    "transfer_resistant": true,
+    "texture": "liquid liner",
+    "embedding_text": "waterproof eyeliner for evening makeup sharp eye definition and longwear performance"
+  },
+  {
+    "sku": "EY-MID-03",
+    "title": "Soft Taupe Brow Gel",
+    "brand": "Brow Form",
+    "category": "brow_gel",
+    "domain": "makeup",
+    "price_segment": "mid",
+    "price_value": 1350,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "oily",
+      "dry",
+      "combination"
+    ],
+    "concerns": [
+      "maintenance"
+    ],
+    "tags": [
+      "eye-enhancing",
+      "daily-use"
+    ],
+    "ingredients": [
+      "glycerin"
+    ],
+    "exclude_for": [],
+    "tones": [],
+    "undertones": [],
+    "finishes": [
+      "natural"
+    ],
+    "coverage_levels": [],
+    "suitable_areas": [
+      "brows"
+    ],
+    "color_families": [
+      "brown",
+      "neutral"
+    ],
+    "occasions": [
+      "everyday",
+      "office"
+    ],
+    "styles": [
+      "natural",
+      "clean_girl"
+    ],
+    "effects": [
+      "hold",
+      "soft definition"
+    ],
+    "opacity_levels": [
+      "light"
+    ],
+    "longwear": true,
+    "waterproof": false,
+    "transfer_resistant": true,
+    "texture": "gel",
+    "embedding_text": "soft brow gel for natural everyday brows with flexible hold and clean girl look"
+  },
+  {
+    "sku": "CH-MID-01",
+    "title": "Cloud Flush Blush PEACH",
+    "brand": "Face Poetry",
+    "category": "blush",
+    "domain": "makeup",
+    "price_segment": "mid",
+    "price_value": 1590,
+    "availability": true,
+    "skin_types": [
+      "dry",
+      "normal",
+      "combination"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "face-color",
+      "radiant"
+    ],
+    "ingredients": [
+      "squalane"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "light",
+      "light_medium",
+      "medium",
+      "tan"
+    ],
+    "undertones": [
+      "warm",
+      "neutral"
+    ],
+    "finishes": [
+      "radiant"
+    ],
+    "coverage_levels": [
+      "sheer",
+      "light"
+    ],
+    "suitable_areas": [
+      "cheeks"
+    ],
+    "color_families": [
+      "peach",
+      "coral"
+    ],
+    "occasions": [
+      "everyday",
+      "date"
+    ],
+    "styles": [
+      "natural",
+      "clean_girl"
+    ],
+    "effects": [
+      "freshness"
+    ],
+    "opacity_levels": [
+      "light"
+    ],
+    "longwear": false,
+    "waterproof": false,
+    "transfer_resistant": false,
+    "texture": "cream blush",
+    "embedding_text": "peach cream blush for fresh healthy cheeks with natural radiant finish"
+  },
+  {
+    "sku": "CH-PRE-02",
+    "title": "Soft Beam Highlighter CHAMPAGNE",
+    "brand": "Face Poetry",
+    "category": "highlighter",
+    "domain": "makeup",
+    "price_segment": "premium",
+    "price_value": 2490,
+    "availability": true,
+    "skin_types": [
+      "dry",
+      "normal",
+      "combination"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "face-color",
+      "radiant"
+    ],
+    "ingredients": [
+      "mica"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "fair",
+      "light",
+      "light_medium",
+      "medium"
+    ],
+    "undertones": [
+      "neutral",
+      "warm"
+    ],
+    "finishes": [
+      "radiant"
+    ],
+    "coverage_levels": [
+      "sheer"
+    ],
+    "suitable_areas": [
+      "cheeks"
+    ],
+    "color_families": [
+      "neutral",
+      "peach"
+    ],
+    "occasions": [
+      "party",
+      "date",
+      "everyday"
+    ],
+    "styles": [
+      "glam",
+      "natural"
+    ],
+    "effects": [
+      "glow"
+    ],
+    "opacity_levels": [
+      "sheer"
+    ],
+    "longwear": true,
+    "waterproof": false,
+    "transfer_resistant": false,
+    "texture": "powder highlight",
+    "embedding_text": "champagne highlighter for soft glow and luminous cheekbones in natural or glam makeup"
+  },
+  {
+    "sku": "PR-MID-01",
+    "title": "Grip & Blur Primer",
+    "brand": "Base Layer",
+    "category": "primer",
+    "domain": "makeup",
+    "price_segment": "mid",
+    "price_value": 1790,
+    "availability": true,
+    "skin_types": [
+      "oily",
+      "combination",
+      "normal"
+    ],
+    "concerns": [
+      "maintenance"
+    ],
+    "tags": [
+      "complexion-friendly",
+      "shine-control"
+    ],
+    "ingredients": [
+      "silica"
+    ],
+    "exclude_for": [],
+    "tones": [],
+    "undertones": [],
+    "finishes": [
+      "matte",
+      "natural"
+    ],
+    "coverage_levels": [],
+    "suitable_areas": [
+      "face"
+    ],
+    "color_families": [
+      "neutral"
+    ],
+    "occasions": [
+      "everyday",
+      "party"
+    ],
+    "styles": [
+      "everyday",
+      "glam"
+    ],
+    "effects": [
+      "grip",
+      "blur"
+    ],
+    "opacity_levels": [],
+    "longwear": true,
+    "waterproof": false,
+    "transfer_resistant": false,
+    "texture": "gel primer",
+    "embedding_text": "gripping blurring primer for longer makeup wear smoother pores and shine control"
+  },
+  {
+    "sku": "FX-MID-01",
+    "title": "Stay All Day Setting Spray",
+    "brand": "Base Layer",
+    "category": "setting_spray",
+    "domain": "makeup",
+    "price_segment": "mid",
+    "price_value": 1690,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "oily",
+      "combination"
+    ],
+    "concerns": [
+      "maintenance"
+    ],
+    "tags": [
+      "longwear",
+      "daily-use"
+    ],
+    "ingredients": [
+      "glycerin"
+    ],
+    "exclude_for": [],
+    "tones": [],
+    "undertones": [],
+    "finishes": [
+      "natural"
+    ],
+    "coverage_levels": [],
+    "suitable_areas": [
+      "face"
+    ],
+    "color_families": [
+      "neutral"
+    ],
+    "occasions": [
+      "party",
+      "office",
+      "everyday"
+    ],
+    "styles": [
+      "everyday",
+      "glam"
+    ],
+    "effects": [
+      "set",
+      "longwear"
+    ],
+    "opacity_levels": [],
+    "longwear": true,
+    "waterproof": false,
+    "transfer_resistant": true,
+    "texture": "mist",
+    "embedding_text": "setting spray for longer makeup wear comfortable natural finish and better longevity"
+  },
+  {
+    "sku": "RM-BUD-01",
+    "title": "Micellar Melt Makeup Remover",
+    "brand": "Pure Reset",
+    "category": "makeup_remover",
+    "domain": "skincare",
+    "price_segment": "budget",
+    "price_value": 690,
+    "availability": true,
+    "skin_types": [
+      "sensitive",
+      "dry",
+      "normal",
+      "combination"
+    ],
+    "concerns": [
+      "maintenance"
+    ],
+    "tags": [
+      "gentle",
+      "daily-use"
+    ],
+    "ingredients": [
+      "panthenol"
+    ],
+    "exclude_for": [],
+    "tones": [],
+    "undertones": [],
+    "finishes": [],
+    "coverage_levels": [],
+    "suitable_areas": [
+      "face",
+      "eyes",
+      "lips"
+    ],
+    "color_families": [
+      "neutral"
+    ],
+    "occasions": [
+      "everyday"
+    ],
+    "styles": [
+      "natural"
+    ],
+    "effects": [
+      "remove makeup"
+    ],
+    "opacity_levels": [],
+    "longwear": false,
+    "waterproof": false,
+    "transfer_resistant": false,
+    "texture": "micellar water",
+    "embedding_text": "gentle micellar makeup remover for sensitive skin eyes lips and everyday cleansing"
+  },
+  {
+    "sku": "EY-PRE-04",
+    "title": "Velvet Smoke Eyeshadow Palette BRONZE_PLUM",
+    "brand": "Color Atelier",
+    "category": "eyeshadow_palette",
+    "domain": "makeup",
+    "price_segment": "premium",
+    "price_value": 3290,
+    "availability": true,
+    "skin_types": [
+      "normal",
+      "dry",
+      "combination",
+      "oily"
+    ],
+    "concerns": [
+      "tone_match"
+    ],
+    "tags": [
+      "eye-enhancing",
+      "longwear"
+    ],
+    "ingredients": [
+      "mica",
+      "dimethicone"
+    ],
+    "exclude_for": [],
+    "tones": [
+      "light_medium",
+      "medium",
+      "tan",
+      "deep"
+    ],
+    "undertones": [
+      "warm",
+      "neutral",
+      "cool"
+    ],
+    "finishes": [
+      "matte",
+      "radiant"
+    ],
+    "coverage_levels": [
+      "medium",
+      "full"
+    ],
+    "suitable_areas": [
+      "eyes"
+    ],
+    "color_families": [
+      "bronze",
+      "plum",
+      "brown"
+    ],
+    "occasions": [
+      "party",
+      "date",
+      "evening"
+    ],
+    "styles": [
+      "glam",
+      "evening",
+      "bold"
+    ],
+    "effects": [
+      "depth",
+      "accent"
+    ],
+    "opacity_levels": [
+      "medium",
+      "full"
+    ],
+    "longwear": true,
+    "waterproof": false,
+    "transfer_resistant": false,
+    "texture": "powder shadows",
+    "embedding_text": "bronze plum eyeshadow palette for evening glam eye looks with warm and cool accent options"
   }
 ]
