@@ -28,15 +28,39 @@ BUNDLE_SUPPORT = {
 }
 
 
+VISUAL_PAYOFF = {
+    ProductCategory.lipstick: 24,
+    ProductCategory.foundation: 22,
+    ProductCategory.skin_tint: 20,
+    ProductCategory.blush: 19,
+    ProductCategory.mascara: 18,
+    ProductCategory.concealer: 17,
+    ProductCategory.eyeliner: 16,
+    ProductCategory.highlighter: 15,
+    ProductCategory.primer: 14,
+    ProductCategory.eyeshadow_palette: 14,
+    ProductCategory.lip_tint: 13,
+    ProductCategory.brow_gel: 10,
+    ProductCategory.setting_spray: 8,
+    ProductCategory.cleanser: 2,
+    ProductCategory.serum: 3,
+    ProductCategory.moisturizer: 3,
+    ProductCategory.spf: 2,
+}
+
+
 def hero_score(item: RecommendationItem, plan: RecommendationPlan, context: UserContext) -> float:
     score = HERO_PRIORITY.get(item.category, 40)
+    score += VISUAL_PAYOFF.get(item.category, 5)
     score += item.final_score * 20
-    if plan.look_strategy == 'sensual' and item.category in {ProductCategory.lipstick, ProductCategory.eyeliner, ProductCategory.mascara}:
-        score += 12
+    if plan.look_strategy == 'sensual' and item.category in {ProductCategory.lipstick, ProductCategory.eyeliner, ProductCategory.mascara, ProductCategory.lip_liner}:
+        score += 18
     if plan.look_strategy == 'soft_luxury' and item.category in {ProductCategory.foundation, ProductCategory.primer, ProductCategory.blush, ProductCategory.highlighter}:
-        score += 10
+        score += 14
     if plan.look_strategy == 'fresh' and item.category in {ProductCategory.skin_tint, ProductCategory.blush, ProductCategory.lip_tint}:
-        score += 10
+        score += 12
+    if plan.look_strategy in {'glam', 'sensual'} and item.category in {ProductCategory.cleanser, ProductCategory.serum, ProductCategory.moisturizer, ProductCategory.spf}:
+        score -= 30
     if context.budget_segment.value == 'premium' and item.price_segment.value == 'premium':
         score += 5
     return score

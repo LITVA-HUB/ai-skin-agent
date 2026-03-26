@@ -317,6 +317,7 @@ class DialogContextState(BaseModel):
     current_recommendations: dict[ProductCategory, str] = Field(default_factory=dict)
     active_domains: list[IntentDomain] = Field(default_factory=list)
     look_profile: dict[str, Any] = Field(default_factory=dict)
+    decision_trace: dict[str, Any] = Field(default_factory=dict)
     transformation_history: list[str] = Field(default_factory=list)
     last_intent: str | None = None
     last_action: IntentAction | None = None

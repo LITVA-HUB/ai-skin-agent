@@ -86,9 +86,10 @@ def hard_filter_candidates(
             if not skin_match:
                 continue
         else:
-            if plan.preferred_tones and product.tones and not set(plan.preferred_tones).intersection(product.tones):
+            complexion_match_categories = {ProductCategory.foundation, ProductCategory.skin_tint}
+            if category in complexion_match_categories and plan.preferred_tones and product.tones and not set(plan.preferred_tones).intersection(product.tones):
                 continue
-            if plan.preferred_undertones and product.undertones and not set(plan.preferred_undertones).intersection(product.undertones):
+            if category in complexion_match_categories and plan.preferred_undertones and product.undertones and not set(plan.preferred_undertones).intersection(product.undertones):
                 continue
             if plan.preferred_color_families and product.color_families and not set(plan.preferred_color_families).intersection(product.color_families):
                 continue

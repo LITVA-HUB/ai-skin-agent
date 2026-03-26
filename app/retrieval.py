@@ -3,6 +3,7 @@ from __future__ import annotations
 from functools import lru_cache
 
 from .catalog import load_catalog
+from .look_rules import fallback_categories_for
 from .models import CatalogProduct, DialogIntent, ProductCategory, ProductDomain, RecommendationItem, RecommendationPlan, SessionState, SkinProfile, UserContext
 from .retrieval_filters import domain_for_category, get_current_selection_map, hard_filter_candidates
 from .retrieval_reranker import rerank_category
@@ -223,7 +224,35 @@ def retrieve_products(
             active_plan.preferred_tones = []
             candidates = hard_filter_candidates(category, profile, active_plan, context, session, intent)
         if not candidates:
-            continue
+            fallback_added = False
+            for fallback_category in fallback_categories_for(category):
+                fallback_candidates = hard_filter_candidates(fallback_category, profile, active_plan, context, session, intent)
+                if not fallback_candidates:
+                    continue
+                query_text = build_query_text(profile, active_plan, context, fallback_category, intent)
+                semantic_hits = semantic_retrieve(fallback_category, fallback_candidates, query_text)
+                ranked = rerank_category(fallback_category, profile, active_plan, context, semantic_hits, session, intent)
+                if ranked:
+                    top = ranked[0]
+                    results.append(RecommendationItem(
+                        sku=top.product.sku,
+                        title=top.product.title,
+                        brand=top.product.brand,
+                        category=top.product.category,
+                        domain=top.product.domain,
+                        price_segment=top.product.price_segment,
+                        price_value=top.product.price_value,
+                        why=top.why,
+                        vector_score=top.vector_score,
+                        rule_score=top.rule_score,
+                        final_score=top.rerank_score,
+                    ))
+                    fallback_added = True
+                    break
+            if not fallback_added:
+                continue
+            else:
+                continue
         query_text = build_query_text(profile, active_plan, context, category, intent)
         semantic_hits = semantic_retrieve(category, candidates, query_text)
         ranked = rerank_category(category, profile, active_plan, context, semantic_hits, session, intent)
