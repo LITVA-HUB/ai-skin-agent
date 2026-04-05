@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from .beauty_modes import detect_mode, mode_categories
-from .look_rules import enforce_look_categories
 from .models import (
     BudgetDirection,
     DialogIntent,
@@ -84,11 +82,7 @@ def _beauty_categories_from_goal(goal_text: str, detected: list[ProductCategory]
     explicit = [cat for cat in detected if cat in MAKEUP_CATEGORIES]
     strategy, balance, focus_features = _look_strategy(goal_text, context)
     if explicit:
-        if strategy == 'sensual' and ProductCategory.lipstick not in explicit:
-            explicit.insert(0, ProductCategory.lipstick)
-        if strategy in {'glam', 'sensual'} and 'eyes' in focus_features and ProductCategory.eyeliner not in explicit:
-            explicit.append(ProductCategory.eyeliner)
-        return list(dict.fromkeys(explicit)), strategy, balance, focus_features
+        return explicit, strategy, balance, focus_features
 
     if any(token in goal_text for token in ["полный образ", "full look", "макияж на вечер", "макияж"]):
         categories.extend([ProductCategory.primer, ProductCategory.foundation, ProductCategory.concealer, ProductCategory.blush, ProductCategory.mascara])
@@ -102,22 +96,6 @@ def _beauty_categories_from_goal(goal_text: str, detected: list[ProductCategory]
             categories.append(ProductCategory.highlighter)
         return list(dict.fromkeys(categories)), strategy, balance, focus_features
 
-    if strategy == "sensual":
-        categories.extend([ProductCategory.lipstick, ProductCategory.mascara, ProductCategory.foundation])
-        if 'eyes' in focus_features:
-            categories.extend([ProductCategory.eyeliner, ProductCategory.eyeshadow_palette])
-        if 'lips' in focus_features or not focus_features:
-            categories.append(ProductCategory.lip_liner)
-        categories.append(ProductCategory.concealer)
-    if strategy == "soft_luxury":
-        categories.extend([ProductCategory.primer, ProductCategory.foundation, ProductCategory.blush, ProductCategory.highlighter])
-        if 'lips' in focus_features:
-            categories.append(ProductCategory.lipstick)
-        else:
-            categories.append(ProductCategory.lip_tint)
-    if strategy == "fresh":
-        categories.extend([ProductCategory.skin_tint, ProductCategory.blush, ProductCategory.brow_gel, ProductCategory.lip_tint, ProductCategory.mascara])
-
     if "lips" in focus_features:
         categories.extend([ProductCategory.lipstick, ProductCategory.lip_tint, ProductCategory.lip_gloss])
     if "eyes" in focus_features:
@@ -128,6 +106,12 @@ def _beauty_categories_from_goal(goal_text: str, detected: list[ProductCategory]
         categories.extend([ProductCategory.blush, ProductCategory.highlighter])
     if any(token in goal_text for token in ["быстрый", "quick", "office", "дневной"]):
         categories.extend([ProductCategory.skin_tint, ProductCategory.mascara, ProductCategory.blush, ProductCategory.lip_tint])
+    if strategy == "soft_luxury":
+        categories.extend([ProductCategory.primer, ProductCategory.foundation, ProductCategory.blush, ProductCategory.lipstick])
+    if strategy == "sensual":
+        categories.extend([ProductCategory.foundation, ProductCategory.concealer, ProductCategory.lipstick, ProductCategory.mascara])
+        if "eyes" in focus_features:
+            categories.append(ProductCategory.eyeliner)
     if not categories:
         categories.extend([ProductCategory.foundation, ProductCategory.concealer, ProductCategory.powder])
     return list(dict.fromkeys(categories)), strategy, balance, focus_features
@@ -135,7 +119,6 @@ def _beauty_categories_from_goal(goal_text: str, detected: list[ProductCategory]
 
 def build_plan(profile: SkinProfile, context: UserContext, intent: DialogIntent | None = None) -> RecommendationPlan:
     goal_text = (context.goal or "").lower().strip()
-    mode = detect_mode(goal_text)
     detected = detect_categories(goal_text)
     if intent and intent.target_categories:
         detected = [*intent.target_categories, *[cat for cat in detected if cat not in intent.target_categories]]
@@ -153,11 +136,8 @@ def build_plan(profile: SkinProfile, context: UserContext, intent: DialogIntent 
     domains = domains_to_products(domain)
 
     categories: list[ProductCategory] = []
-    explicit_skincare_goal = any(token in goal_text for token in ["уход", "skin care", "skincare", "очищ", "крем", "serum", "spf"])
-    makeup_first_goal = (any(token in goal_text for token in ["макияж", "look", "образ", "губ", "lip", "глаз", "eye", "румян", "blush", "sexy", "glam", "luxury", "вечер"]) or (domain == IntentDomain.makeup)) and not explicit_skincare_goal
-    if ProductDomain.skincare in domains and not makeup_first_goal:
-        skincare_bundle = mode_categories(mode) if mode in {'skincare_core', 'hybrid_core'} else [ProductCategory.cleanser, ProductCategory.moisturizer, ProductCategory.spf]
-        categories.extend(skincare_bundle)
+    if ProductDomain.skincare in domains:
+        categories.extend([ProductCategory.cleanser, ProductCategory.moisturizer, ProductCategory.spf])
         if context.routine_size != RoutineSize.minimal and any(c.value in ["redness", "breakouts", "dryness", "oiliness"] for c in profile.primary_concerns):
             categories.insert(1, ProductCategory.serum)
         if ProductCategory.serum in detected and ProductCategory.serum not in categories:
@@ -174,9 +154,7 @@ def build_plan(profile: SkinProfile, context: UserContext, intent: DialogIntent 
     accent_balance = None
     focus_features: list[str] = []
     if ProductDomain.makeup in domains:
-        base_bundle = mode_categories(mode)
         makeup_categories, look_strategy, accent_balance, focus_features = _beauty_categories_from_goal(goal_text, detected, context)
-        makeup_categories = [*base_bundle, *[cat for cat in makeup_categories if cat not in base_bundle]]
         if profile.complexion.needs_under_eye_concealer and ProductCategory.concealer not in makeup_categories and any(cat in makeup_categories for cat in {ProductCategory.foundation, ProductCategory.skin_tint}):
             makeup_categories.append(ProductCategory.concealer)
         if "prefer_shine_control" in profile.complexion.complexion_constraints and ProductCategory.powder not in makeup_categories and any(cat in makeup_categories for cat in {ProductCategory.foundation, ProductCategory.skin_tint}):
@@ -194,8 +172,6 @@ def build_plan(profile: SkinProfile, context: UserContext, intent: DialogIntent 
             if cat not in ordered:
                 ordered.append(cat)
         categories = ordered
-
-    categories = enforce_look_categories(categories, RecommendationPlan(required_categories=list(dict.fromkeys(categories)), focus_features=focus_features, look_strategy=look_strategy, accent_balance=accent_balance))
 
     preferred_finishes = [item.value for item in (context.preferred_finish or profile.complexion.preferred_finish)]
     preferred_coverages = [item.value for item in (context.preferred_coverage or profile.complexion.preferred_coverage)]

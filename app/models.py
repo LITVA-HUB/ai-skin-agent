@@ -308,6 +308,28 @@ class RecommendationItem(BaseModel):
     final_score: float
 
 
+class CartItem(BaseModel):
+    sku: str
+    title: str
+    brand: str
+    category: ProductCategory
+    domain: ProductDomain = ProductDomain.skincare
+    price_value: int
+    quantity: int = 1
+
+
+class CartState(BaseModel):
+    items: list[CartItem] = Field(default_factory=list)
+
+    @property
+    def total_items(self) -> int:
+        return sum(item.quantity for item in self.items)
+
+    @property
+    def total_price(self) -> int:
+        return sum(item.price_value * item.quantity for item in self.items)
+
+
 class ConversationTurn(BaseModel):
     role: str
     message: str
@@ -317,7 +339,6 @@ class DialogContextState(BaseModel):
     current_recommendations: dict[ProductCategory, str] = Field(default_factory=dict)
     active_domains: list[IntentDomain] = Field(default_factory=list)
     look_profile: dict[str, Any] = Field(default_factory=dict)
-    decision_trace: dict[str, Any] = Field(default_factory=dict)
     transformation_history: list[str] = Field(default_factory=list)
     last_intent: str | None = None
     last_action: IntentAction | None = None
@@ -336,6 +357,7 @@ class SessionState(BaseModel):
     shown_products: list[str] = Field(default_factory=list)
     rejected_products: list[str] = Field(default_factory=list)
     accepted_products: list[str] = Field(default_factory=list)
+    cart: CartState = Field(default_factory=CartState)
     dialog_context: DialogContextState = Field(default_factory=DialogContextState)
     conversation_history: list[ConversationTurn] = Field(default_factory=list)
 
@@ -378,3 +400,22 @@ class SessionMessageResponse(BaseModel):
     updated_session_state: SessionState
     recommendations: list[RecommendationItem]
     answer_text: str
+
+
+class AddCartItemRequest(BaseModel):
+    sku: str
+    title: str
+    brand: str
+    category: ProductCategory
+    domain: ProductDomain = ProductDomain.skincare
+    price_value: int
+
+
+class UpdateCartItemRequest(BaseModel):
+    quantity: int
+
+
+class CartResponse(BaseModel):
+    cart: CartState
+    total_items: int
+    total_price: int

@@ -66,6 +66,49 @@ def test_compare_and_explain_modes() -> None:
     assert len(explain_data['answer_text']) > 20
 
 
+def test_cart_flow_add_update_remove() -> None:
+    analyze = client.post('/v1/photo/analyze', json={
+        'image_url': 'https://example.com/cart.jpg',
+        'user_context': {
+            'budget_segment': 'mid',
+            'preferred_brands': [],
+            'excluded_ingredients': [],
+            'routine_size': 'standard',
+            'goal': 'pick foundation for my skin tone'
+        }
+    })
+    assert analyze.status_code == 200
+    body = analyze.json()
+    session_id = body['session_id']
+    product = body['recommendations'][0]
+
+    add_resp = client.post(f'/v1/session/{session_id}/cart/items', json={
+        'sku': product['sku'],
+        'title': product['title'],
+        'brand': product['brand'],
+        'category': product['category'],
+        'domain': product['domain'],
+        'price_value': product['price_value'],
+    })
+    assert add_resp.status_code == 200
+    add_data = add_resp.json()
+    assert add_data['total_items'] == 1
+    assert add_data['total_price'] == product['price_value']
+
+    patch_resp = client.patch(f"/v1/session/{session_id}/cart/items/{product['sku']}", json={'quantity': 3})
+    assert patch_resp.status_code == 200
+    patch_data = patch_resp.json()
+    assert patch_data['total_items'] == 3
+    assert patch_data['total_price'] == product['price_value'] * 3
+
+    delete_resp = client.delete(f"/v1/session/{session_id}/cart/items/{product['sku']}")
+    assert delete_resp.status_code == 200
+    delete_data = delete_resp.json()
+    assert delete_data['total_items'] == 0
+    assert delete_data['total_price'] == 0
+
+
+
 def test_mixed_domain_memory_and_preference_updates() -> None:
     analyze = client.post('/v1/photo/analyze', json={
         'image_url': 'https://example.com/hybrid.jpg',

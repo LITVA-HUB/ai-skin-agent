@@ -1,35 +1,58 @@
 # Golden Apple Beauty Advisor
 
-AI beauty-advisor backend prototype for Golden Apple-style retail flows.
+Локальный FastAPI-прототип AI-консультанта для beauty-ритейла в логике Golden Apple.
 
-This project is evolving from a product concept demo into a more production-oriented recommendation backend.
-It is not a final production retail system yet, but it already contains:
-- session-aware beauty dialogue,
-- photo-driven starting recommendations,
-- beauty-domain planning,
-- recommendation pipeline with retrieval/reranking,
-- conversion-oriented response framing,
-- SQLite-backed session persistence,
-- health/readiness endpoints,
-- structured logging foundation.
+Проект уже работает не просто как skin analyzer, а как **photo-driven beauty advisor**, который:
+- анализирует фото,
+- собирает стартовую подборку,
+- ведёт session-aware диалог,
+- перестраивает образ под новый запрос,
+- позволяет сразу добавлять предложенные товары в корзину,
+- двигается в сторону retail-консультанта, а не просто explain-bot.
 
 ---
 
-## Current checkpoint
+## Current version
 
-**Checkpoint version:** `v0.6.0-beta`
+**Archive baseline:** `v0.2.0`
 
-This checkpoint should be understood as:
-- a strong backend checkpoint,
-- a production-hardening milestone,
-- not a final production release.
+Важно: внутри проекта есть рассинхрон версий — в `README` архив обозначен как `v0.2.0`, а в `app/main.py` версия приложения сейчас указана как `0.4.0`.
+
+Текущее состояние включает:
+- расширенный beauty scope,
+- look-aware planner,
+- look harmony,
+- look transformations,
+- merchandising / conversion layer,
+- consumer-facing UI,
+- встроенную session cart / корзину.
 
 ---
 
-## What exists now
+## What the project does now
 
-### Beauty domains
-The system currently covers:
+### 1. Photo-driven start
+Пользователь загружает фото и получает первую подборку.
+
+Система извлекает practical signals:
+- oiliness
+- dryness
+- redness
+- breakouts
+- tone evenness
+- sensitivity signs
+- skin tone bucket
+- undertone guess
+- under-eye darkness
+- visible shine
+- texture visibility
+
+Важно: это не медицинская диагностика и не косметолог. Это product-oriented visual analysis.
+
+---
+
+### 2. Beauty recommendation domains
+Сейчас проект покрывает:
 
 #### Skincare
 - cleanser
@@ -40,7 +63,7 @@ The system currently covers:
 - spot treatment
 - makeup remover
 
-#### Complexion / base
+#### Complexion
 - foundation
 - skin tint
 - concealer
@@ -70,200 +93,209 @@ The system currently covers:
 
 ---
 
-## Current backend architecture
+### 3. Session-aware beauty chat
+Агент удерживает внутри сессии:
+- текущую подборку,
+- ограничения,
+- budget direction,
+- accepted / rejected products,
+- последние цели,
+- структуру look / focus / transformations.
 
-The project has been split into focused modules.
-
-### Core runtime / API
-- `app/main.py`
-- `app/runtime.py`
-- `app/config.py`
-- `app/store.py`
-- `app/observability.py`
-- `app/validation.py`
-
-### Decision / recommendation logic
-- `app/intent_service.py`
-- `app/profile_service.py`
-- `app/plan_service.py`
-- `app/beauty_modes.py`
-- `app/look_rules.py`
-- `app/look_transforms.py`
-- `app/look_harmony.py`
-- `app/decision_pipeline.py`
-- `app/retrieval.py`
-- `app/retrieval_filters.py`
-- `app/retrieval_reranker.py`
-- `app/merchandising.py`
-- `app/response_service.py`
-- `app/dialog_service.py`
-- `app/logic.py`
-
-### Data
-- `app/data/catalog.json`
+Он умеет:
+- пересобрать подборку,
+- сделать вариант подешевле,
+- упростить образ,
+- сдвинуть акцент на губы / глаза,
+- сделать образ более вечерним,
+- объяснить выбор,
+- сравнить варианты.
 
 ---
 
-## What the backend can do now
+### 4. Look-aware planning
+Planner теперь работает не только на уровне категорий, но и на уровне образа.
 
-### 1. Start from a photo
-The backend accepts a photo payload and creates a first recommendation set.
-
-### 2. Maintain session state
-The backend keeps conversation state across requests and now persists sessions via SQLite by default.
-
-### 3. Interpret user requests
-It can react to requests such as:
-- show cheaper option
-- replace product
-- explain choice
-- compare choices
-- make it simpler
-- shift focus to lips / eyes
-- attempt evening / glam / soft-luxury style shifts
-
-### 4. Build recommendation sets
-The backend currently uses:
-- profile inference
-- recommendation planning
-- retrieval filters
-- reranking
-- hero/support ordering
-
-### 5. Produce retail-oriented responses
-Responses are shorter and more grounded than earlier builds.
-There is a stronger fail-safe fallback to deterministic response composition.
-
----
-
-## Operational foundation added in this checkpoint
-
-### Persistence
-- SQLite-backed session persistence
-- TTL support
-- expired-session cleanup
-- simple migration discipline for session table evolution
-
-### Service health
-- `/health`
-- `/ready`
-
-### Observability
-- startup/shutdown events
-- request/error logging foundation
-- structured JSON-line logs
-- decision trace in runtime state
-
-### Safety improvements
-- stricter response grounding validation
-- stronger deterministic fallback for answers
-
----
-
-## Current strengths
-
-- the backend architecture is much stronger than the initial prototype
-- the project is modular and testable
-- response discipline is better than before
-- persistence and runtime discipline are now present
-- there is a growing production-style operational foundation
-
----
-
-## Current limitations
-
-This beta checkpoint is still **not final production-ready**.
-
-Main open gaps:
-
-### 1. Decision correctness is still inconsistent
-The hardest unresolved product-quality issue is recommendation correctness in some style-critical flows:
-- sexy
+Поддерживаются идеи:
+- fresh
+- balanced
+- glam
+- sensual
 - soft luxury
-- evening transformation
-- eyes/lips focus shifts
 
-These are better understood now, but still not stable enough to call production-grade.
-
-### 2. Catalog realism is limited
-The catalog is still synthetic/mock and not a real retail catalog.
-That limits recommendation quality significantly.
-
-### 3. Response safety is improved, but not perfect
-Grounding is much better than before, but production-grade answer control still needs more tightening.
-
-### 4. Operational maturity is incomplete
-The service now has a much better foundation, but still needs:
-- stronger request tracing
-- richer error diagnostics
-- fuller config discipline
-- deeper evaluation harness
+Также учитываются:
+- focus features
+- accent balance
+- color family
+- finish logic
+- occasion-like transformations
 
 ---
 
-## Roadmap
-
-## Phase A — Recommendation correctness
-Primary focus:
-- fix mode resolution quality
-- fix bundle correctness for key beauty scenarios
-- stabilize sexy / luxury / evening / focus flows
-- improve hero selection and visible-payoff ranking
-
-## Phase B — Response reliability
-- stricter grounded response control
-- safer compare/explain behavior
-- more deterministic product-facing response assembly
-
-## Phase C — Data realism
-- richer catalog metadata
-- better shade/family structure
-- stronger compatibility logic
-- real retail catalog integration path
-
-## Phase D — Production maturity
-- stronger storage lifecycle
-- richer request tracing
-- structured warning/error events
-- evaluation/regression harness
-- deployment/runtime hardening
+### 5. Look harmony
+Система старается учитывать сочетание между продуктами:
+- dominant color
+- dominant finish
+- lips / eyes / cheeks focus
+- стратегию образа
+- более согласованную связку hero + support items
 
 ---
 
-## For humans and models reading this repo
+### 6. Look transformation flows
+Поддерживаются трансформации вроде:
+- day → evening
+- fresh → sexy
+- balanced → soft luxury
+- focus lips
+- focus eyes
 
-If you are reviewing this repository, the correct interpretation is:
+То есть агент может не только “собрать”, но и **перестроить** уже начатый образ.
 
-- this is no longer a toy demo;
-- this is also not yet a final production beauty backend;
-- this repository is currently in a serious backend-hardening stage;
-- the biggest remaining challenge is product-quality correctness, not basic project structure.
+---
 
-In other words:
-**architecture is getting stronger faster than recommendation quality**, and the next milestones should focus on closing that gap.
+### 7. Merchandising / conversion layer
+В проект уже добавлены:
+- hero-first ordering
+- support-item sequencing
+- bundle framing
+- cart-minded selling logic
+- choice simplification
+- aspirational CTA
+
+Это ещё не production-grade commerce engine, но это уже шаг в сторону продающего beauty advisor.
+
+---
+
+### 8. Built-in cart flow
+Теперь в UI есть **магазинная корзина**, привязанная к текущей сессии:
+- товары можно добавлять прямо из рекомендаций,
+- можно менять количество,
+- удалять позиции,
+- очищать корзину,
+- видеть общее количество и итоговую сумму.
+
+Под это добавлены API-эндпоинты:
+- `GET /v1/session/{session_id}/cart`
+- `POST /v1/session/{session_id}/cart/items`
+- `PATCH /v1/session/{session_id}/cart/items/{sku}`
+- `DELETE /v1/session/{session_id}/cart/items/{sku}`
+- `DELETE /v1/session/{session_id}/cart`
+
+---
+
+## Architecture
+
+Ключевые слои сейчас:
+- `profile_service.py`
+- `intent_service.py`
+- `plan_service.py`
+- `retrieval.py`
+- `retrieval_filters.py`
+- `retrieval_reranker.py`
+- `response_service.py`
+- `dialog_service.py`
+- `look_harmony.py`
+- `look_transforms.py`
+- `merchandising.py`
+- `logic.py` как orchestration layer
+- `store.py` для in-memory session storage
+
+Подробнее:
+- `ARCHITECTURE.md`
+
+---
+
+## Local run
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+```
+
+Открыть:
+- `http://127.0.0.1:8000/`
+
+Если используется фиксированный локальный запуск:
+- `http://127.0.0.1:8010/`
+
+---
+
+## Configuration
+
+Проект читает `.env` в корне репозитория.
+
+Пример:
+
+```env
+GEMINI_API_KEY=your_real_api_key
+GEMINI_MODEL=gemini-3.1-flash-lite-preview
+SESSION_TTL_HOURS=24
+```
+
+Важно:
+- `GEMINI_API_KEY` — API key
+- `GEMINI_MODEL` — имя модели, не ключ
 
 ---
 
 ## Tests
 
-At the time of this checkpoint, the project test suite is green.
+Проект покрыт тестами по:
+- app flows
+- retrieval
+- intent parsing
+- planning
+- response helpers
+- beauty expansion
+- look harmony
+- look transforms
+- merchandising
+- conversion layer
+- UI smoke
+- cart flow
 
-Latest status during this work:
-- **62 passed**
+Локальная проверка перед публикацией в этой итерации:
+- **10 passed** (`tests/test_app.py`, `tests/test_ui.py`)
 
 ---
 
-## Related project docs
+## Repository notes
 
+Полезные файлы:
 - `ARCHITECTURE.md`
 - `BEAUTY_EXPANSION_PLAN.md`
 - `CONVERSION_NOTES.md`
-- `PRODUCTION_BLUEPRINT.md`
 - `CHANGELOG.md`
-
----
-
-## Repository
 
 GitHub:
 - <https://github.com/LITVA-HUB/ai-skin-agent>
+
+---
+
+## Current caveats
+
+Это всё ещё **prototype**, а не production-ready система.
+
+Слабые места текущей версии:
+- каталог synthetic/mock
+- нет real retail integration
+- нет persistent DB-backed sessions
+- корзина пока session-based, а не backed by database
+- checkout пока только UI / flow stub, без реального заказа
+- ответный слой стал лучше, но ещё не полностью production-safe
+- LLM discipline improved, but still needs stricter response control for perfect retail consistency
+- some transformation flows still need stronger category steering
+
+---
+
+## Short roadmap
+
+### Next likely focus
+- отдельный checkout screen
+- stronger hero-item selection by visible payoff
+- harder category steering for sexy / evening / focus transformations
+- richer cart / bundle flow
+- real catalog / persistent data / release-grade polish
