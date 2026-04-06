@@ -1,4 +1,3 @@
-from app.beauty_modes import detect_mode, mode_categories
 from app.catalog import load_catalog
 from app.intent_service import detect_categories, detect_domain, heuristic_intent
 from app.models import IntentDomain, PriceSegment, ProductCategory, RoutineSize, UserContext
@@ -44,11 +43,6 @@ def test_detect_domain_for_makeup_expansion() -> None:
     assert detect_domain('хочу помаду, румяна и тушь') == IntentDomain.makeup
 
 
-def test_detect_mode_for_lips_focus() -> None:
-    assert detect_mode('хочу sexy образ с акцентом на губы') == 'lips_focus'
-    assert ProductCategory.lipstick in mode_categories('lips_focus')
-
-
 def test_heuristic_intent_for_full_look() -> None:
     intent = heuristic_intent('собери полный образ на вечер')
     assert intent.intent == 'build_full_look'
@@ -72,7 +66,6 @@ def test_plan_sets_sensual_focus_for_sexy_request() -> None:
     assert plan.look_strategy == 'sensual'
     assert plan.accent_balance == 'feature_focus'
     assert 'lips' in plan.focus_features
-    assert ProductCategory.lipstick in plan.required_categories
 
 
 def test_retrieval_returns_lip_products_for_matching_request() -> None:

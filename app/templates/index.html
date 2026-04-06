@@ -6,331 +6,1114 @@
   <title>Golden Apple beauty advisor</title>
   <style>
     :root {
-      --bg:#f7f3ee;
-      --panel:#fffaf6;
-      --panel-strong:#ffffff;
-      --text:#241c17;
-      --muted:#786a60;
-      --accent:#111111;
-      --accent-soft:#f1e5d8;
-      --border:#eadfd3;
-      --gold:#d6a663;
-      --shadow:0 18px 45px rgba(54,34,18,.08);
+      --bg:#f7f2ea;
+      --bg-soft:#fbf7f2;
+      --surface:#fffdfa;
+      --surface-2:#f4ede4;
+      --ink:#171411;
+      --ink-soft:#544a42;
+      --ink-muted:#84786d;
+      --line:rgba(23,20,17,.1);
+      --line-strong:rgba(23,20,17,.18);
+      --gold:#d5a24b;
+      --gold-soft:#f7e4be;
+      --berry:#6f355e;
+      --shadow:0 18px 50px rgba(31,20,12,.08);
+      --shadow-strong:0 22px 70px rgba(26,16,10,.14);
+      --radius-xl:30px;
+      --radius-lg:24px;
+      --radius-md:18px;
+      --radius-sm:14px;
     }
+
     * { box-sizing:border-box; }
+
+    html {
+      scroll-behavior:smooth;
+    }
+
     body {
       margin:0;
-      font-family:Inter,Segoe UI,Arial,sans-serif;
-      color:var(--text);
+      color:var(--ink);
+      font-family:Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top left, #fff7ef 0%, transparent 30%),
-        linear-gradient(180deg, #fbf6f0 0%, #f6f0ea 100%);
+        radial-gradient(circle at top left, rgba(255,255,255,.85) 0%, transparent 26%),
+        radial-gradient(circle at 90% 0%, rgba(213,162,75,.12) 0%, transparent 20%),
+        linear-gradient(180deg, #fbf7f2 0%, #f6efe6 48%, #f3ece3 100%);
     }
+
     .page {
-      max-width:1180px;
+      max-width:1320px;
       margin:0 auto;
-      padding:28px 20px 40px;
+      padding:22px 18px 48px;
       display:grid;
       gap:18px;
     }
-    .hero {
-      background:linear-gradient(135deg, rgba(255,250,246,.98), rgba(249,238,227,.96));
-      border:1px solid var(--border);
-      border-radius:28px;
-      padding:28px;
-      box-shadow:var(--shadow);
-      display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:22px;
-      align-items:stretch;
-    }
-    .hero h1 {
-      margin:0 0 10px;
-      font-size:40px;
-      line-height:1.05;
-      letter-spacing:-0.03em;
-    }
-    .hero p {
-      margin:0;
-      font-size:16px;
-      line-height:1.6;
-      color:var(--muted);
-      max-width:650px;
-    }
-    .hero-points {
+
+    .topbar {
+      position:sticky;
+      top:14px;
+      z-index:20;
       display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:18px;
-    }
-    .chip {
-      padding:10px 14px;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      padding:14px 18px;
+      border:1px solid rgba(255,255,255,.55);
       border-radius:999px;
-      background:rgba(255,255,255,.75);
-      border:1px solid var(--border);
-      color:#4d4036;
-      font-size:14px;
+      backdrop-filter:blur(14px) saturate(140%);
+      background:rgba(255,252,247,.72);
+      box-shadow:0 10px 30px rgba(36,24,14,.07);
     }
-    .upload-card, .panel {
-      background:rgba(255,250,246,.92);
-      border:1px solid var(--border);
-      border-radius:24px;
+
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
+
+    .brand-mark {
+      width:38px;
+      height:38px;
+      border-radius:50%;
+      background:
+        radial-gradient(circle at 35% 30%, #ffe9bf 0%, #f5c970 38%, #ce8b28 72%, #8c5717 100%);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.5),
+        0 8px 20px rgba(160,103,28,.22);
+      position:relative;
+      flex:0 0 auto;
+    }
+
+    .brand-mark::after {
+      content:'';
+      position:absolute;
+      width:13px;
+      height:7px;
+      top:-2px;
+      right:7px;
+      border-radius:99px 99px 0 99px;
+      background:linear-gradient(135deg, #7d9a43, #4f6f29);
+      transform:rotate(-22deg);
+      box-shadow:0 2px 8px rgba(79,111,41,.18);
+    }
+
+    .brand-copy {
+      min-width:0;
+    }
+
+    .eyebrow {
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      font-size:11px;
+      color:var(--ink-muted);
+      margin-bottom:4px;
+    }
+
+    .brand-title {
+      font-size:15px;
+      font-weight:700;
+      letter-spacing:-.02em;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .topbar-meta {
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .pill {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 13px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.6);
+      color:var(--ink-soft);
+      font-size:13px;
+      white-space:nowrap;
+    }
+
+    .pill-dot {
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:linear-gradient(180deg, #f3c96d, #bf8130);
+      box-shadow:0 0 0 4px rgba(213,162,75,.16);
+      flex:0 0 auto;
+    }
+
+    .hero-shell {
+      position:relative;
+      overflow:hidden;
+      border-radius:34px;
+      border:1px solid rgba(255,255,255,.65);
+      background:
+        linear-gradient(135deg, rgba(255,253,250,.96), rgba(247,239,229,.96)),
+        linear-gradient(180deg, rgba(213,162,75,.06), rgba(111,53,94,.04));
+      box-shadow:var(--shadow-strong);
+      padding:18px;
+    }
+
+    .hero-shell::before,
+    .hero-shell::after {
+      content:'';
+      position:absolute;
+      border-radius:50%;
+      pointer-events:none;
+      filter:blur(2px);
+    }
+
+    .hero-shell::before {
+      width:280px;
+      height:280px;
+      top:-120px;
+      right:-60px;
+      background:radial-gradient(circle, rgba(213,162,75,.2) 0%, rgba(213,162,75,0) 72%);
+    }
+
+    .hero-shell::after {
+      width:220px;
+      height:220px;
+      bottom:-100px;
+      left:-50px;
+      background:radial-gradient(circle, rgba(111,53,94,.12) 0%, rgba(111,53,94,0) 72%);
+    }
+
+    .hero {
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      gap:18px;
+      position:relative;
+      z-index:1;
+    }
+
+    .hero-copy,
+    .upload-card,
+    .panel,
+    .editorial-strip {
+      border-radius:var(--radius-xl);
+      border:1px solid rgba(23,20,17,.08);
+      background:rgba(255,255,255,.62);
+      backdrop-filter:blur(6px);
       box-shadow:var(--shadow);
     }
+
+    .hero-copy {
+      padding:28px;
+      display:grid;
+      gap:18px;
+      align-content:start;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.84), rgba(255,248,238,.68)),
+        radial-gradient(circle at top right, rgba(213,162,75,.16), rgba(213,162,75,0) 30%);
+    }
+
+    .hero-headline {
+      display:grid;
+      gap:12px;
+    }
+
+    .hero-headline h1 {
+      margin:0;
+      font-size:58px;
+      line-height:.96;
+      letter-spacing:-.055em;
+      max-width:760px;
+    }
+
+    .hero-lead {
+      margin:0;
+      font-size:17px;
+      line-height:1.72;
+      color:var(--ink-soft);
+      max-width:710px;
+    }
+
+    .hero-grid {
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:12px;
+    }
+
+    .hero-card {
+      padding:14px 14px 15px;
+      border-radius:22px;
+      background:rgba(255,255,255,.7);
+      border:1px solid rgba(23,20,17,.08);
+      min-height:118px;
+    }
+
+    .hero-card strong {
+      display:block;
+      margin-bottom:8px;
+      font-size:14px;
+      line-height:1.35;
+    }
+
+    .hero-card span {
+      display:block;
+      color:var(--ink-muted);
+      font-size:13px;
+      line-height:1.55;
+    }
+
+    .story-row {
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .story-chip {
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px 10px 10px;
+      border-radius:999px;
+      border:1px solid rgba(23,20,17,.08);
+      background:rgba(255,255,255,.78);
+      box-shadow:0 6px 18px rgba(34,20,12,.04);
+      font-size:13px;
+      color:var(--ink-soft);
+    }
+
+    .story-thumb {
+      width:28px;
+      height:28px;
+      border-radius:50%;
+      flex:0 0 auto;
+      background:linear-gradient(135deg, #f3c26b, #f8ead0 42%, #7d385e 100%);
+      border:2px solid rgba(255,255,255,.85);
+      box-shadow:0 4px 10px rgba(98,53,42,.16);
+    }
+
     .upload-card {
       padding:18px;
       display:grid;
       gap:14px;
       align-content:start;
+      background:
+        linear-gradient(180deg, rgba(21,17,14,.98), rgba(30,24,19,.94)),
+        linear-gradient(135deg, rgba(213,162,75,.06), rgba(111,53,94,.08));
+      color:#fff6ed;
+      border-color:rgba(255,255,255,.08);
+      box-shadow:0 24px 70px rgba(22,15,11,.3);
     }
+
+    .upload-top {
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:flex-start;
+    }
+
+    .upload-top h2 {
+      margin:0 0 6px;
+      font-size:24px;
+      letter-spacing:-.03em;
+      color:#fff9f3;
+    }
+
+    .upload-top p {
+      margin:0;
+      color:rgba(255,243,230,.72);
+      font-size:14px;
+      line-height:1.6;
+      max-width:420px;
+    }
+
+    .upload-badge {
+      padding:9px 11px;
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.09);
+      color:#f7d69a;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      white-space:nowrap;
+    }
+
     .preview-wrap {
       position:relative;
-      border-radius:20px;
       overflow:hidden;
-      border:1px dashed #d8c6b5;
-      background:linear-gradient(135deg, #fff8f2, #f5ece3);
-      min-height:340px;
+      min-height:380px;
+      border-radius:26px;
+      border:1px solid rgba(255,255,255,.08);
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,.08), transparent 32%),
+        linear-gradient(160deg, #2a2019 0%, #17110d 100%);
     }
+
+    .preview-wrap::after {
+      content:'';
+      position:absolute;
+      inset:auto 12px 12px auto;
+      width:86px;
+      height:86px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(213,162,75,.18), rgba(213,162,75,0) 70%);
+      pointer-events:none;
+    }
+
     .preview {
       width:100%;
-      height:340px;
+      height:380px;
       object-fit:cover;
       display:block;
     }
+
     .preview-placeholder {
       position:absolute;
       inset:0;
       display:grid;
       place-items:center;
-      padding:26px;
+      padding:28px;
       text-align:center;
-      color:#8b796c;
+      color:rgba(255,243,230,.72);
       font-size:15px;
-      line-height:1.5;
+      line-height:1.6;
     }
+
     .upload-line {
       display:grid;
       gap:10px;
     }
+
     input[type="file"], textarea, button {
       font:inherit;
-      border-radius:16px;
     }
+
+    input[type="file"] {
+      width:100%;
+      padding:14px 16px;
+      border-radius:18px;
+      border:1px dashed rgba(255,255,255,.18);
+      background:rgba(255,255,255,.05);
+      color:#fff8ef;
+    }
+
     textarea {
       width:100%;
-      min-height:86px;
+      min-height:96px;
       resize:vertical;
-      border:1px solid var(--border);
-      padding:14px 15px;
-      background:#fff;
-      color:var(--text);
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:#fffdfa;
+      color:var(--ink);
+      padding:15px 16px;
       outline:none;
+      transition:border-color .18s ease, box-shadow .18s ease, transform .18s ease;
     }
+
+    textarea:focus,
+    input[type="file"]:focus {
+      border-color:rgba(213,162,75,.56);
+      box-shadow:0 0 0 4px rgba(213,162,75,.12);
+    }
+
     button {
       border:0;
       cursor:pointer;
-      transition:.18s ease;
+      transition:transform .18s ease, box-shadow .18s ease, opacity .18s ease, background .18s ease;
     }
+
+    button:hover {
+      transform:translateY(-1px);
+    }
+
+    button:disabled {
+      opacity:.6;
+      cursor:default;
+      transform:none;
+    }
+
     .primary-btn {
-      background:#111;
-      color:#fff;
+      background:linear-gradient(180deg, #f2ca7b 0%, #d49d49 100%);
+      color:#23180f;
+      font-weight:800;
       padding:15px 18px;
-      font-weight:700;
-      letter-spacing:-0.01em;
+      border-radius:18px;
+      box-shadow:0 10px 25px rgba(193,128,36,.22);
     }
-    .primary-btn:hover { transform:translateY(-1px); }
+
     .ghost-btn {
-      background:#f3e7db;
-      color:#4b392c;
-      padding:13px 16px;
+      background:rgba(255,255,255,.08);
+      color:#fff3e5;
       font-weight:600;
+      padding:14px 18px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.1);
     }
+
     .status {
-      padding:12px 14px;
-      border-radius:16px;
-      background:#fff;
-      border:1px solid var(--border);
-      color:#59493d;
+      padding:14px 16px;
+      border-radius:18px;
+      background:rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.08);
+      color:rgba(255,245,236,.86);
       font-size:14px;
-      line-height:1.45;
+      line-height:1.5;
     }
+
     .status.error {
-      background:#fff1f2;
-      border-color:#efc3c8;
-      color:#8f2d39;
+      background:rgba(143,45,57,.16);
+      border-color:rgba(239,195,200,.22);
+      color:#ffd8dd;
     }
+
+    .tiny {
+      font-size:12px;
+      color:rgba(255,243,230,.58);
+      line-height:1.55;
+    }
+
+    .editorial-strip {
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:14px;
+      padding:16px;
+      align-items:stretch;
+    }
+
+    .editorial-card {
+      padding:18px;
+      border-radius:22px;
+      border:1px solid rgba(23,20,17,.08);
+      background:rgba(255,255,255,.7);
+    }
+
+    .editorial-card.dark {
+      background:linear-gradient(180deg, #1a1411, #2a201a);
+      color:#fff7ee;
+      border-color:rgba(255,255,255,.08);
+    }
+
+    .editorial-card h3 {
+      margin:0 0 8px;
+      font-size:19px;
+      letter-spacing:-.03em;
+    }
+
+    .editorial-card p {
+      margin:0;
+      color:inherit;
+      opacity:.78;
+      line-height:1.6;
+      font-size:14px;
+    }
+
+    .editorial-list {
+      margin-top:12px;
+      display:grid;
+      gap:10px;
+    }
+
+    .editorial-item {
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      color:inherit;
+      font-size:14px;
+      line-height:1.5;
+      opacity:.9;
+    }
+
+    .editorial-item i {
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:linear-gradient(180deg, #f3ca7b, #cb8930);
+      margin-top:6px;
+      flex:0 0 auto;
+      display:block;
+    }
+
     .main {
       display:grid;
-      grid-template-columns:1.15fr .85fr;
+      grid-template-columns:1.08fr .92fr;
       gap:18px;
       align-items:start;
     }
+
     .panel {
-      padding:18px;
+      padding:20px;
+      background:rgba(255,253,249,.74);
     }
-    .panel h2 {
+
+    .section-head {
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:flex-start;
+      margin-bottom:14px;
+    }
+
+    .section-head h2 {
       margin:0 0 6px;
-      font-size:22px;
-      letter-spacing:-0.02em;
+      font-size:28px;
+      letter-spacing:-.035em;
     }
+
     .sub {
-      color:var(--muted);
+      color:var(--ink-soft);
       font-size:14px;
-      line-height:1.55;
+      line-height:1.62;
     }
+
+    .mini-badge {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 12px;
+      border-radius:999px;
+      background:linear-gradient(180deg, #fff6e4, #fae8c7);
+      border:1px solid rgba(213,162,75,.22);
+      color:#805822;
+      font-size:12px;
+      font-weight:700;
+      white-space:nowrap;
+    }
+
+    .chat-shell {
+      border-radius:26px;
+      padding:14px;
+      background:linear-gradient(180deg, rgba(255,251,245,.92), rgba(246,238,229,.86));
+      border:1px solid rgba(23,20,17,.06);
+    }
+
     .chat {
       display:grid;
       gap:10px;
-      max-height:560px;
+      max-height:540px;
       overflow:auto;
       padding-right:4px;
-      margin:14px 0 14px;
+      margin:0 0 14px;
     }
+
     .msg {
       max-width:86%;
       padding:14px 16px;
-      border-radius:18px;
+      border-radius:20px;
       white-space:pre-wrap;
-      line-height:1.52;
+      line-height:1.58;
       font-size:15px;
-      box-shadow:0 6px 18px rgba(38,21,8,.04);
+      box-shadow:0 10px 22px rgba(38,24,12,.04);
     }
+
     .msg.user {
       margin-left:auto;
-      background:#161616;
-      color:#fff;
-      border-bottom-right-radius:6px;
+      background:linear-gradient(180deg, #201814, #14110f);
+      color:#fff9f2;
+      border-bottom-right-radius:8px;
+      border:1px solid rgba(255,255,255,.04);
     }
+
     .msg.agent {
-      background:#fff;
-      border:1px solid var(--border);
-      color:#2d231c;
-      border-bottom-left-radius:6px;
+      background:linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,250,244,.92));
+      border:1px solid rgba(23,20,17,.08);
+      color:#2c241e;
+      border-bottom-left-radius:8px;
     }
-    .cta-row {
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:12px;
-    }
-    .quick-btn {
-      background:var(--accent-soft);
-      border:1px solid var(--border);
-      color:#46372c;
-      padding:11px 13px;
-      border-radius:999px;
-      font-size:14px;
-      font-weight:600;
-    }
-    .cards {
-      display:grid;
-      gap:12px;
-      margin-top:16px;
-    }
-    .card {
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius:18px;
-      padding:15px;
-    }
-    .card h3 {
-      margin:0 0 6px;
-      font-size:17px;
-      line-height:1.3;
-    }
-    .badge {
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      font-size:12px;
-      padding:7px 10px;
-      border-radius:999px;
-      background:#fcf3e8;
-      color:#85613a;
-      margin-bottom:10px;
-    }
-    .price {
-      font-size:20px;
-      font-weight:800;
-      margin:10px 0 8px;
-      letter-spacing:-0.02em;
-    }
-    .tiny {
-      font-size:12px;
-      color:var(--muted);
-      line-height:1.5;
-    }
+
     .composer {
       display:grid;
       gap:10px;
     }
+
     .send-row {
       display:flex;
       gap:10px;
     }
-    .send-row button { flex:1; }
-    .helper {
-      padding:14px 16px;
-      border-radius:18px;
-      background:#fff;
-      border:1px solid var(--border);
+
+    .send-row button {
+      flex:1;
     }
-    .helper strong { display:block; margin-bottom:6px; }
-    @media (max-width:980px) {
-      .hero, .main { grid-template-columns:1fr; }
-      .hero h1 { font-size:32px; }
-      .msg { max-width:100%; }
+
+    .cta-row {
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .quick-btn {
+      background:rgba(255,255,255,.82);
+      border:1px solid rgba(23,20,17,.08);
+      color:#46372c;
+      padding:11px 14px;
+      border-radius:999px;
+      font-size:14px;
+      font-weight:600;
+      box-shadow:0 8px 16px rgba(31,18,9,.04);
+    }
+
+    .sidebar-grid {
+      display:grid;
+      gap:14px;
+    }
+
+    .helper {
+      padding:18px;
+      border-radius:22px;
+      background:linear-gradient(180deg, rgba(255,255,255,.88), rgba(248,240,230,.8));
+      border:1px solid rgba(23,20,17,.08);
+    }
+
+    .helper strong {
+      display:block;
+      margin-bottom:8px;
+      font-size:16px;
+      letter-spacing:-.02em;
+    }
+
+    .helper-grid {
+      display:grid;
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .helper-item {
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      font-size:14px;
+      line-height:1.52;
+      color:var(--ink-soft);
+    }
+
+    .helper-item i {
+      display:block;
+      width:9px;
+      height:9px;
+      border-radius:50%;
+      background:linear-gradient(180deg, #d8ad56, #9a6726);
+      margin-top:6px;
+      flex:0 0 auto;
+    }
+
+    .cards {
+      display:grid;
+      gap:12px;
+    }
+
+    .card {
+      position:relative;
+      overflow:hidden;
+      background:linear-gradient(180deg, rgba(255,255,255,.98), rgba(251,245,237,.94));
+      border:1px solid rgba(23,20,17,.08);
+      border-radius:22px;
+      padding:16px;
+      box-shadow:0 12px 30px rgba(36,22,14,.05);
+    }
+
+    .card::after {
+      content:'';
+      position:absolute;
+      inset:auto -18px -18px auto;
+      width:98px;
+      height:98px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(213,162,75,.15) 0%, rgba(213,162,75,0) 72%);
+      pointer-events:none;
+    }
+
+    .badge {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:12px;
+      font-weight:700;
+      padding:8px 11px;
+      border-radius:999px;
+      background:linear-gradient(180deg, #fff7e8, #f7e2b9);
+      color:#805923;
+      margin-bottom:12px;
+      border:1px solid rgba(213,162,75,.22);
+    }
+
+    .card h3 {
+      margin:0 0 6px;
+      font-size:18px;
+      line-height:1.35;
+      letter-spacing:-.025em;
+      max-width:92%;
+    }
+
+    .brand-row {
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:10px;
+      color:var(--ink-soft);
+      font-size:14px;
+    }
+
+    .brand-dot {
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:linear-gradient(180deg, #6f355e, #d5a24b);
+      box-shadow:0 0 0 5px rgba(111,53,95,.08);
+    }
+
+    .price {
+      font-size:24px;
+      font-weight:800;
+      margin:8px 0 10px;
+      letter-spacing:-.04em;
+      color:#1f1812;
+    }
+
+    .card-actions {
+      display:flex;
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .card-btn {
+      flex:1;
+      border-radius:14px;
+      padding:11px 13px;
+      font-size:14px;
+      font-weight:700;
+    }
+
+    .card-btn.add {
+      background:linear-gradient(180deg, #f2ca7b 0%, #d49d49 100%);
+      color:#23180f;
+      box-shadow:0 10px 20px rgba(193,128,36,.16);
+    }
+
+    .card-btn.added {
+      background:#231a16;
+      color:#fff7ef;
+    }
+
+    .cart-panel {
+      padding:18px;
+      border-radius:22px;
+      background:linear-gradient(180deg, rgba(36,26,21,.98), rgba(25,18,15,.95));
+      border:1px solid rgba(255,255,255,.06);
+      color:#fff7ef;
+      box-shadow:0 18px 40px rgba(19,13,10,.16);
+    }
+
+    .cart-top {
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:flex-start;
+      margin-bottom:14px;
+    }
+
+    .cart-title {
+      margin:0 0 6px;
+      font-size:20px;
+      letter-spacing:-.03em;
+      color:#fff7ef;
+    }
+
+    .cart-sub {
+      color:rgba(255,240,228,.7);
+      font-size:13px;
+      line-height:1.55;
+    }
+
+    .cart-badge {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:34px;
+      height:34px;
+      padding:0 10px;
+      border-radius:999px;
+      background:linear-gradient(180deg, #fff6e4, #fae8c7);
+      color:#7a521f;
+      font-size:13px;
+      font-weight:800;
+    }
+
+    .cart-list {
+      display:grid;
+      gap:10px;
+      margin-bottom:14px;
+    }
+
+    .cart-item {
+      display:grid;
+      gap:10px;
+      padding:13px;
+      border-radius:18px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .cart-item-top {
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:flex-start;
+    }
+
+    .cart-item h4 {
+      margin:0 0 4px;
+      font-size:14px;
+      line-height:1.4;
+      color:#fff8f1;
+    }
+
+    .cart-meta,
+    .cart-empty {
+      color:rgba(255,240,228,.66);
+      font-size:13px;
+      line-height:1.5;
+    }
+
+    .cart-price {
+      white-space:nowrap;
+      font-size:16px;
+      font-weight:800;
+      color:#f3cd7f;
+    }
+
+    .cart-controls {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    .qty-controls {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .qty-btn,
+    .cart-clear-btn,
+    .cart-remove-btn {
+      border-radius:12px;
+      padding:8px 10px;
+      font-size:13px;
+      font-weight:700;
+    }
+
+    .qty-btn {
+      min-width:34px;
+      background:rgba(255,255,255,.08);
+      color:#fff7ef;
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .qty-value {
+      min-width:18px;
+      text-align:center;
+      color:#fff9f3;
+      font-weight:700;
+      font-size:14px;
+    }
+
+    .cart-remove-btn,
+    .cart-clear-btn {
+      background:transparent;
+      color:rgba(255,240,228,.8);
+      border:1px solid rgba(255,255,255,.1);
+    }
+
+    .cart-summary {
+      display:grid;
+      gap:10px;
+      padding-top:14px;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+
+    .cart-summary-row {
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:center;
+      color:rgba(255,244,234,.84);
+      font-size:14px;
+    }
+
+    .cart-summary-row strong {
+      font-size:20px;
+      letter-spacing:-.03em;
+      color:#fff9f3;
+    }
+
+    .cart-cta {
+      display:grid;
+      gap:10px;
+      margin-top:2px;
+    }
+
+    .cart-primary {
+      width:100%;
+      border-radius:16px;
+      padding:13px 14px;
+      background:linear-gradient(180deg, #f2ca7b 0%, #d49d49 100%);
+      color:#23180f;
+      font-weight:800;
+    }
+
+    .empty-state {
+      padding:18px;
+      border-radius:22px;
+      background:linear-gradient(180deg, rgba(255,255,255,.82), rgba(247,239,229,.8));
+      border:1px solid rgba(23,20,17,.08);
+    }
+
+    .footer-note {
+      text-align:center;
+      color:var(--ink-muted);
+      font-size:12px;
+      line-height:1.6;
+      padding:6px 0 0;
+    }
+
+    @media (max-width:1120px) {
+      .hero,
+      .main,
+      .editorial-strip {
+        grid-template-columns:1fr;
+      }
+
+      .hero-headline h1 {
+        font-size:46px;
+      }
+
+      .hero-grid {
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width:740px) {
+      .page {
+        padding:16px 14px 34px;
+      }
+
+      .topbar {
+        border-radius:24px;
+        align-items:flex-start;
+        flex-direction:column;
+      }
+
+      .topbar-meta {
+        justify-content:flex-start;
+      }
+
+      .hero-copy,
+      .upload-card,
+      .panel,
+      .editorial-card,
+      .editorial-strip {
+        padding:16px;
+      }
+
+      .hero-headline h1 {
+        font-size:38px;
+      }
+
+      .preview-wrap,
+      .preview {
+        min-height:300px;
+        height:300px;
+      }
+
+      .send-row {
+        flex-direction:column;
+      }
+
+      .msg {
+        max-width:100%;
+      }
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <section class="hero">
-      <div>
-        <h1>Твой beauty-консультант для выбора макияжа и ухода</h1>
-        <p>Просто загрузи фото — и агент поможет собрать понятную подборку под твою внешность, настроение и задачу. Без анкет, перегруза и лишних шагов: только живой диалог и конкретные рекомендации.</p>
-        <div class="hero-points">
-          <div class="chip">Подбор макияжа и ухода</div>
-          <div class="chip">Губы, глаза, румяна, тон</div>
-          <div class="chip">Образы на день и вечер</div>
-          <div class="chip">Можно сразу просить дешевле или ярче</div>
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div class="brand-copy">
+          <div class="eyebrow">golden apple inspired</div>
+          <div class="brand-title">Golden Apple beauty advisor</div>
         </div>
       </div>
+      <div class="topbar-meta">
+        <div class="pill"><span class="pill-dot"></span> photo-driven beauty-консультант</div>
+      </div>
+    </header>
 
-      <div class="upload-card">
-        <div class="preview-wrap">
-          <img id="preview" class="preview" alt="preview" style="display:none" />
-          <div id="previewPlaceholder" class="preview-placeholder">
-            Загрузи фото лица — агент посмотрит на общий образ и подскажет, что лучше подойдёт именно тебе.
+    <section class="hero-shell">
+      <div class="hero">
+        <section class="hero-copy">
+          <div class="hero-headline">
+            <div class="eyebrow">beauty advisor • premium edit</div>
+            <h1>Твой beauty-консультант для выбора макияжа и ухода</h1>
+            <p class="hero-lead">Загрузи фото, задай настроение или задачу — и агент соберёт первую подборку, которую потом можно спокойно уточнять в диалоге.</p>
           </div>
-        </div>
+        </section>
 
-        <div class="upload-line">
-          <input id="photoFile" type="file" accept="image/*" />
-          <textarea id="goal" placeholder="Например: хочу дневной макияж, нужен более свежий вид, подбери губы и глаза"></textarea>
-        </div>
+        <aside class="upload-card">
+          <div class="upload-top">
+            <div>
+              <h2>Собрать персональный beauty edit</h2>
+              <p>Загрузи фото и напиши, какой эффект хочешь получить — от естественного fresh look до более вечернего образа.</p>
+            </div>
+            <div class="upload-badge">gold edit</div>
+          </div>
 
-        <div class="send-row">
-          <button id="analyzeBtn" class="primary-btn">Получить подборку</button>
-          <button id="resetBtn" class="ghost-btn" type="button">Сбросить</button>
-        </div>
+          <div class="preview-wrap">
+            <img id="preview" class="preview" alt="preview" style="display:none" />
+            <div id="previewPlaceholder" class="preview-placeholder">
+              Загрузи фото лица — агент посмотрит на общий образ и подскажет, что лучше подойдёт именно тебе.
+            </div>
+          </div>
 
-        <div id="status" class="status">Загрузи фото и нажми «Получить подборку» — дальше можно просто общаться с агентом.</div>
-        <div class="tiny">Лучше всего работают фото с нормальным светом и без сильных фильтров.</div>
+          <div class="upload-line">
+            <input id="photoFile" type="file" accept="image/*" />
+            <textarea id="goal" placeholder="Например: хочу сияющий дневной макияж, выровнять тон, сделать губы чуть выразительнее"></textarea>
+          </div>
+
+          <div class="send-row">
+            <button id="analyzeBtn" class="primary-btn">Получить подборку</button>
+            <button id="resetBtn" class="ghost-btn" type="button">Сбросить</button>
+          </div>
+
+          <div id="status" class="status">Загрузи фото и нажми «Получить подборку» — дальше можно просто общаться с агентом.</div>
+          <div class="tiny">Лучше всего работают фото с мягким светом, без сильных фильтров и со спокойным ракурсом лица.</div>
+        </aside>
       </div>
     </section>
 
+
     <section class="main">
       <section class="panel">
-        <h2>Диалог с beauty-консультантом</h2>
-        <div class="sub">Пиши как обычному консультанту: «сделай образ более вечерним», «хочу акцент на губы», «подбери что-то подешевле», «добавь румяна».</div>
+        <div class="section-head">
+          <div>
+            <h2>Диалог с beauty-консультантом</h2>
+            <div class="sub">Пиши как обычному консультанту: «сделай образ более вечерним», «хочу акцент на губы», «подбери что-то подешевле».</div>
+          </div>
+        </div>
 
-        <div id="chat" class="chat"></div>
+        <div class="chat-shell">
+          <div id="chat" class="chat"></div>
 
-        <div class="composer">
-          <textarea id="chatInput" placeholder="Например: собери более вечерний образ с акцентом на глаза"></textarea>
-          <div class="send-row">
-            <button id="sendBtn" class="primary-btn">Отправить</button>
+          <div class="composer">
+            <textarea id="chatInput" placeholder="Например: собери более вечерний образ с акцентом на глаза"></textarea>
+            <div class="send-row">
+              <button id="sendBtn" class="primary-btn">Отправить</button>
+            </div>
           </div>
         </div>
 
@@ -344,19 +1127,55 @@
       </section>
 
       <aside class="panel">
-        <h2>Что можно попробовать</h2>
-        <div class="helper">
-          <strong>Примеры запросов</strong>
-          <div class="sub">• собери дневной макияж<br>• хочу что-то более свежее и лёгкое<br>• добавь румяна и помаду<br>• сделай акцент на глаза<br>• покажи более бюджетный вариант<br>• собери образ на свидание или на вечер</div>
+        <div class="section-head">
+          <div>
+            <h2>Что можно попробовать</h2>
+            <div class="sub">Ниже будут рекомендации. Если хочешь, можешь просить новый вариант по настроению, фокусу или бюджету.</div>
+          </div>
         </div>
 
-        <div class="cards" id="cards"></div>
+        <div class="sidebar-grid">
+          <div class="cart-panel" id="cartPanel">
+            <div class="cart-top">
+              <div>
+                <h3 class="cart-title">Корзина</h3>
+                <div class="cart-sub">Добавляй товары из рекомендаций прямо во время диалога.</div>
+              </div>
+              <div class="cart-badge" id="cartCount">0</div>
+            </div>
+            <div class="cart-list" id="cartList">
+              <div class="cart-empty">Корзина пока пустая. Когда агент предложит товары, на карточках появится кнопка добавления.</div>
+            </div>
+            <div class="cart-summary" id="cartSummary">
+              <div class="cart-summary-row"><span>Товаров</span><span id="cartItemsCount">0</span></div>
+              <div class="cart-summary-row"><span>Итого</span><strong id="cartTotal">0 ₽</strong></div>
+              <div class="cart-cta">
+                <button id="cartCheckoutBtn" class="cart-primary" type="button">Перейти к оформлению</button>
+                <button id="cartClearBtn" class="cart-clear-btn" type="button">Очистить корзину</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="helper">
+            <strong>Примеры запросов</strong>
+            <div class="helper-grid">
+              <div class="helper-item"><i></i><span>собери дневной макияж</span></div>
+              <div class="helper-item"><i></i><span>сделай вариант на вечер</span></div>
+              <div class="helper-item"><i></i><span>добавь что-то для губ</span></div>
+              <div class="helper-item"><i></i><span>покажи вариант подешевле</span></div>
+            </div>
+          </div>
+
+          <div class="cards" id="cards"></div>
+        </div>
       </aside>
     </section>
+
+    <div class="footer-note">Golden Apple beauty advisor</div>
   </div>
 
   <script>
-    const state = { photoB64: null, sessionId: null };
+    const state = { photoB64: null, sessionId: null, cart: { items: [], total_items: 0, total_price: 0 }, lastRecommendations: [] };
     const $ = (id) => document.getElementById(id);
     const categoryLabels = {
       cleanser:'Очищение', serum:'Сыворотка', moisturizer:'Крем', spf:'SPF', toner:'Тонер', spot_treatment:'Точечный уход',
@@ -393,25 +1212,161 @@
       return title.replace(/\b([A-Z]+(?:_[A-Z]+)+)\b/g, (_, shade) => humanizeShadeToken(shade));
     }
 
+    function getCartItemQuantity(sku) {
+      const item = state.cart.items.find((entry) => entry.sku === sku);
+      return item ? item.quantity : 0;
+    }
+
+    function updateCartState(data) {
+      state.cart = {
+        items: data.cart?.items || [],
+        total_items: data.total_items || 0,
+        total_price: data.total_price || 0,
+      };
+      renderCart();
+      renderRecommendations(state.lastRecommendations);
+    }
+
+    function renderCart() {
+      const count = state.cart.total_items || 0;
+      const total = state.cart.total_price || 0;
+      $('cartCount').textContent = count;
+      $('cartItemsCount').textContent = count;
+      $('cartTotal').textContent = `${total} ₽`;
+      $('cartCheckoutBtn').disabled = count === 0;
+      $('cartClearBtn').disabled = count === 0;
+
+      const list = $('cartList');
+      list.innerHTML = '';
+      if (!state.cart.items?.length) {
+        list.innerHTML = '<div class="cart-empty">Корзина пока пустая. Когда агент предложит товары, на карточках появится кнопка добавления.</div>';
+        return;
+      }
+
+      state.cart.items.forEach((item) => {
+        const node = document.createElement('div');
+        node.className = 'cart-item';
+        node.innerHTML = `
+          <div class="cart-item-top">
+            <div>
+              <h4>${prettyTitle(item.title)}</h4>
+              <div class="cart-meta">${item.brand} • ${categoryLabels[item.category] || item.category}</div>
+            </div>
+            <div class="cart-price">${item.price_value * item.quantity} ₽</div>
+          </div>
+          <div class="cart-controls">
+            <div class="qty-controls">
+              <button class="qty-btn" type="button" data-cart-action="decrease" data-sku="${item.sku}">−</button>
+              <span class="qty-value">${item.quantity}</span>
+              <button class="qty-btn" type="button" data-cart-action="increase" data-sku="${item.sku}">+</button>
+            </div>
+            <button class="cart-remove-btn" type="button" data-cart-action="remove" data-sku="${item.sku}">Удалить</button>
+          </div>
+        `;
+        list.appendChild(node);
+      });
+    }
+
     function renderRecommendations(items) {
+      state.lastRecommendations = items || [];
       const root = $('cards');
       root.innerHTML = '';
       if (!items?.length) {
-        root.innerHTML = '<div class="helper"><strong>Подборка появится здесь</strong><div class="sub">После анализа фото агент предложит продукты, которые можно сразу обсудить и пересобрать под твой вкус.</div></div>';
+        root.innerHTML = `
+          <div class="empty-state">
+            <strong style="display:block;margin-bottom:8px;font-size:16px;letter-spacing:-.02em;">Подборка появится здесь</strong>
+            <div class="sub">После анализа фото агент предложит продукты, которые можно сразу обсудить, пересобрать и добавить в корзину.</div>
+          </div>`;
         return;
       }
       items.forEach(item => {
+        const quantity = getCartItemQuantity(item.sku);
         const card = document.createElement('div');
         card.className = 'card';
         card.innerHTML = `
           <div class="badge">${categoryLabels[item.category] || item.category}</div>
           <h3>${prettyTitle(item.title)}</h3>
-          <div class="sub">${item.brand}</div>
+          <div class="brand-row"><span class="brand-dot"></span><span>${item.brand}</span></div>
           <div class="price">${item.price_value} ₽</div>
           <div class="sub">${item.why}</div>
+          <div class="card-actions">
+            <button class="card-btn ${quantity > 0 ? 'added' : 'add'}" type="button" data-add-sku="${item.sku}">${quantity > 0 ? `В корзине: ${quantity}` : 'Добавить в корзину'}</button>
+          </div>
         `;
         root.appendChild(card);
       });
+    }
+
+    async function addToCart(item) {
+      if (!state.sessionId) {
+        setStatus('Сначала получи первую подборку.', true);
+        return;
+      }
+      try {
+        const response = await fetch(`/v1/session/${state.sessionId}/cart/items`, {
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({
+            sku:item.sku,
+            title:item.title,
+            brand:item.brand,
+            category:item.category,
+            domain:item.domain,
+            price_value:item.price_value,
+          })
+        });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.detail || 'cart add failed');
+        updateCartState(data);
+      } catch (error) {
+        console.error(error);
+        setStatus(`Не удалось добавить в корзину: ${error.message}`, true);
+      }
+    }
+
+    async function changeCartQuantity(sku, quantity) {
+      if (!state.sessionId) return;
+      try {
+        const response = await fetch(`/v1/session/${state.sessionId}/cart/items/${encodeURIComponent(sku)}`, {
+          method:'PATCH',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({quantity})
+        });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.detail || 'cart update failed');
+        updateCartState(data);
+      } catch (error) {
+        console.error(error);
+        setStatus(`Не удалось обновить корзину: ${error.message}`, true);
+      }
+    }
+
+    async function removeFromCart(sku) {
+      if (!state.sessionId) return;
+      try {
+        const response = await fetch(`/v1/session/${state.sessionId}/cart/items/${encodeURIComponent(sku)}`, {
+          method:'DELETE'
+        });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.detail || 'cart remove failed');
+        updateCartState(data);
+      } catch (error) {
+        console.error(error);
+        setStatus(`Не удалось удалить товар: ${error.message}`, true);
+      }
+    }
+
+    async function clearCart() {
+      if (!state.sessionId) return;
+      try {
+        const response = await fetch(`/v1/session/${state.sessionId}/cart`, { method:'DELETE' });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.detail || 'cart clear failed');
+        updateCartState(data);
+      } catch (error) {
+        console.error(error);
+        setStatus(`Не удалось очистить корзину: ${error.message}`, true);
+      }
     }
 
     async function toBase64(file) {
@@ -448,10 +1403,12 @@
         const data = await response.json();
         if (!response.ok) throw new Error(data.detail || 'analyze failed');
         state.sessionId = data.session_id;
+        state.cart = { items: [], total_items: 0, total_price: 0 };
         $('chat').innerHTML = '';
         addMessage(data.answer_text, 'agent');
+        renderCart();
         renderRecommendations(data.recommendations);
-        setStatus('Готово. Теперь можно попросить более вечерний, более спокойный или более бюджетный вариант.');
+        setStatus('Готово. Теперь можно попросить более вечерний, более спокойный или более бюджетный вариант — и сразу добавлять товары в корзину.');
       } catch (error) {
         console.error(error);
         setStatus(`Не удалось собрать подборку: ${error.message}`, true);
@@ -481,7 +1438,7 @@
         if (!response.ok) throw new Error(data.detail || 'message failed');
         addMessage(data.answer_text, 'agent');
         renderRecommendations(data.recommendations);
-        setStatus('Готово. Можно продолжать уточнять, пока образ не понравится.');
+        setStatus('Готово. Можно продолжать уточнять образ и добавлять понравившиеся товары в корзину.');
       } catch (error) {
         console.error(error);
         setStatus(`Не удалось получить ответ: ${error.message}`, true);
@@ -496,6 +1453,34 @@
       $('preview').src = URL.createObjectURL(file);
       $('preview').style.display = 'block';
       $('previewPlaceholder').style.display = 'none';
+    });
+
+    $('cards').addEventListener('click', (event) => {
+      const button = event.target.closest('[data-add-sku]');
+      if (!button) return;
+      const item = state.lastRecommendations.find((entry) => entry.sku === button.dataset.addSku);
+      if (!item) return;
+      addToCart(item);
+    });
+
+    $('cartList').addEventListener('click', (event) => {
+      const button = event.target.closest('[data-cart-action][data-sku]');
+      if (!button) return;
+      const { cartAction, sku } = button.dataset;
+      const item = state.cart.items.find((entry) => entry.sku === sku);
+      if (!item) return;
+      if (cartAction === 'increase') changeCartQuantity(sku, item.quantity + 1);
+      if (cartAction === 'decrease') changeCartQuantity(sku, item.quantity - 1);
+      if (cartAction === 'remove') removeFromCart(sku);
+    });
+
+    $('cartClearBtn').addEventListener('click', clearCart);
+    $('cartCheckoutBtn').addEventListener('click', () => {
+      if (!state.cart.total_items) {
+        setStatus('Корзина пока пустая.', true);
+        return;
+      }
+      setStatus(`В корзине ${state.cart.total_items} товар(а) на ${state.cart.total_price} ₽. Следующим шагом можно сделать отдельный экран оформления.`);
     });
 
     $('analyzeBtn').addEventListener('click', analyze);
@@ -524,10 +1509,13 @@
       $('previewPlaceholder').style.display = 'grid';
       $('chat').innerHTML = '';
       $('cards').innerHTML = '';
+      state.cart = { items: [], total_items: 0, total_price: 0 };
       setStatus('Интерфейс очищен. Загрузи новое фото, чтобы начать заново.');
+      renderCart();
       renderRecommendations([]);
     });
 
+    renderCart();
     renderRecommendations([]);
   </script>
 </body>

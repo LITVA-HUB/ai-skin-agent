@@ -5,12 +5,9 @@ import uuid
 from .dialog_service import answer_from_conversation_history, append_conversation_turn, is_memory_question
 from .gemini_client import GeminiClient, is_probably_base64_image
 from .intent_service import heuristic_intent
-from .decision_pipeline import build_bundle_recommendations
 from .look_harmony import attach_look_profile
 from .look_transforms import apply_look_transform, transformation_label
 from .merchandising import order_for_conversion
-from .observability import log_event
-from .validation import validate_response_grounding
 from .models import (
     AnalyzePhotoRequest,
     AnalyzePhotoResponse,
@@ -225,8 +222,7 @@ async def analyze_photo(request: AnalyzePhotoRequest, store: SessionStore, gemin
     profile = build_skin_profile(analysis, request.user_context.goal)
     context = merge_context_preferences(request.user_context, profile)
     plan = build_plan(profile, context)
-    recommendations, trace = build_bundle_recommendations(profile, plan, context)
-    recommendations = order_for_conversion(recommendations, plan, context)
+    recommendations = order_for_conversion(retrieve_products(profile, plan, context), plan, context)
     context.accepted_products = [item.sku for item in recommendations]
     context.rejected_products = list(dict.fromkeys(context.rejected_products))
     answer_text = compose_initial_response(profile, recommendations, plan)
@@ -241,21 +237,12 @@ async def analyze_photo(request: AnalyzePhotoRequest, store: SessionStore, gemin
         dialog_context=DialogContextState(
             current_recommendations={item.category: item.sku for item in recommendations},
             active_domains=[IntentDomain(domain.value) for domain in plan.product_domains],
-            decision_trace=trace.model_dump(mode='json'),
         ),
         conversation_history=[],
     )
     attach_look_profile(session, recommendations)
     append_conversation_turn(session, "assistant", answer_text)
     store.save(session)
-    log_event(
-        'analyze_photo',
-        session_id=session.session_id,
-        recommendation_count=len(recommendations),
-        mode=trace.mode,
-        requested_categories=[c.value for c in trace.requested_categories],
-        resolved_categories=[item.category.value for item in recommendations],
-    )
     return AnalyzePhotoResponse(
         session_id=session.session_id,
         photo_analysis_result=analysis,
@@ -291,9 +278,8 @@ async def handle_message(message: str, store: SessionStore, session_id: str, gem
     append_conversation_turn(updated, "user", message)
 
     if needs_recommendation_refresh(updated, intent):
-        recommendations, trace = build_bundle_recommendations(updated.skin_profile, updated.current_plan, updated.user_preferences, session=updated, intent=intent)
         recommendations = order_for_conversion(
-            recommendations,
+            retrieve_products(updated.skin_profile, updated.current_plan, updated.user_preferences, session=updated, intent=intent),
             updated.current_plan,
             updated.user_preferences,
         )
@@ -304,43 +290,19 @@ async def handle_message(message: str, store: SessionStore, session_id: str, gem
         updated.user_preferences.accepted_products = list(updated.accepted_products)
         updated.user_preferences.rejected_products = list(updated.rejected_products)
         updated.dialog_context.current_recommendations = {item.category: item.sku for item in recommendations}
-        updated.dialog_context.decision_trace = trace.model_dump(mode='json')
         attach_look_profile(updated, recommendations)
     else:
         target_categories = intent.target_categories or ([intent.target_category] if intent.target_category else None)
         recommendations = order_for_conversion(recommendation_items_from_current(updated, target_categories), updated.current_plan, updated.user_preferences)
-        updated.dialog_context.decision_trace = {
-            'mode': 'current_selection',
-            'requested_categories': [cat.value for cat in (target_categories or updated.current_plan.required_categories)],
-            'resolved_items': [],
-        }
         updated.user_preferences.accepted_products = list(updated.accepted_products)
         updated.user_preferences.rejected_products = list(updated.rejected_products)
         attach_look_profile(updated, recommendations)
 
-    use_llm_for_reply = intent.action in {IntentAction.compare, IntentAction.explain} and len(recommendations) <= 2
-    if use_llm_for_reply:
-        reply = await gemini.generate_agent_reply(build_reply_prompt(updated, intent, recommendations, message))
-        cleaned_reply = sanitize_agent_text(reply) if reply else ''
-        reply_looks_safe = validate_response_grounding(cleaned_reply, recommendations)
-        if reply_looks_safe and not __import__('app.config', fromlist=['settings']).settings.strict_fail_safe:
-            answer_text = cleaned_reply
-        elif reply_looks_safe and len(cleaned_reply) < 700:
-            answer_text = cleaned_reply
-        else:
-            answer_text = compose_followup_response(updated, intent, recommendations, message)
-    else:
-        answer_text = compose_followup_response(updated, intent, recommendations, message)
+    reply = await gemini.generate_agent_reply(build_reply_prompt(updated, intent, recommendations, message))
+    cleaned_reply = sanitize_agent_text(reply) if reply else ''
+    catalog_titles = [item.title for item in recommendations]
+    reply_looks_safe = bool(cleaned_reply) and any(title.split()[0].lower() in cleaned_reply.lower() for title in catalog_titles[:2])
+    answer_text = cleaned_reply if reply_looks_safe else compose_followup_response(updated, intent, recommendations, message)
     append_conversation_turn(updated, "assistant", answer_text)
     store.save(updated)
-    log_event(
-        'handle_message',
-        session_id=updated.session_id,
-        intent=intent.intent,
-        action=intent.action.value,
-        recommendation_count=len(recommendations),
-        used_llm=use_llm_for_reply,
-        decision_mode=updated.dialog_context.decision_trace.get('mode') if updated.dialog_context.decision_trace else None,
-        resolved_categories=[item.category.value for item in recommendations],
-    )
     return SessionMessageResponse(intent=intent, updated_session_state=updated, recommendations=recommendations, answer_text=answer_text)
